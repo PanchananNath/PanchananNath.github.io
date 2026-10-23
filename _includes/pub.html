@@ -1,0 +1,40 @@
+{% comment %}
+  Renders one publication.  Usage: {% include pub.html p=item %}
+  Highlights your name using site.author_aliases.
+{% endcomment %}
+{% assign pub = include.p %}
+{% assign authors = pub.authors %}
+{% for alias in site.author_aliases %}
+  {% assign authors = authors | replace: alias, "@@ME@@" %}
+{% endfor %}
+{% capture me %}<strong class="me">{{ site.author_aliases[0] }}</strong>{% endcapture %}
+{% assign authors = authors | replace: "@@ME@@", me %}
+{% case pub.status %}
+  {% when 'under-review' %}{% assign status_label = 'Under review' %}
+  {% when 'upcoming' %}{% assign status_label = 'In preparation' %}
+  {% when 'accepted' %}{% assign status_label = 'Accepted' %}
+  {% when 'presented' %}{% assign status_label = 'Presented' %}
+  {% else %}{% assign status_label = '' %}
+{% endcase %}
+{% case pub.type %}
+  {% when 'journal' %}{% assign type_label = 'Journal' %}
+  {% when 'conference' %}{% assign type_label = 'Conference' %}
+  {% when 'chapter' %}{% assign type_label = 'Book chapter' %}
+  {% when 'poster' %}{% assign type_label = 'Poster' %}
+  {% else %}{% assign type_label = 'Article' %}
+{% endcase %}
+<li class="pub" data-pub data-type="{{ pub.type }}" data-status="{{ pub.status }}" data-text="{{ pub.title | downcase | escape }} {{ pub.authors | downcase | escape }} {{ pub.venue | downcase | escape }} {{ pub.year }}">
+  <span class="pub__code" title="{{ type_label }}">{{ pub.id }}</span>
+  <div class="pub__body">
+    <p class="pub__title">{% if pub.url %}<a href="{{ pub.url }}" rel="noopener" target="_blank">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
+    <p class="pub__authors">{{ authors }}</p>
+    {% if pub.venue %}<p class="pub__venue">{{ pub.venue }}{% if pub.year %}, {{ pub.year }}{% endif %}</p>{% elsif pub.year %}<p class="pub__venue">{{ pub.year }}</p>{% endif %}
+    <p class="pub__meta">
+      <span class="tag tag--type">{{ type_label }}</span>
+      {% if status_label != '' %}<span class="tag tag--status tag--{{ pub.status }}">{{ status_label }}</span>{% endif %}
+      {% if pub.note %}<span class="pub__note">{{ pub.note }}</span>{% endif %}
+      {% if pub.url %}<a class="pub__link" href="{{ pub.url }}" rel="noopener" target="_blank">{% include icon.html name='link' %}Paper</a>{% endif %}
+      {% if pub.code %}<a class="pub__link" href="{{ pub.code }}" rel="noopener" target="_blank">{% include icon.html name='code' %}Code</a>{% endif %}
+    </p>
+  </div>
+</li>

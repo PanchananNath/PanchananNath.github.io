@@ -1,0 +1,101 @@
+# ─────────────────────────────────────────────────────────────
+#  TEACHING — grouped by institution, then by term (newest first)
+#  Each course: name, level, students, with (co-instructors), repo
+# ─────────────────────────────────────────────────────────────
+
+- institution: "Indian Institute of Information Technology Guwahati"
+  role: "Teaching Assistant"
+  terms:
+    - term: "Odd semester 2026 (Aug–Dec)"
+      courses:
+        - name: "IT Workshop I (Java Programming) Lab"
+          level: "B.Tech 3rd semester CSE"
+          students: 160
+          with:
+            - { name: "Dr. Arijit Nath", url: "https://www.iiitg.ac.in/computer-science-and-engineering/arijit-nath" }
+            - { name: "Dr. Krishnandu Hazra", url: "https://www.iiitg.ac.in/computer-science-and-engineering/krishnandu-hazra" }
+          repo: "https://github.com/PanchananNath/IT_Workshop_I_CS202"
+    - term: "Even semester 2026 (Jan–Jul)"
+      courses:
+        - name: "Compilers Lab"
+          level: "B.Tech 6th semester CSE"
+          students: 170
+          with:
+            - { name: "Dr. Manojit Ghose", url: "https://www.iiitg.ac.in/computer-science-and-engineering/manojit-ghose" }
+            - { name: "Dr. Angshuman Jana", url: "https://www.iiitg.ac.in/computer-science-and-engineering/dr-angshuman-jana" }
+          repo: "https://github.com/PanchananNath/CS321_Compilers_Lab"
+    - term: "Odd semester 2025 (Aug–Dec)"
+      courses:
+        - name: "Computer Programming Lab"
+          level: "B.Tech 1st semester CSE"
+          students: 60
+          with:
+            - { name: "Dr. Sanjay Moulik", url: "https://www.iiitg.ac.in/computer-science-and-engineering/sanjay-moulik" }
+          repo: "https://github.com/PanchananNath/CS101_Computer_Programming_Lab"
+        - name: "IT Workshop I (Java Programming) Lab"
+          level: "B.Tech 3rd semester CSE"
+          students: 60
+          with:
+            - { name: "Dr. Arijit Nath", url: "https://www.iiitg.ac.in/computer-science-and-engineering/arijit-nath" }
+          repo: "https://github.com/PanchananNath/CS202_IT_Workshop_I"
+
+- institution: "National Institute of Science and Technology University, Berhampur, Odisha"
+  role: "Assistant Professor"
+  terms:
+    - term: "Even semester 2025 (Jan–Jul)"
+      courses:
+        - { name: "Internet of Things", level: "B.Tech 6th semester", students: 130 }
+        - { name: "Computer Network", level: "B.Sc Computer Science, 4th & 6th semester", students: 40 }
+        - { name: "Computer Network & Cybersecurity", level: "M.Sc Data Science, 1st semester", students: 10 }
+    - term: "Odd semester 2024 (Aug–Dec)"
+      courses:
+        - { name: "Operating System", level: "B.Tech 5th semester CSE", students: 130 }
+        - { name: "Database Engineering", level: "B.Tech 3rd semester IT & ECS", students: 40 }
+
+- institution: "Central Institute of Technology Kokrajhar, Assam"
+  role: "Teaching Assistant"
+  terms:
+    - term: "Odd semester 2023 (Aug–Dec)"
+      courses:
+        - name: "Object Oriented Programming using Java Lab"
+          level: "B.Tech 3rd semester CSE"
+          students: 75
+          with: [ { name: "Mr. Mithun Karmakar", url: "https://cit.ac.in/profile-cse-mithun-karmakar" } ]
+          repo: "https://sites.google.com/cit.ac.in/ucse373"
+    - term: "Even semester 2023 (Jan–Jul)"
+      courses:
+        - name: "Internet of Things"
+          level: "B.Tech 6th semester CSE"
+          students: 40
+          with: [ { name: "Dr. Pranav Kr. Singh", url: "https://cit.ac.in/profile-cse-dr-pranav-kumar-singh" } ]
+        - name: "Problem Solving using Programming (C) Lab"
+          level: "B.Tech 2nd semester CSE"
+          students: 75
+          with: [ { name: "Mr. Mithun Karmakar", url: "https://cit.ac.in/profile-cse-mithun-karmakar" } ]
+          repo: "https://sites.google.com/cit.ac.in/ucse271"
+
+- institution: "National Institute of Electronics & Information Technology, Guwahati"
+  role: "Teaching Assistant"
+  terms:
+    - term: "Nov 2022 – May 2023"
+      courses:
+        - { name: "Bootcamp on Cyber Security", level: "Diploma, B.Tech, B.Des, M.Tech, M.Des", students: 100 }
+        - { name: "Industry Ready Job Oriented Training on Full Stack Development", level: "CIT and other institutes of BTR, Assam", students: 40 }
+        - { name: "Invited talk on Full Stack Development", students: 70 }
+        - { name: "Bootcamp on System Administration and Security", level: "Diploma, B.Tech, B.Des, M.Tech, M.Des", students: 100 }
+
+- institution: "Gossaigaon Girls' High School, Kokrajhar, Assam"
+  role: "Vocational Trainer (IT/ITeS)"
+  terms:
+    - term: "May 2023 – Jul 2023"
+      courses:
+        - { name: "Information Technology & IT Enabled Services", level: "Class IX", students: 40 }
+        - { name: "Science, Mathematics", level: "Classes VI, IX, X", students: 60 }
+
+- institution: "Assam Skill Development Mission, NRDS Centre, Kokrajhar"
+  role: "Guest Faculty"
+  terms:
+    - term: "Sep 2019 – Sep 2021"
+      courses:
+        - { name: "Field Technician Networking and Storage", level: "HS, UG and PG students across BTR, Assam", students: 250 }
+        - { name: "Field Technician Computing & Peripherals", level: "HS, UG and PG students across BTR, Assam", students: 250 }

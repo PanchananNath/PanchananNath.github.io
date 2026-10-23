@@ -1,0 +1,54 @@
+# ─────────────────────────────────────────────────────────────
+#  LEARNING & TRAINING — sections of items (newest first)
+#  item: title, by (organiser), when, where
+# ─────────────────────────────────────────────────────────────
+
+- section: "Conferences & seminars attended"
+  items:
+    - { title: "15th International Conference on Security, Privacy and Applied Cryptographic Engineering (SPACE 2025)", by: "IIT Guwahati", when: "Dec 16–19, 2025", where: "Guwahati, India" }
+    - { title: "IEEE/ACM CCGrid 2023: 23rd International Symposium on Cluster, Cloud and Internet Computing", by: "IISc Bangalore", when: "May 1–4, 2023", where: "Bengaluru, India" }
+    - { title: "15th International Conference on COMmunication Systems & NETworkS (COMSNETS 2023)", by: "COMSNETS", when: "Jan 3–8, 2023", where: "Chancery Pavilion, Bengaluru (hybrid)" }
+    - { title: "2nd Scientific Forum on Machine Learning for Biomedical Applications", by: "CIT Kokrajhar & UTP Malaysia", when: "May 25, 2021" }
+    - { title: "Research Conclave 2021 (two days)", by: "Dept. of CSE, CIT Kokrajhar", when: "May 22–23, 2021" }
+    - { title: "International Conference on Intelligent Computing and Technologies (ICTCon2021)", by: "ASTU & CIT Kokrajhar", when: "Mar 15–16, 2021" }
+
+- section: "FDPs, scientific schools & workshops"
+  items:
+    - { title: "Workshop on Quantum Computing for 6G (two days)", by: "IIIT Guwahati", when: "Mar 22–23, 2025" }
+    - { title: "AICTE-recognised FDP on Cryptography and Network Security", by: "Dept. of CSE, NIST University & NITTTR Chandigarh", when: "Sep 16–20, 2024" }
+    - { title: "5th Scientific School on Blockchain & Distributed Ledger Technologies", by: "Dept. of Mathematics and Computer Science, University of Cagliari, Italy", when: "Sep 2024" }
+    - { title: "Workshop on Ethical Hacking (two days)", by: "IIT Guwahati", when: "Aug 2019" }
+    - { title: "Workshop on Cyber Security & Ethical Hacking", by: "Inspiria Knowledge Campus, Siliguri", when: "Jul 2019" }
+    - { title: "Workshop on Cyber Security & Ethical Hacking", by: "CIT Kokrajhar", when: "Oct 2018" }
+
+- section: "Training & internships"
+  items:
+    - { title: "Online internship on Cyber Security & Forensics (3 months)", by: "Centre of Excellence in Cyber Security, JNTU Hyderabad", when: "Jun – Sep 2021" }
+    - { title: "Introduction to IoT", by: "Cisco Networking Academy", when: "May 2021" }
+    - { title: "ICSI Certified Network Security Specialist", by: "International Cyber Security Institute", when: "May 2021" }
+    - { title: "Project-based training on Ethical Hacking", by: "Internshala", when: "Oct 2020" }
+    - { title: "Cisco Certified Network Associate", by: "Cybrary", when: "Oct 2019" }
+    - { title: "Advanced Diploma in Computer Networking", by: "Alison", when: "Aug 2019" }
+    - { title: "Digital Network Security (short course)", by: "Alison", when: "Jul 2019" }
+    - { title: "Fundamentals of Network Security (short course)", by: "Alison", when: "Jun 2019" }
+    - { title: "Microsoft IT Management & Governance", by: "Microsoft Virtual Academy", when: "Jan 2019" }
+    - { title: "MySQL Database", by: "Microsoft Virtual Academy", when: "Jan 2019" }
+    - { title: "JavaScript Fundamentals", by: "Microsoft Virtual Academy", when: "Jan 2019" }
+    - { title: "Industrial training on Cyber Security & Ethical Hacking (1 month)", by: "Cybrosec India with Gratia Technology, Guwahati", when: "Jan 2019" }
+
+- section: "Webinars"
+  items:
+    - { title: "Automated Brain Tumor Segmentation using Multi-Modal Brain Scan", by: "Pentechlearning & Dept. of ECE, CIT Kokrajhar", when: "Jun 2021" }
+    - { title: "Artificial Intelligence", by: "Sri Sharada Institute of Indian Management-Research (SRISIIM)", when: "Sep 2020" }
+    - { title: "Cloud Security: Common Vulnerabilities and Ways to Address Them", by: "Dept. of ECE, St. Joseph's Institute of Technology", when: "Jul 2020" }
+    - { title: "The Internet of Things and Cloud", by: "Dept. of ECE, KGiSL Institute of Technology", when: "Jul 2020" }
+    - { title: "Nanobio Technology Enabled Biomedical Sensor Devices for Point-of-care Diagnosis & Protected Areas in Biodiversity Conservation in Tunisia (international)", by: "Rajendranath College of Polytechnic", when: "Jul 2020" }
+    - { title: "Future of Data Science", by: "Sri Sharada Institute of Indian Management-Research (SRISIIM)", when: "Jun 2020" }
+
+- section: "Competitions"
+  items:
+    - { title: "Online quizzes on Cyber Bullying, Email Security, Facebook Security and WhatsApp Security", by: "Ministry of Electronics and IT, Government of India", when: "May 2021" }
+    - { title: "Winner, Digital Forensics Olympiad 2021", by: "Ministry of Electronics and IT, Government of India", when: "Feb 2021", highlight: true }
+    - { title: "Winner, Cyber Challenge June 2020", by: "EC-Council University", when: "Jun 2020", highlight: true }
+    - { title: "2nd position, 25th State-level National Children's Science Congress", by: "Department of Science & Technology, Government of India", when: "Nov 2017", highlight: true }
+    - { title: "1st prize, district-level quiz on the Indian Independence Movement", by: "District Administration, Kokrajhar, Assam", when: "Aug 2017", highlight: true }

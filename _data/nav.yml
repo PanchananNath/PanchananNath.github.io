@@ -1,0 +1,8 @@
+# Top navigation. Reorder, rename or comment out freely.
+- { title: "Research",    url: "/research/" }
+- { title: "Experience",  url: "/experience/" }
+- { title: "Teaching",    url: "/teaching/" }
+- { title: "Mentoring",   url: "/mentoring/" }
+- { title: "Recognitions", url: "/recognitions/" }
+- { title: "Talks",       url: "/talks/" }
+- { title: "Learning",    url: "/learning/" }

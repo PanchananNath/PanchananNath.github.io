@@ -1,0 +1,105 @@
+# ─────────────────────────────────────────────────────────────
+#  RESEARCH — sponsored projects, open source, service, people
+# ─────────────────────────────────────────────────────────────
+
+projects:
+  - title: "Secure Execution of Sensitive Applications by Eliminating Cache Side Channel Attacks using Near Memory Computation Paradigm"
+    funder: "ASTEC, Government of Assam"
+    host: "IIIT Guwahati"
+    role: "Project staff"
+  - title: "Blockchain-Assisted Confidence-Aware Task Offloading and Resource Allocation for Deep Learning Application in Mobile Cloud Computing"
+    funder: "ANRF-PAIR"
+    host: "IIIT Guwahati"
+
+# Repositories shown under "Open source". lang is free text.
+repos:
+  - name: "Asomiya_Bhasha"
+    url: "https://github.com/PanchananNath/Asomiya_Bhasha"
+    text: "The first Assamese programming language (অসমীয়া প্ৰ'গ্ৰামিং ভাষা)."
+    lang: "JavaScript"
+  - name: "FA-Index"
+    url: "https://github.com/PanchananNath/FA-Index"
+    text: "Browser extension that finds first-authored papers and their citation counts, then calculates the FA-Index."
+    lang: "JavaScript"
+  - name: "MLIR_Tutorials"
+    url: "https://github.com/PanchananNath/MLIR_Tutorials"
+    text: "Learn MLIR from scratch in a well-structured way."
+    lang: "MLIR / C++"
+  - name: "PriBraTFedDL"
+    url: "https://github.com/PanchananNath/PriBraTFedDL"
+    text: "Federated deep learning for privacy-preserving brain tumour diagnosis."
+    lang: "Python"
+  - name: "CS321_Compilers_Lab"
+    url: "https://github.com/PanchananNath/CS321_Compilers_Lab"
+    text: "Course repository for the Compilers Lab at IIIT Guwahati, Jan–May 2026."
+    lang: "Course"
+  - name: "IT_Workshop_I_CS202"
+    url: "https://github.com/PanchananNath/IT_Workshop_I_CS202"
+    text: "Course repository for IT Workshop I (Java Programming Lab), Aug–Dec 2026."
+    lang: "Course"
+
+service:
+  committees:
+    - role: "Technical Program Committee"
+      event: "International Conference on Digital Technologies and Applications (ICDTA 25)"
+      place: "Ifrane, Morocco"
+      year: 2025
+      url: "https://drive.google.com/file/d/1SYRXqiV1sMVaMqUttL3LuKuMDBNs37L6/view?usp=sharing"
+    - role: "Technical Session Chair, Smart Machines and Secure Systems: AI in Practice"
+      event: "1st International Conference on Sustainable Computing and Intelligent Systems (ICSCIS 2025)"
+      place: "Jaipur, Rajasthan, India"
+      year: 2025
+      url: "https://drive.google.com/file/d/1cJ2bGNXY64Mupu12J82SLsmCmbhtXSn9/view?usp=sharing"
+    - role: "Technical Team member"
+      event: "International Conference on Technology Advances for Green Solutions and Sustainable Development (ICT4GS 2024)"
+      place: "Berhampur, Odisha, India"
+      year: 2024
+    - role: "Technical Web Development Team"
+      event: "International Conference on Intelligent Computing and Technologies (ICTCon2021)"
+      place: "Kokrajhar, Assam, India"
+      year: 2021
+  reviewer:
+    - { venue: "IEEE Open Journal of the Communications Society", kind: journal }
+    - { venue: "1st International Conference on Sustainable Computing and Intelligent Systems (ICSCIS 2025)", place: "Jaipur, India", kind: conference }
+    - { venue: "International Conference on Digital Technologies and Applications (ICDTA)", place: "Ifrane, Morocco", kind: conference }
+    - { venue: "3rd International Conference on Data Science and Network Security (ICDSNS 2025)", place: "Tiptur, India", kind: conference }
+    - { venue: "1st International Conference on Intelligent Computing and Knowledge Extraction (ICICKE 2025)", place: "Bengaluru, India", kind: conference }
+    - { venue: "3rd International Conference on Data Science and Information System (ICDSIS 2025)", place: "Hassan, India", kind: conference }
+
+supervisors:
+  - name: "Dr. Manojit Ghose"
+    role: "Assistant Professor, Dept. of CSE, IIIT Guwahati"
+    relation: "PhD supervisor"
+    url: "https://www.iiitg.ac.in/computer-science-and-engineering/manojit-ghose"
+  - name: "Dr. Pranav Kumar Singh"
+    role: "Associate Professor, Dept. of CSE, CIT Kokrajhar"
+    relation: "M.Tech & B.Tech supervisor"
+    url: "https://www.cit.ac.in/profile-cse-dr-pranav-kumar-singh"
+  - name: "Prof. (Dr.) Anshuman Kalla"
+    role: "Professor, CGPIT, Uka Tarsadia University, Gujarat"
+    relation: "M.Tech external supervisor"
+    url: "https://sites.google.com/site/kallanshuman/home"
+  - name: "Prof. (Dr.) Hemanta Kumar Kalita"
+    role: "Professor, Dept. of CSE, CIT Kokrajhar"
+    relation: "Diploma supervisor"
+    url: "https://www.cit.ac.in/profile-cse-dr-hemanta-kumar-kalita"
+  - name: "Prof. Tania Sarkar"
+    role: "Assistant Professor, Dept. of CSE, CIT Kokrajhar"
+    relation: "B.Tech minor project supervisor"
+    url: "https://www.cit.ac.in/profile-cse-tania-sarkar"
+
+collaborators:
+  faculty:
+    - { name: "Dr. Uttam Ghosh", role: "Professor of Cybersecurity, Computer Science and Data Science, SACS, Meharry Medical College, USA", url: "https://sacsmeharry.org/sacs/faculty/uttamghosh/" }
+    - { name: "Dr. Purnendu Shekhar Pandey", role: "Associate Professor, OM & OR, Jaipuria Institute of Management, Lucknow", url: "https://www.jaipuria.ac.in/faculty/purnendu-shekhar-pandey/" }
+    - { name: "Prof. Bikramjit Choudhury", role: "Assistant Professor, Dept. of CSE, CIT Kokrajhar", url: "https://www.cit.ac.in/profile-cse-bikramjit-choudhury" }
+    - { name: "Dr. Sujith Ariyapadath", role: "Assistant Professor, Dept. of CSE, KL University, Andhra Pradesh", url: "https://in.linkedin.com/in/dr-sujith-ariyapadath-67a44591" }
+    - { name: "Prof. (Dr.) Sudhir Ranjan Pattanaik", role: "Professor, Dept. of CSE, NIST University, Odisha", url: "https://scholar.google.com/citations?user=4oKegpwAAAAJ&hl=en" }
+    - { name: "Prof. Nibedita Priyadarsini Mohapatra", role: "Assistant Professor, Dept. of CSE, NIST University, Odisha", url: "https://scholar.google.com/citations?user=wQg5EB8AAAAJ&hl=en" }
+  peers:
+    - { name: "Ujjal Roy", role: "Senior Instructor, Dept. of CSE, Dhemaji Engineering College, Assam", url: "https://dec.ac.in/cse.html" }
+    - { name: "Maharaj Brahma", role: "PhD Scholar, Dept. of CSE, IIT Hyderabad", url: "https://maharajbrahma.github.io" }
+    - { name: "Jaya Rani Mushahary", role: "JRF, STI Hub, CIT Kokrajhar", url: "https://stihub.cit.ac.in/team" }
+    - { name: "Catherine Esther Jones", role: "Cyber Security Research Associate, R&D Team, EC-Council", url: "https://in.linkedin.com/in/catherine-esther-jones" }
+    - { name: "Debanand Singha", role: "B.Tech student, Dept. of CSE, CIT Kokrajhar", url: "https://in.linkedin.com/in/debanand" }
+    - { name: "Monalisha Roy", role: "B.Tech student, Dept. of CSE, CIT Kokrajhar", url: "https://in.linkedin.com/in/monalisha-roy" }

@@ -1,0 +1,47 @@
+# ─────────────────────────────────────────────────────────────
+#  RECOGNITIONS — awards, certifications, distinctions
+#  featured: true → also shown on the home page
+# ─────────────────────────────────────────────────────────────
+
+awards:
+  - { year: 2026, title: "Chief Minister's Jibon Prerana Scheme", by: "Government of Assam", featured: true }
+  - { year: 2025, title: "Fellowship recipient, SPACE 2025", by: "IIT Guwahati, India" }
+  - { year: 2024, title: "Best Researcher Award, Indian Scientists Award", by: "Indian Scientist", featured: true }
+  - year: 2024
+    title: "Selected candidate, 5th Scientific School on Blockchain and Distributed Technologies"
+    by: "University of Cagliari, Italy"
+    note: "One of the top 20 candidates from 5,000+ applicants worldwide"
+    featured: true
+  - { year: 2023, title: "Travel grant, CCGrid 2023", by: "IEEE & ACM India, IISc Bangalore", featured: true }
+  - { year: 2023, title: "Invited speaker, 9th WEC 2023", by: "Osaka, Japan" }
+  - { year: 2021, title: "Hall of Fame, Cyber Security Researcher", by: "EC-Council University, USA", featured: true }
+  - { year: 2021, title: "Certified Trustee", by: "CyberArk Software Ltd., USA" }
+  - { year: 2017, title: "2nd position, 25th State-level National Children's Science Congress (NCSC)", by: "Government of Assam" }
+  - { year: 2014, title: "Anundoram Borooah Award", by: "Government of Assam" }
+
+# Professional certifications. `by` is the issuing body.
+certifications:
+  - { name: "CySA+",  full: "CompTIA Cybersecurity Analyst",          by: "CompTIA" }
+  - { name: "PenTest+", full: "CompTIA PenTest+",                     by: "CompTIA" }
+  - { name: "CEH",    full: "Certified Ethical Hacker",               by: "EC-Council" }
+  - { name: "CCSP",   full: "Certified Cloud Security Professional" }
+  - { name: "CC",     full: "Certified in Cybersecurity" }
+  - { name: "CCNA",   full: "Cisco Certified Network Associate",      by: "Cisco" }
+  - { name: "NSE 1",  full: "Network Security Expert, level 1",       by: "Fortinet" }
+  - { name: "NSE 2",  full: "Network Security Expert, level 2",       by: "Fortinet" }
+  - { name: "CCIO",   full: "Certified Cyber Crime Intervention Officer", by: "ISAC" }
+  - { name: "CNSS",   full: "Certified Network Security Specialist",  by: "ICSI" }
+  - { name: "E|HE",   full: "Ethical Hacking Essentials",             by: "EC-Council" }
+  - { name: "N|DE",   full: "Network Defense Essentials",             by: "EC-Council" }
+  - { name: "D|FE",   full: "Digital Forensics Essentials",           by: "EC-Council" }
+
+# Roles & memberships recognised by external bodies.
+# Fill in `by` where you'd like the organisation shown.
+distinctions:
+  - { title: "Hall of Fame, Cyber Security Researcher", by: "EC-Council University" }
+  - { title: "Certified Trustee", by: "CyberArk Software Ltd." }
+  - { title: "Certified Cyber Crime Intervention Officer", by: "ISAC" }
+  - { title: "Scientific Research Proposal Reviewer" }
+  - { title: "Technical Reviewer" }
+  - { title: "Graduate Member" }
+  - { title: "Active Member" }

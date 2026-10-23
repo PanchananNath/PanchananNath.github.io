@@ -1,0 +1,22 @@
+---
+layout: page
+title: "Learning & training"
+permalink: /learning/
+lede: "Conferences, scientific schools, workshops, trainings and competitions, a record of how I keep learning."
+---
+{% for s in site.data.learning %}
+<section class="block">
+  <h2 class="bus">{{ s.section }}</h2>
+  <ol class="rows rows--dated">
+    {% for i in s.items %}
+      <li{% if i.highlight %} class="is-highlight"{% endif %}>
+        <span class="rows__date">{{ i.when }}</span>
+        <div>
+          <p class="rows__title">{{ i.title }}</p>
+          <p class="rows__meta">{{ i.by }}{% if i.where %}, {{ i.where }}{% endif %}</p>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endfor %}

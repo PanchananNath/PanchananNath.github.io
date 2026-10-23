@@ -1,0 +1,39 @@
+---
+layout: page
+title: "Teaching"
+permalink: /teaching/
+lede: "Labs, lectures and bootcamps, from school classrooms and skill-development centres to B.Tech, M.Sc and industry-ready training."
+---
+{% assign total = 0 %}
+{% assign courses = 0 %}
+{% for inst in site.data.teaching %}{% for t in inst.terms %}{% for c in t.courses %}
+  {% assign total = total | plus: c.students %}{% assign courses = courses | plus: 1 %}
+{% endfor %}{% endfor %}{% endfor %}
+
+<p class="summary">{{ courses }} courses and trainings across {{ site.data.teaching.size }} institutions, reaching {{ total }}+ learners.</p>
+
+{% for inst in site.data.teaching %}
+<section class="block teach">
+  <h2 class="bus">{{ inst.institution }}</h2>
+  <p class="teach__role">{{ inst.role }}</p>
+  {% for t in inst.terms %}
+    <div class="teach__term">
+      <p class="teach__when">{{ t.term }}</p>
+      <ul class="teach__courses">
+        {% for c in t.courses %}
+          <li class="course">
+            <p class="course__name">{{ c.name }}</p>
+            <p class="course__meta">{% if c.level %}{{ c.level }}{% endif %}{% if c.students %}<span class="course__n">{{ c.students }}+ students</span>{% endif %}</p>
+            {% if c.with or c.repo %}
+            <p class="course__extra">
+              {% if c.with %}<span>With {% for w in c.with %}<a href="{{ w.url }}" rel="noopener" target="_blank">{{ w.name }}</a>{% unless forloop.last %} and {% endunless %}{% endfor %}.</span>{% endif %}
+              {% if c.repo %}<a class="course__repo" href="{{ c.repo }}" rel="noopener" target="_blank">{% if c.repo contains 'github.com' %}{% include icon.html name='github' %}Course repository{% else %}{% include icon.html name='link' %}Course page{% endif %}</a>{% endif %}
+            </p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</section>
+{% endfor %}

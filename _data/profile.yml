@@ -1,0 +1,93 @@
+# ─────────────────────────────────────────────────────────────
+#  PROFILE — identity, contact, links, home-page text
+#  Edit freely. Empty values are skipped by the templates.
+# ─────────────────────────────────────────────────────────────
+
+name: "Panchanan Nath"
+prefix: "Er."
+# Photo: drop your own file at assets/img/profile.jpg and change this to
+# "/assets/img/profile.jpg". Any full URL also works.
+photo: "https://avatars.githubusercontent.com/u/77277835?v=4"
+
+headline: "Systems, network and security researcher"
+roles:
+  - "PhD Scholar, Dept. of CSE, IIIT Guwahati"
+  - "Founder & CEO, EncryptoCyberspace"
+
+location: "Guwahati, Assam, India"
+
+# Email is split so bots can't scrape it; the page assembles it with JS.
+email_user: "erpanchanannath"
+email_domain: "gmail.com"
+
+bio: >-
+  I work where compilers, networks and security meet. My doctoral research at
+  IIIT Guwahati covers intermittent computing, compiler-based security and code
+  analysis, early-exit deep learning and multi-access edge computing. Alongside
+  research I have spent years in industry and outreach: founding
+  EncryptoCyberspace, working with EC-Council's R&D team, and volunteering as a
+  Cyber Crime Intervention Officer with ISAC India.
+
+philosophy:
+  quote: "Security is neither a product, nor a process but the philosophy."
+  note: "Higher the security, lower the usability. Lower the security, higher the usability."
+
+open_to:
+  - title: "Research collaborations"
+    text: "Academic, interdisciplinary and industry research."
+  - title: "Industry consultation"
+    text: "Cybersecurity and technology-focused consulting and joint projects."
+  - title: "Invited talks"
+    text: "Conferences, workshops, seminars, tutorials and hands-on sessions."
+  - title: "Mentoring"
+    text: "Students, early-career researchers and aspiring security professionals."
+
+# Shown as icon links in the header/footer and on the home page.
+# icon: one of scholar, researchgate, scopus, github, linkedin, orcid, globe, shield, vidwan
+links:
+  - { label: "Google Scholar", url: "https://scholar.google.com/citations?user=YSPfwT8AAAAJ&hl=en", icon: scholar }
+  - { label: "ResearchGate",   url: "https://www.researchgate.net/profile/Panchanan-Nath-2", icon: researchgate }
+  - { label: "Scopus",         url: "https://www.scopus.com/authid/detail.uri?authorId=58078774700", icon: scopus }
+  - { label: "Vidwan",         url: "https://nist.irins.org/profile/577477", icon: vidwan }
+  - { label: "GitHub",         url: "https://github.com/PanchananNath", icon: github }
+  - { label: "ISAC profile",   url: "https://isacfoundation.org/panchanan-nath", icon: shield }
+  - { label: "EncryptoCyberspace", url: "https://sites.google.com/view/encryptocyberspace", icon: globe }
+  # - { label: "LinkedIn", url: "https://www.linkedin.com/in/YOUR-ID", icon: linkedin }
+  # - { label: "ORCID",    url: "https://orcid.org/0000-0000-0000-0000", icon: orcid }
+
+# Optional: put your CV at assets/cv.pdf and uncomment.
+# cv: "/assets/cv.pdf"
+
+# ── Career network map on the home page ──────────────────────
+# track: academic | industry   (sets trace colour)
+# Add/remove nodes freely — the map lays itself out.
+network:
+  - { label: "IIIT Guwahati",       detail: "PhD scholar, project staff", track: academic }
+  - { label: "EncryptoCyberspace",  detail: "Founder & CEO",              track: industry }
+  - { label: "NIST University",     detail: "Assistant professor",        track: academic }
+  - { label: "EC-Council",          detail: "Security research associate", track: industry }
+  - { label: "CIT Kokrajhar",       detail: "Diploma, B.Tech, M.Tech, TA", track: academic }
+  - { label: "ISAC India",          detail: "Cyber crime intervention officer", track: industry }
+  - { label: "EC-Council University", detail: "Graduate research fellow", track: academic }
+  - { label: "NIELIT Guwahati",     detail: "Teaching assistant",         track: academic }
+  - { label: "Assam Skill Dev. Mission", detail: "Guest faculty",         track: industry }
+
+research_focus:
+  doctoral:
+    - "Intermittent computing"
+    - "Compiler-based security and code analysis"
+    - "Early-exit deep learning"
+    - "Multi-access edge computing"
+  expertise:
+    - "Blockchain"
+    - "VNF testing"
+    - "5G & B5G (6G) networks"
+    - "AI & ML for software testing"
+    - "Cyber security"
+    - "Cloud security"
+    - "IoT security"
+    - "Secure programming standards"
+    - "Web penetration testing"
+    - "Mobile application VA & PT"
+    - "Digital forensics"
+    - "Cyber crime investigation"

@@ -1,0 +1,116 @@
+---
+layout: page
+title: "Research"
+permalink: /research/
+lede: "Compilers, edge intelligence and network security: making learning systems efficient on constrained hardware, and making the software and networks around them trustworthy."
+---
+{% assign p = site.data.profile %}
+{% assign r = site.data.research %}
+{% assign pubs = site.data.publications %}
+
+<section class="block">
+  <h2 class="bus">Focus areas</h2>
+  <div class="focus">
+    <div>
+      <p class="focus__label">Doctoral research</p>
+      <ul class="focus__main">{% for f in p.research_focus.doctoral %}<li>{{ f }}</li>{% endfor %}</ul>
+    </div>
+    <div>
+      <p class="focus__label">Other areas I contribute to</p>
+      <ul class="chips">{% for f in p.research_focus.expertise %}<li>{{ f }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="bus">Sponsored projects</h2>
+  <ul class="projects projects--wide">
+    {% for pr in r.projects %}
+      <li class="project">
+        <p class="project__title">{{ pr.title }}</p>
+        <p class="project__meta">Funded by {{ pr.funder }}. Hosted at {{ pr.host }}.{% if pr.role %} Role: {{ pr.role }}.{% endif %}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="block" id="publications">
+  <h2 class="bus">Publications</h2>
+  <div class="filters" data-pub-filters>
+    <div class="seg" role="group" aria-label="Filter by type">
+      <button type="button" class="seg__btn" data-filter-type="all" aria-pressed="true">All <span>{{ pubs.size }}</span></button>
+      {% assign types = "journal,conference,chapter,poster,article" | split: "," %}
+      {% for t in types %}
+        {% assign n = pubs | where: "type", t %}
+        {% if n.size > 0 %}
+          {% case t %}{% when 'journal' %}{% assign l = 'Journal' %}{% when 'conference' %}{% assign l = 'Conference' %}{% when 'chapter' %}{% assign l = 'Book chapter' %}{% when 'poster' %}{% assign l = 'Poster' %}{% else %}{% assign l = 'Article' %}{% endcase %}
+          <button type="button" class="seg__btn" data-filter-type="{{ t }}" aria-pressed="false">{{ l }} <span>{{ n.size }}</span></button>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <label class="check"><input type="checkbox" data-filter-final> Hide works in progress</label>
+    <label class="search"><span class="sr-only">Search publications</span><input type="search" placeholder="Search title, author, venue" data-filter-q></label>
+  </div>
+
+  <ol class="pubs" data-pub-list>
+    {% for item in pubs %}{% include pub.html p=item %}{% endfor %}
+  </ol>
+  <p class="empty" data-pub-empty hidden>No publications match. Clear the search or pick another type.</p>
+</section>
+
+<section class="block">
+  <h2 class="bus">Open source</h2>
+  <ul class="repos repos--grid">
+    {% for rp in r.repos %}
+      <li class="repo">
+        <a href="{{ rp.url }}" rel="noopener" target="_blank">{% include icon.html name='github' %}<span>{{ rp.name }}</span></a>
+        <p>{{ rp.text }}</p>
+        {% if rp.lang %}<p class="repo__lang">{{ rp.lang }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="block split">
+  <div>
+    <h2 class="bus">Committees &amp; organising</h2>
+    <ul class="rows">
+      {% for c in r.service.committees %}
+        <li>
+          <p class="rows__title">{% if c.url %}<a href="{{ c.url }}" rel="noopener" target="_blank">{{ c.role }}</a>{% else %}{{ c.role }}{% endif %}</p>
+          <p class="rows__meta">{{ c.event }}. {{ c.place }}, {{ c.year }}.</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    <h2 class="bus">Reviewer</h2>
+    <ul class="rows">
+      {% for v in r.service.reviewer %}
+        <li>
+          <p class="rows__title">{{ v.venue }}</p>
+          <p class="rows__meta">{% if v.kind == 'journal' %}Journal{% else %}Conference{% endif %}{% if v.place %}, {{ v.place }}{% endif %}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="bus">Supervisors</h2>
+  <ul class="people">
+    {% for s in r.supervisors %}{% include person.html person=s %}{% endfor %}
+  </ul>
+</section>
+
+<section class="block">
+  <h2 class="bus">Collaborators</h2>
+  <p class="focus__label">Faculty</p>
+  <ul class="people">
+    {% for s in r.collaborators.faculty %}{% include person.html person=s %}{% endfor %}
+  </ul>
+  <p class="focus__label">Industry, peers and students</p>
+  <ul class="people">
+    {% for s in r.collaborators.peers %}{% include person.html person=s %}{% endfor %}
+  </ul>
+</section>

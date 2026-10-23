@@ -1,0 +1,30 @@
+---
+layout: page
+title: "Mentoring"
+permalink: /mentoring/
+lede: "Research interns, final-year projects, hackathon teams and one-to-one mentoring in security."
+---
+{% assign m = site.data.mentoring %}
+{% assign groups = 0 %}{% assign people = 0 %}
+{% for pg in m.programs %}{% assign groups = groups | plus: pg.groups.size %}{% for g in pg.groups %}{% assign people = people | plus: g.members.size %}{% endfor %}{% endfor %}
+
+<div class="mentor-intro">
+  <blockquote class="motto">{{ m.motto }}</blockquote>
+  <p class="summary">{{ groups }} project teams and {{ people }} students supervised here; {% for i in m.impact %}{{ i.value }} {{ i.label }}{% endfor %} overall.</p>
+</div>
+
+{% for pg in m.programs %}
+<section class="block program">
+  <h2 class="bus">{{ pg.title }}</h2>
+  <p class="program__meta">{{ pg.role }}{% if pg.host %}, {{ pg.host }}{% endif %}{% if pg.year %}, {{ pg.year }}{% endif %}</p>
+  <ul class="groups{% if pg.groups.size > 6 %} groups--dense{% endif %}">
+    {% for g in pg.groups %}
+      <li class="group">
+        <p class="group__title">{{ g.title }}</p>
+        {% if g.institute or g.note %}<p class="group__inst">{{ g.institute }}{% if g.institute and g.note %}. {% endif %}{{ g.note }}</p>{% endif %}
+        <p class="group__members">{{ g.members | join: ", " }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

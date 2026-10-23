@@ -1,0 +1,48 @@
+---
+layout: page
+title: "Experience"
+permalink: /experience/
+lede: "A decade across classrooms, research labs, a security start-up and industry R&D. Filter by track to see each side."
+---
+{% assign ac = site.data.experience | where: "track", "academic" %}
+{% assign ind = site.data.experience | where: "track", "industry" %}
+
+<div class="seg seg--tracks" role="group" aria-label="Filter by track" data-track-filter>
+  <button type="button" class="seg__btn" data-track="all" aria-pressed="true">Everything <span>{{ site.data.experience.size }}</span></button>
+  <button type="button" class="seg__btn seg__btn--academic" data-track="academic" aria-pressed="false">Academia <span>{{ ac.size }}</span></button>
+  <button type="button" class="seg__btn seg__btn--industry" data-track="industry" aria-pressed="false">Industry <span>{{ ind.size }}</span></button>
+</div>
+
+<ol class="timeline" data-timeline>
+  {% for e in site.data.experience %}
+    <li class="tl tl--{{ e.track }}{% if e.current %} tl--current{% endif %}" data-track="{{ e.track }}">
+      <span class="tl__pad" aria-hidden="true"></span>
+      <p class="tl__when">{{ e.period }}{% if e.current %}<span class="tl__now">Current</span>{% endif %}</p>
+      <h3 class="tl__role">{{ e.role }}</h3>
+      <p class="tl__org">{% if e.url %}<a href="{{ e.url }}" rel="noopener" target="_blank">{{ e.org }}</a>{% else %}{{ e.org }}{% endif %}</p>
+      {% if e.text %}<p class="tl__text">{{ e.text }}</p>{% endif %}
+      {% if e.points %}<ul class="tl__points">{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+    </li>
+  {% endfor %}
+</ol>
+
+<section class="block">
+  <h2 class="bus">Education</h2>
+  <ol class="rows">
+    {% for ed in site.data.education %}
+      <li><p class="rows__title">{{ ed.degree }}</p><p class="rows__meta">{{ ed.school }}, {{ ed.note }}. {{ ed.year }}.</p></li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="block">
+  <h2 class="bus">Tools I work with</h2>
+  <div class="skills">
+    {% for g in site.data.skills %}
+      <div class="skills__group">
+        <p class="focus__label">{{ g.group }}</p>
+        <ul class="chips chips--small">{% for s in g.items %}<li>{{ s }}</li>{% endfor %}</ul>
+      </div>
+    {% endfor %}
+  </div>
+</section>

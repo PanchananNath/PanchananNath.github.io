@@ -1,0 +1,119 @@
+# ─────────────────────────────────────────────────────────────
+#  MENTORING — programmes, each with groups of students
+#  group: title (project or domain), institute, members, note
+# ─────────────────────────────────────────────────────────────
+
+motto: "No boring lectures — only real talk, fun, motivation and success. Kal ka future, aaj ki learning se banega!"
+
+impact:
+  - { value: "1000+", label: "students mentored in cybersecurity and related domains" }
+
+programs:
+  - title: "Summer Research Interns"
+    host: "Indian Institute of Information Technology Guwahati"
+    year: 2025
+    role: "Mentor"
+    groups:
+      - title: "Deep learning for agriculture and security"
+        institute: "Dept. of CSE, Jorhat Engineering College"
+        members: ["Biswadeep Mazumder (B.Tech 24–28)", "Rajdeep Gogoi (B.Tech 24–28)", "Partha Pratim Borah (B.Tech 24–28)"]
+      - title: "Deep learning for agriculture and security"
+        institute: "Dept. of CSE, Jorhat Engineering College"
+        members: ["Mrinmay Kalita (B.Tech 24–28)", "Raghab Jyoti Kalita (B.Tech 24–28)"]
+      - title: "Deep learning for user authentication"
+        institute: "Dept. of CSE, Central Institute of Technology Kokrajhar"
+        members: ["Daiji Kalita (B.Tech 22–26)", "Rahul Talukdar (B.Tech 22–26)"]
+      - title: "Deep learning for healthcare"
+        institute: "Dept. of CSE, Central Institute of Technology Kokrajhar"
+        members: ["Nikita Sarma (B.Tech 22–26)", "Afrina Ahmad (B.Tech 22–26)"]
+      - title: "Deep learning for healthcare"
+        institute: "Dept. of CS, Gauhati University"
+        members: ["Dhruba Jyoti Roy (B.Tech 21–25)"]
+      - title: "Deep learning for healthcare"
+        institute: "Dept. of CSE, Girijananda Chowdhury University"
+        members: ["Ritanjit Das (B.Tech 22–26)"]
+      - title: "Deep learning for healthcare"
+        institute: "Dept. of CSE, IIIT Guwahati"
+        members: ["Rishit Saxena (B.Tech 24–28)", "Abhijit Jadhav (B.Tech 24–28)", "Tanishq Mehta (B.Tech 24–28)", "Nikhil Mehrotra (B.Tech 24–28)"]
+
+  - title: "B.Tech final-year projects"
+    host: "NIST University"
+    year: 2025
+    role: "Supervisor"
+    groups:
+      - title: "Blockchain-based tamper-proof nursing home management system"
+        members: ["K Raj Kumar (B.Tech CSE 2021–25)"]
+      - title: "E-learning management system"
+        note: "Jointly with Prof. Saubhagya Ranjan Nath"
+        members: ["Saqib Assad Lone (CSE)", "Rachita Chatterjee (CSE)", "Muskan Kumari (IT)", "Kumari Anisha Singh (IT)"]
+
+  - title: "MCA final-year projects"
+    host: "NIST University"
+    year: 2025
+    role: "Supervisor (jointly with Prof. Saubhagya Ranjan Nath)"
+    groups:
+      - title: "International e-video learning management system"
+        members: ["Gayatri Bisoyi", "Anshita Patro", "Rakesh Swain", "Sambit Kumar Tripathy"]
+      - title: "Online learning faculty management system"
+        members: ["Siba Shankar Sabat", "Ratnanjali Mohanty", "Saismita Sahu", "Sanskar Padhy"]
+      - title: "E-video learning management system"
+        members: ["Shaikh Abdul Rehman", "Somya Shree Mishra", "Krusna Chandra Polai", "Satish More"]
+      - title: "International course e-learning management system"
+        members: ["Bapuji Pradhan", "Malaya Nayak", "Chandan Kumar Gouda", "Subhashis Gouda"]
+      - title: "Online learning management system"
+        members: ["Right Siman Jena", "Sandeep Bag", "Niranjan Padhi", "S Nikhil Patro"]
+      - title: "Multilingual learning management system"
+        members: ["Narayan Bisoyee", "Bhandi Monalisha", "Ashutosh Sahu", "Kalaga Anwesh Kumar"]
+
+  - title: "6th-semester lab-based projects"
+    host: "NIST University"
+    year: 2025
+    role: "Supervisor"
+    groups:
+      - { title: "SmileChain: blockchain-based DApp for organisational wellbeing", members: ["Faizan Ahmed", "Navin Tiwari", "Ritika", "Ausaf Anis Khan"] }
+      - { title: "AgroVision: ML-based crop disease detection", members: ["Talagana Rajesh", "Landa Gopal", "Sravan Charan", "Sunita Pradhan"] }
+      - { title: "DreamVisualizer: deep learning and BCI to visualise dreams", members: ["Shirien Shaik", "G Sanjib", "Ardhi Sonal"] }
+      - { title: "WebPST: web penetration testing tool", members: ["Bidya Sahu", "V.G. Krishna Aditya", "Subham Panigrahy", "Soumya Ranjan Meher"] }
+      - { title: "ARtel: AR-based hotel management application", members: ["Deep Ratan Upadhyaya", "Raza Khan", "Shahil Parwez", "Ashish Kumar Chandra"] }
+      - { title: "MediPlant: machine learning for medicinal plants", members: ["Meena Setua", "Shrya Ojha", "Sudhanshu Sakar", "Sarmista Pradhan"] }
+      - { title: "MedAI: smart healthcare assistant", members: ["Abhimanyu Kumar", "Guddu Kumar", "Raushan Kumar", "Aman Kumar"] }
+      - { title: "ELearn: e-learning platform", members: ["P. Amrita", "Salina Pradhan", "Amita", "Manisha Pradhan"] }
+      - { title: "CampusConnect: centralised internship, job and mentorship app", members: ["Sonali Dash", "Deben Prasad Mohanty", "Swayamshree Acharya", "Aditya Kumar Sahu"] }
+      - { title: "LAN-based communication system", members: ["Subhransu Kumar Rout", "M Patitapaban Patro", "Pabitra Sahu", "Bibhas Patra"] }
+      - { title: "AICareerHub: AI-based career counselling", members: ["Govind Mahanati", "Swarnaprabha Dash", "Krish Raj", "Kiran Kumari Padhy"] }
+      - { title: "MediHelp: ML-based medicinal information extraction", members: ["Pratyasha Panda", "Aniket Patnaik", "Bibekananda Patnaik", "Dibyajyoti Panda"] }
+      - { title: "UniPlatform: sports & event management system", members: ["Nilakanta Sahu", "Rounak Matho", "A. Pratik Kumar", "Hrushikesh Pathy"] }
+
+  - title: "Smart India Hackathon"
+    host: "NIST University & CIT Kokrajhar"
+    year: 2024
+    role: "Faculty mentor"
+    groups:
+      - title: "Enhancing navigation for railway station facilities and locations"
+        institute: "NIST University, B.Tech 2nd year"
+        members: ["Likun Chandra Dalai", "Suman Panda", "Abhisekh Padhy", "Biraja Nayak", "Sonali Patro", "Akash Girish Behera"]
+      - title: "Mentor Connect: web application for mentorship management"
+        institute: "NIST University, B.Tech 3rd year"
+        members: ["Ankit Kumar", "Hritesh Sharma", "Om Prakash Patra", "Gautam Tiwari", "Rashi Roy", "Parmeshwar Tripathy"]
+      - title: "Freelancing platform: web application for freelancing management"
+        institute: "NIST University, B.Tech 3rd year"
+        members: ["Sandhya Rani Padhy", "Sukanya Choudhury", "Sahil Kumar Pattnaik", "Mohammad Ehsan", "Rudransh Dash", "Late Abinash Acharya"]
+      - title: "Integrated, customisable annual report for the institute"
+        institute: "CIT Kokrajhar, B.Tech 3rd year"
+        members: ["Monalisha Roy", "Debanand Singha", "Bhuban Bahadur Chetry", "Gwjwangthi Narzary", "Dodere Sona Basumatary", "Karabi Nath"]
+
+  - title: "Industrial mentor, final-year B.Tech in Cyber Security"
+    host: "Anurag University, Hyderabad"
+    year: 2024
+    role: "Industrial mentor (faculty: Dr. Majeti Srinadh Swamy)"
+    groups:
+      - title: "Synergistic deep learning approach for automatic evaluation of security and usability scores in mobile Android applications"
+        members: ["G. Sai Anurag (20EG107116)", "V. Geethika (20EG107153)", "Ch. Hemanth (20EG107157)"]
+
+  - title: "1:1 mentoring in cyber security & ethical hacking"
+    year: 2024
+    role: "Mentor"
+    groups:
+      - title: "Cyber security & ethical hacking"
+        institute: "GNITS Hyderabad, B.Tech final year"
+        members: ["Sukruti K"]

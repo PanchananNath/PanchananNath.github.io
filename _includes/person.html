@@ -1,0 +1,10 @@
+{% assign person = include.person %}
+{% assign words = person.name | remove: "Dr. " | remove: "Prof. " | remove: "(Dr.) " | split: " " %}
+<li class="person">
+  <span class="person__mono" aria-hidden="true">{{ words.first | slice: 0 }}{{ words.last | slice: 0 }}</span>
+  <div>
+    <p class="person__name">{% if person.url %}<a href="{{ person.url }}" rel="noopener" target="_blank">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}</p>
+    {% if person.relation %}<p class="person__rel">{{ person.relation }}</p>{% endif %}
+    <p class="person__role">{{ person.role }}</p>
+  </div>
+</li>

@@ -1,0 +1,23 @@
+---
+layout: page
+title: "Invited talks"
+permalink: /talks/
+lede: "Places that have invited me to speak, from an international workshop in Osaka to polytechnics and skill centres across the Northeast."
+---
+<ol class="talks">
+  {% for t in site.data.talks %}
+    <li class="talk">
+      {% if t.image %}<img class="talk__img" src="{{ t.image | relative_url }}" alt="{{ t.event }}{% if t.where %}, {{ t.where }}{% endif %}" loading="lazy">{% endif %}
+      <div>
+        <p class="talk__where">{% if t.host %}{{ t.host }}{% else %}{{ t.where }}{% endif %}</p>
+        <p class="talk__event">{{ t.event }}{% if t.title and t.title != t.event %}: {{ t.title }}{% endif %}</p>
+        <p class="talk__meta">{% if t.host %}{{ t.where }}{% endif %}{% if t.host and t.year %}, {% endif %}{{ t.year }}{% if t.audience %}{% if t.year or t.host %}. {% endif %}{{ t.audience }}{% endif %}</p>
+      </div>
+    </li>
+  {% endfor %}
+</ol>
+
+<aside class="note">
+  <p>Available for conferences, workshops, seminars, tutorials and hands-on technical sessions on security, blockchain, 5G/B5G and edge AI.</p>
+  <p><a class="btn btn--solid email-link" href="#" data-user="{{ site.data.profile.email_user }}" data-domain="{{ site.data.profile.email_domain }}">{% include icon.html name='mail' %}Invite me to speak</a></p>
+</aside>

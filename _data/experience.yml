@@ -1,0 +1,117 @@
+# ─────────────────────────────────────────────────────────────
+#  EXPERIENCE  (newest first)
+#  track: academic | industry    current: true marks ongoing roles
+# ─────────────────────────────────────────────────────────────
+
+- role: "PhD Scholar"
+  org: "Dept. of CSE, Indian Institute of Information Technology Guwahati"
+  period: "2025 – present"
+  track: academic
+  current: true
+  text: "Doctoral research on intermittent computing, compiler-based security and code analysis, early-exit deep learning and multi-access edge computing."
+
+- role: "Project Staff, R&D Section"
+  org: "Dept. of CSE, IIIT Guwahati (funded by ASTEC, Govt. of Assam)"
+  period: "Mar 2025 – present"
+  track: academic
+  current: true
+  text: "Research on secure execution of sensitive applications under the near-memory computation paradigm."
+
+- role: "Cyber Crime Intervention Officer"
+  org: "Information Sharing and Analysis Center (ISAC), India"
+  period: "Feb 2021 – present"
+  track: industry
+  current: true
+  text: "Volunteer service helping to resolve cyber crimes."
+  url: "https://www.isacindia.org/panchanan-nath/"
+
+- role: "Founder & CEO"
+  org: "EncryptoCyberspace"
+  period: "Nov 2019 – present"
+  track: industry
+  current: true
+  text: "Information-security start-up providing training and consultancy services to the community."
+  url: "https://sites.google.com/view/encryptocyberspace"
+
+- role: "Assistant Professor of CSE"
+  org: "School of Computer Science and Engineering, National Institute of Science and Technology University (NISTU), Berhampur, Odisha"
+  period: "Jul 2024 – Mar 2025"
+  track: academic
+  text: "Taught IoT, operating systems, computer networks, database engineering and network security."
+  points:
+    - "Assistant project coordinator for B.Sc, BCA, M.Sc, MCA and B.Tech"
+    - "Associate editor, departmental bi-annual magazine Compute@NIST (ISBN 978-93-342-2133-6)"
+    - "Member of the NBA documentation team"
+    - "ARIIA coordinator, Institute Innovation Council (university level)"
+
+- role: "Cyber Security Research Associate"
+  org: "Research & Development Team, EC-Council"
+  period: "Nov 2023 – Jul 2024"
+  track: industry
+
+- role: "Cyber Security Graduate Research Fellow"
+  org: "EC-Council University, USA"
+  period: "Jul 2020 – Nov 2023"
+  track: academic
+
+- role: "Vocational Trainer, IT/ITeS"
+  org: "Gossaigaon Girls' High School, Kokrajhar, Assam"
+  period: "May 2023 – Jul 2023"
+  track: academic
+  points:
+    - "Trained class IX students in IT & ITeS; taught science and mathematics"
+    - "Built and maintained the school's first official web page"
+    - "Handled the school's technical IT work"
+  url: "https://sites.google.com/view/gghschool/home"
+
+- role: "Teaching Assistant"
+  org: "Dept. of CSE, Central Institute of Technology Kokrajhar"
+  period: "2023"
+  track: academic
+  points:
+    - "UCSE612 Internet of Things lab, B.Tech 6th sem (with Dr. Pranav Kr. Singh)"
+    - "UCSE271 Problem Solving using Programming lab, B.Tech 2nd sem (with Prof. Mithun Karmakar)"
+    - "UCSE373 Object Oriented Programming using Java lab, B.Tech 3rd sem (with Prof. Mithun Karmakar)"
+
+- role: "Teaching Assistant"
+  org: "National Institute of Electronics & Information Technology (NIELIT), Guwahati"
+  period: "Nov 2022 – May 2023"
+  track: academic
+  text: "Organised trainings, workshops and internships, coordinated sponsored projects, and took theory and practical sessions."
+
+- role: "Cyber Security Specialist"
+  org: "Assam Gramin Vikash Bank"
+  period: "Jul 2021 – Aug 2021"
+  track: industry
+  text: "Network configuration, security testing and cyber-security infrastructure upgrades."
+
+- role: "Cyber Security & Forensics Intern"
+  org: "Centre of Excellence in Cyber Security, Jawaharlal Nehru Technological University, Hyderabad"
+  period: "Jun 2021 – Sep 2021"
+  track: industry
+  text: "Security testing of mobile and web applications for mobile banking."
+
+- role: "Guest Faculty, Network & IT Security"
+  org: "Assam Skill Development Mission, NRDS Centre, Kokrajhar"
+  period: "Sep 2019 – Sep 2021"
+  track: industry
+  text: "Taught computer networking, IT security, CCTV installation, hardware & storage and hardware & networking to 200+ students."
+
+- role: "Founding Convener, Cyber X Secure"
+  org: "Cyber Security Club, CIT Kokrajhar"
+  period: "Student years"
+  track: academic
+  text: "Co-founded the institute's cyber security club."
+  url: "https://sites.google.com/cit.ac.in/cyberxsecureclub/home"
+
+- role: "Member Secretary, Technical Board"
+  org: "CIT Kokrajhar"
+  period: "Student years"
+  track: academic
+  text: "Responsible for the smooth running of 8 technical clubs."
+
+- role: "Part-time, consultancy & project work"
+  org: "10+ organisations including Sophos, Fortinet, Check Point, Network Intelligence, Palo Alto and Zscaler"
+  period: "2015 – 2020"
+  track: industry
+  text: "Part-time, consultancy, project-based work and remote support."

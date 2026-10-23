@@ -1,0 +1,13 @@
+# Grouped tool/skill lists (shown on the Experience page)
+- group: "Languages"
+  items: [C, C++, C#, Java, Python, Go, Rust, R, JavaScript, TypeScript, Bash, PowerShell]
+- group: "Systems, compilers & ML"
+  items: [MLIR, LLVM, PyTorch, TensorFlow, OpenCV, TinyML]
+- group: "Platforms & cloud"
+  items: [Linux, Kali Linux, Parrot Security, Docker, Kubernetes, AWS, Azure, GCP]
+- group: "Security & forensics"
+  items: [Wireshark, Metasploit, Burp Suite, Nmap, OWASP ZAP, Splunk, Snort, Suricata, OpenVAS, Aircrack-ng, Hydra, John the Ripper, Hashcat, Nikto, SQLMap, Cuckoo Sandbox, Autopsy, Ghidra, Maltego, theHarvester, Shodan, Recon-ng, Netcat, tcpdump]
+- group: "Data & dev tools"
+  items: [Git, GitHub, GitLab, VS Code, Vim, Node.js, MongoDB, PostgreSQL, MySQL]
+- group: "Research writing"
+  items: [LaTeX, Overleaf, Mendeley, Grammarly, Turnitin, Markdown, Notion]

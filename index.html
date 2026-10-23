@@ -1,0 +1,192 @@
+---
+layout: default
+title: "Panchanan Nath"
+---
+{% assign p = site.data.profile %}
+{% assign pubs = site.data.publications %}
+{% assign published = pubs | where: "status", "published" %}
+{% assign presented = pubs | where: "status", "presented" %}
+{% assign in_review = pubs | where: "status", "under-review" %}
+
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
+      <img class="hero__photo" src="{% if p.photo contains '://' %}{{ p.photo }}{% else %}{{ p.photo | relative_url }}{% endif %}" alt="Portrait of {{ p.name }}" width="96" height="96">
+      <h1 class="hero__name"><span class="hero__prefix">{{ p.prefix }}</span> {{ p.name }}</h1>
+      <p class="hero__headline">{{ p.headline }}</p>
+      <ul class="hero__roles">
+        {% for r in p.roles %}<li>{{ r }}</li>{% endfor %}
+      </ul>
+      <div class="hero__actions">
+        <a class="btn btn--solid email-link" href="#" data-user="{{ p.email_user }}" data-domain="{{ p.email_domain }}">{% include icon.html name='mail' %}Email me</a>
+        <a class="btn" href="{{ '/research/' | relative_url }}">Research &amp; publications</a>
+        {% if p.cv %}<a class="btn" href="{{ p.cv | relative_url }}">{% include icon.html name='file' %}CV</a>{% endif %}
+      </div>
+      <ul class="icon-links" aria-label="Profiles">
+        {% for l in p.links %}
+          <li><a href="{{ l.url }}" rel="noopener" target="_blank" aria-label="{{ l.label }}" title="{{ l.label }}">{% include icon.html name=l.icon %}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <figure class="netmap" data-netmap data-initials="PN">
+      <figcaption class="netmap__caption">Where I've worked, studied and served. Hover a node for the role.</figcaption>
+      <ul class="netmap__list">
+        {% for n in p.network %}
+          <li data-track="{{ n.track }}"><span class="netmap__org">{{ n.label }}</span><span class="netmap__detail">{{ n.detail }}</span></li>
+        {% endfor %}
+      </ul>
+      <div class="netmap__legend">
+        <span class="key key--academic">Academia</span>
+        <span class="key key--industry">Industry</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2 class="bus">About</h2>
+    <p class="about">{{ p.bio }}</p>
+    <div class="focus">
+      <div>
+        <p class="focus__label">Doctoral research</p>
+        <ul class="focus__main">
+          {% for f in p.research_focus.doctoral %}<li>{{ f }}</li>{% endfor %}
+        </ul>
+      </div>
+      <div>
+        <p class="focus__label">Also working across</p>
+        <ul class="chips">
+          {% for f in p.research_focus.expertise %}<li>{{ f }}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--tracks">
+  <div class="wrap">
+    <h2 class="bus">Two tracks, one practice</h2>
+    <p class="section-lede">Research and teaching on one side; building, testing and defending systems for real organisations on the other. Each feeds the other.</p>
+    <div class="tracks">
+      <article class="track track--academic">
+        <header class="track__head">
+          <h3>Academia</h3>
+          <p>{{ published.size | plus: presented.size }} published or presented works, {{ in_review.size }} under review</p>
+        </header>
+        <ol class="track__list">
+          {% assign shown = 0 %}
+          {% for e in site.data.experience %}
+            {% if e.track == 'academic' and shown < 4 %}
+              <li><span class="track__role">{{ e.role }}</span><span class="track__org">{{ e.org }}</span><span class="track__when">{{ e.period }}</span></li>
+              {% assign shown = shown | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+        </ol>
+        <p class="track__sub">Education</p>
+        <ol class="track__list track__list--tight">
+          {% for ed in site.data.education %}
+            <li><span class="track__role">{{ ed.degree }}</span><span class="track__org">{{ ed.school }}</span><span class="track__when">{{ ed.year }}</span></li>
+          {% endfor %}
+        </ol>
+      </article>
+      <article class="track track--industry">
+        <header class="track__head">
+          <h3>Industry</h3>
+          <p>{{ site.data.recognitions.certifications.size }} professional certifications, security practice since 2015</p>
+        </header>
+        <ol class="track__list">
+          {% assign shown = 0 %}
+          {% for e in site.data.experience %}
+            {% if e.track == 'industry' and shown < 5 %}
+              <li><span class="track__role">{{ e.role }}</span><span class="track__org">{{ e.org }}</span><span class="track__when">{{ e.period }}</span></li>
+              {% assign shown = shown | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+        </ol>
+        <p class="track__sub">Certifications</p>
+        <ul class="cert-strip">
+          {% for c in site.data.recognitions.certifications %}<li title="{{ c.full }}{% if c.by %}, {{ c.by }}{% endif %}">{{ c.name }}</li>{% endfor %}
+        </ul>
+      </article>
+    </div>
+    <p class="more"><a href="{{ '/experience/' | relative_url }}">Full experience timeline</a></p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2 class="bus">Selected publications</h2>
+    <ol class="pubs">
+      {% assign shown = 0 %}
+      {% for item in pubs %}
+        {% if shown < 5 %}
+          {% if item.status == 'published' or item.status == 'presented' %}
+            {% include pub.html p=item %}
+            {% assign shown = shown | plus: 1 %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ol>
+    <p class="more"><a href="{{ '/research/#publications' | relative_url }}">All {{ pubs.size }} publications and works in progress</a></p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap split">
+    <div>
+      <h2 class="bus">Sponsored research</h2>
+      <ul class="projects">
+        {% for pr in site.data.research.projects %}
+          <li class="project">
+            <p class="project__title">{{ pr.title }}</p>
+            <p class="project__meta">Funded by {{ pr.funder }}. Hosted at {{ pr.host }}.</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2 class="bus">Open source</h2>
+      <ul class="repos">
+        {% for r in site.data.research.repos limit: 4 %}
+          <li class="repo">
+            <a href="{{ r.url }}" rel="noopener" target="_blank">{% include icon.html name='github' %}<span>{{ r.name }}</span></a>
+            <p>{{ r.text }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+      <p class="more"><a href="https://github.com/PanchananNath" rel="noopener" target="_blank">More on GitHub</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2 class="bus">Recognition</h2>
+    <ol class="ledger">
+      {% for a in site.data.recognitions.awards %}
+        {% if a.featured %}
+          <li><span class="ledger__year">{{ a.year }}</span><span class="ledger__what">{{ a.title }}{% if a.note %}<em>{{ a.note }}</em>{% endif %}</span><span class="ledger__by">{{ a.by }}</span></li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+    <p class="more"><a href="{{ '/recognitions/' | relative_url }}">All awards and certifications</a></p>
+  </div>
+</section>
+
+<section class="band band--contact">
+  <div class="wrap">
+    <h2 class="bus">Work with me</h2>
+    <ul class="open-to">
+      {% for o in p.open_to %}
+        <li><p class="open-to__title">{{ o.title }}</p><p>{{ o.text }}</p></li>
+      {% endfor %}
+    </ul>
+    <blockquote class="philosophy">
+      <p>{{ p.philosophy.quote }}</p>
+      <footer>{{ p.philosophy.note }}</footer>
+    </blockquote>
+    <p><a class="btn btn--solid email-link" href="#" data-user="{{ p.email_user }}" data-domain="{{ p.email_domain }}">{% include icon.html name='mail' %}Email me</a></p>
+  </div>
+</section>

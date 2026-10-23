@@ -1,0 +1,38 @@
+# ─────────────────────────────────────────────────────────────
+#  Site settings. Content lives in _data/*.yml — not here.
+# ─────────────────────────────────────────────────────────────
+title: "Panchanan Nath"
+description: "PhD scholar at IIIT Guwahati and founder of EncryptoCyberspace — systems, network and security research spanning compilers, edge AI, blockchain and 5G/B5G security."
+lang: en
+
+# For a user site (repo named PanchananNath.github.io) keep baseurl empty.
+# For a project site (e.g. repo "portfolio") set baseurl: "/portfolio".
+url: "https://panchanannath.github.io"
+baseurl: ""
+
+author:
+  name: "Panchanan Nath"
+
+# Variants of your name as written in author lists — these get highlighted.
+author_aliases:
+  - "Nath, P."
+  - "Nath, P"
+  - "P. Nath"
+
+# Footer note
+updated: "October 2026"
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github

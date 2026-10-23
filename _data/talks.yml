@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────
+#  INVITED TALKS  (newest first)
+#  title is optional — add it when you have it. image: optional
+#  path such as /assets/img/talks/wec2023.jpg
+# ─────────────────────────────────────────────────────────────
+
+- event: "9th WEC 2023"
+  where: "Osaka, Japan"
+  year: 2023
+  kind: "International"
+  title: "Invited speaker"
+
+- event: "Invited talk on Full Stack Development"
+  host: "NIELIT Guwahati"
+  where: "Guwahati, Assam"
+  year: "2022–23"
+  audience: "70+ participants"
+
+- event: "Invited talk"
+  host: "Assam Skill Development Mission, NRDS Centre"
+  where: "Kokrajhar, Assam"
+
+- event: "Invited talk"
+  host: "Bongaigaon Polytechnic"
+  where: "Bongaigaon, Assam"
+
+- event: "Invited talk"
+  where: "Jalukie, Nagaland"

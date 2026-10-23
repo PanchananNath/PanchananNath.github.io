@@ -1,0 +1,36 @@
+---
+layout: page
+title: "Recognitions"
+permalink: /recognitions/
+lede: "Awards, selections and professional certifications, most of them earned in cyber security."
+---
+{% assign rc = site.data.recognitions %}
+
+<section class="block">
+  <h2 class="bus">Honours &amp; awards</h2>
+  <ol class="ledger">
+    {% for a in rc.awards %}
+      <li><span class="ledger__year">{{ a.year }}</span><span class="ledger__what">{{ a.title }}{% if a.note %}<em>{{ a.note }}</em>{% endif %}</span><span class="ledger__by">{{ a.by }}</span></li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="block">
+  <h2 class="bus">Licences &amp; certifications</h2>
+  <ul class="certs">
+    {% for c in rc.certifications %}
+      <li class="cert">
+        <span class="cert__name">{{ c.name }}</span>
+        <span class="cert__full">{{ c.full }}</span>
+        {% if c.by %}<span class="cert__by">{{ c.by }}</span>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="block">
+  <h2 class="bus">Roles &amp; memberships</h2>
+  <ul class="chips">
+    {% for d in rc.distinctions %}<li>{{ d.title }}{% if d.by %}, {{ d.by }}{% endif %}</li>{% endfor %}
+  </ul>
+</section>

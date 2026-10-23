@@ -1,0 +1,19 @@
+{% assign p = site.data.profile %}
+<footer class="site-foot">
+  <div class="wrap site-foot__grid">
+    <div>
+      <p class="site-foot__name">{{ p.prefix }} {{ p.name }}</p>
+      <p class="muted">{{ p.headline }}. {{ p.location }}.</p>
+      <p><a class="email-link" href="#" data-user="{{ p.email_user }}" data-domain="{{ p.email_domain }}">{{ p.email_user }} [at] {{ p.email_domain }}</a></p>
+    </div>
+    <ul class="link-row" aria-label="Profiles">
+      {% for l in p.links %}
+        <li><a href="{{ l.url }}" rel="noopener" target="_blank" title="{{ l.label }}">{% include icon.html name=l.icon %}<span>{{ l.label }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="wrap site-foot__base muted">
+    <span>Last updated {{ site.updated }}</span>
+    <span>Built with Jekyll on GitHub Pages</span>
+  </div>
+</footer>
