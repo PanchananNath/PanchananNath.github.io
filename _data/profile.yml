@@ -48,12 +48,12 @@ links:
   - { label: "Google Scholar", url: "https://scholar.google.com/citations?user=YSPfwT8AAAAJ&hl=en", icon: scholar }
   - { label: "ResearchGate",   url: "https://www.researchgate.net/profile/Panchanan-Nath-2", icon: researchgate }
   - { label: "Scopus",         url: "https://www.scopus.com/authid/detail.uri?authorId=58078774700", icon: scopus }
-  - { label: "Vidwan",         url: "https://nist.irins.org/profile/577477", icon: vidwan }
+  # - { label: "Vidwan",         url: "https://nist.irins.org/profile/577477", icon: vidwan }
   - { label: "GitHub",         url: "https://github.com/PanchananNath", icon: github }
-  - { label: "ISAC profile",   url: "https://isacfoundation.org/panchanan-nath", icon: shield }
+  # - { label: "ISAC profile",   url: "https://isacfoundation.org/panchanan-nath", icon: shield }
   - { label: "EncryptoCyberspace", url: "https://sites.google.com/view/encryptocyberspace", icon: globe }
-  # - { label: "LinkedIn", url: "https://www.linkedin.com/in/YOUR-ID", icon: linkedin }
-  # - { label: "ORCID",    url: "https://orcid.org/0000-0000-0000-0000", icon: orcid }
+  - { label: "LinkedIn", url: "https://in.linkedin.com/in/er-panchanan-nath-89a36317a", icon: linkedin }
+  - { label: "ORCID",    url: "https://orcid.org/0000-0002-2098-6220", icon: orcid }
 
 # Optional: put your CV at assets/cv.pdf and uncomment.
 # cv: "/assets/cv.pdf"
