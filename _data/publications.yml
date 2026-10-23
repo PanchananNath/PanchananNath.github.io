@@ -90,48 +90,13 @@
 - id: R1
   type: journal
   status: under-review
-  authors: "Nath, P., et al."
+  authors: "Updating..."
   title: "Confidence-aware Early-Exit Neural Networks for Arrhythmia Classification on Resource-Constrained Edge Devices"
 
 - id: R2
   type: journal
   status: under-review
-  authors: "Nath, P., et al."
+  authors: "Updating..."
   title: "Security and Memory Access Pattern-Driven Application Execution under Near Memory Processing Paradigm"
 
-- id: R3
-  type: conference
-  status: under-review
-  authors: "Nath, P., Singh, P. K., Roy, U., & Kalla, A."
-  title: "DeCentVNFMark: Blockchain-Based Decentralized Marketplace for VNF Packages in 5G and B5G"
 
-- id: R4
-  type: journal
-  status: under-review
-  authors: "Mohapatra, N. P., Pattanaik, S. R., Maharana, D., & Nath, P."
-  title: "Advance Analysis of Battery Durability Leveraging Machine Learning Techniques and Genetic Algorithm for Feature Assessment and Optimization"
-  venue: "Next Research"
-
-- id: U1
-  type: chapter
-  status: upcoming
-  authors: "Nath, P., & Roy, U."
-  title: "Integration of Generative AI and OpenAI with Blockchain in Industry 5.0"
-  venue: "Generative and Open AI in Industry 5.0 (upcoming book)"
-  note: "Abstract accepted"
-
-- id: U2
-  type: chapter
-  status: upcoming
-  authors: "Nath, P., Jones, C. E., Singha, D., & Roy, M."
-  title: "Mobile VAPT using AI-ML and OSINT"
-  venue: "Next Generation VAPT: Combining OSINT and AI-ML for Enhanced Vulnerability Assessment and Penetration Testing (upcoming book)"
-  note: "Abstract accepted"
-
-- id: U3
-  type: chapter
-  status: upcoming
-  authors: "Nath, P., Jones, C. E., Roy, M., & Singha, D."
-  title: "AI ML and OSINT-based web application scanning and testing"
-  venue: "Next Generation VAPT: Combining OSINT and AI-ML for Enhanced Vulnerability Assessment and Penetration Testing (upcoming book)"
-  note: "Abstract accepted"
