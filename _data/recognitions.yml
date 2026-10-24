@@ -1,6 +1,9 @@
 # ─────────────────────────────────────────────────────────────
-#  RECOGNITIONS — awards, certifications, distinctions
-#  featured: true → also shown on the home page
+#  RECOGNITIONS — awards, certifications, professional memberships
+#
+#  featured: true   → award also shown on the home page
+#  badge:           → image path (put files in assets/img/badges/).
+#                     If the file is missing, the row/card still looks right.
 # ─────────────────────────────────────────────────────────────
 
 awards:
@@ -14,34 +17,35 @@ awards:
     featured: true
   - { year: 2023, title: "Travel grant, CCGrid 2023", by: "IEEE & ACM India, IISc Bangalore", featured: true }
   - { year: 2023, title: "Invited speaker, 9th WEC 2023", by: "Osaka, Japan" }
-  - { year: 2021, title: "Hall of Fame, Cyber Security Researcher", by: "EC-Council University, USA", featured: true }
-  - { year: 2021, title: "Certified Trustee", by: "CyberArk Software Ltd., USA" }
+  - { year: 2021, title: "Hall of Fame, Cyber Security Researcher", by: "EC-Council University, USA", featured: true, badge: "/assets/img/badges/hall-of-fame.jpg" }
+  - { year: 2021, title: "Certified Trustee", by: "CyberArk Software Ltd., USA", badge: "/assets/img/badges/certified-trustee.jpg" }
   - { year: 2017, title: "2nd position, 25th State-level National Children's Science Congress (NCSC)", by: "Government of Assam" }
   - { year: 2014, title: "Anundoram Borooah Award", by: "Government of Assam" }
 
 # Professional certifications. `by` is the issuing body.
 certifications:
-  - { name: "CySA+",  full: "CompTIA Cybersecurity Analyst",          by: "CompTIA" }
-  - { name: "PenTest+", full: "CompTIA PenTest+",                     by: "CompTIA" }
-  - { name: "CEH",    full: "Certified Ethical Hacker",               by: "EC-Council" }
-  - { name: "CCSP",   full: "Certified Cloud Security Professional" }
-  - { name: "CC",     full: "Certified in Cybersecurity" }
-  - { name: "CCNA",   full: "Cisco Certified Network Associate",      by: "Cisco" }
-  - { name: "NSE 1",  full: "Network Security Expert, level 1",       by: "Fortinet" }
-  - { name: "NSE 2",  full: "Network Security Expert, level 2",       by: "Fortinet" }
-  - { name: "CCIO",   full: "Certified Cyber Crime Intervention Officer", by: "ISAC" }
-  - { name: "CNSS",   full: "Certified Network Security Specialist",  by: "ICSI" }
-  - { name: "E|HE",   full: "Ethical Hacking Essentials",             by: "EC-Council" }
-  - { name: "N|DE",   full: "Network Defense Essentials",             by: "EC-Council" }
-  - { name: "D|FE",   full: "Digital Forensics Essentials",           by: "EC-Council" }
+  - { name: "CySA+",    full: "CompTIA Cybersecurity Analyst",              by: "CompTIA",    badge: "/assets/img/badges/cysa.jpg" }
+  - { name: "PenTest+", full: "CompTIA PenTest+",                           by: "CompTIA",    badge: "/assets/img/badges/pentest.jpg" }
+  - { name: "CEH",      full: "Certified Ethical Hacker",                   by: "EC-Council", badge: "/assets/img/badges/ceh.jpg" }
+  - { name: "CCSP",     full: "Certified Cloud Security Professional",      by: "ISC2",       badge: "/assets/img/badges/ccsp.jpg" }
+  - { name: "CC",       full: "Certified in Cybersecurity",                 by: "ISC2",       badge: "/assets/img/badges/cc.jpg" }
+  - { name: "CCNA",     full: "Cisco Certified Network Associate",          by: "Cisco",      badge: "/assets/img/badges/ccna.jpg" }
+  - { name: "NSE 1",    full: "Network Security Expert, level 1",           by: "Fortinet",   badge: "/assets/img/badges/nse1.jpg" }
+  - { name: "NSE 2",    full: "Network Security Expert, level 2",           by: "Fortinet",   badge: "/assets/img/badges/nse2.jpg" }
+  - { name: "CCIO",     full: "Certified Cyber Crime Intervention Officer", by: "ISAC",       badge: "/assets/img/badges/ccio.jpg" }
+  - { name: "CNSS",     full: "Certified Network Security Specialist",      by: "ICSI",       badge: "/assets/img/badges/cnss.jpg" }
+  - { name: "E|HE",     full: "Ethical Hacking Essentials",                 by: "EC-Council", badge: "/assets/img/badges/ehe.jpg" }
+  - { name: "N|DE",     full: "Network Defense Essentials",                 by: "EC-Council", badge: "/assets/img/badges/nde.jpg" }
+  - { name: "D|FE",     full: "Digital Forensics Essentials",               by: "EC-Council", badge: "/assets/img/badges/dfe.jpg" }
 
-# Roles & memberships recognised by external bodies.
-# Fill in `by` where you'd like the organisation shown.
-distinctions:
-  - { title: "Hall of Fame, Cyber Security Researcher", by: "EC-Council University" }
-  - { title: "Certified Trustee", by: "CyberArk Software Ltd." }
-  - { title: "Certified Cyber Crime Intervention Officer", by: "ISAC" }
-  - { title: "Scientific Research Proposal Reviewer" }
-  - { title: "Technical Reviewer" }
-  - { title: "Graduate Member" }
-  - { title: "Active Member" }
+# Professional memberships & recognised roles.
+#   since: year you joined (optional, shown under the title)
+#   by:    the organisation (shown in the right-hand column)
+memberships:
+  - { title: "Cyber Crime Intervention Officer", by: "Information Sharing and Analysis Center (ISAC), India", since: 2021, badge: "/assets/img/badges/ccio-officer.jpg" }
+  - { title: "Cyber Security Researcher", by: "EC-Council University, USA", badge: "/assets/img/badges/cyber-security-researcher.jpg" }
+  - { title: "Scientific Research Proposal Reviewer", by: "", badge: "/assets/img/badges/research-proposal-reviewer.jpg" }
+  - { title: "Technical Reviewer", by: "", badge: "/assets/img/badges/technical-reviewer.jpg" }
+  - { title: "Graduate Member", by: "", badge: "/assets/img/badges/graduate-member.jpg" }
+  - { title: "Active Member", by: "", badge: "/assets/img/badges/active-member-1.jpg" }
+  - { title: "Active Member", by: "", badge: "/assets/img/badges/active-member-2.jpg" }

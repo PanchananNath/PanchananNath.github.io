@@ -2,7 +2,7 @@
 layout: page
 title: "Recognitions"
 permalink: /recognitions/
-lede: "Awards, selections and professional certifications, most of them earned in cyber security."
+lede: "Awards, selections, professional certifications and memberships, most of them earned in cyber security."
 ---
 {% assign rc = site.data.recognitions %}
 
@@ -10,7 +10,7 @@ lede: "Awards, selections and professional certifications, most of them earned i
   <h2 class="bus">Honours &amp; awards</h2>
   <ol class="ledger">
     {% for a in rc.awards %}
-      <li><span class="ledger__year">{{ a.year }}</span><span class="ledger__what">{{ a.title }}{% if a.note %}<em>{{ a.note }}</em>{% endif %}</span><span class="ledger__by">{{ a.by }}</span></li>
+      {% include ledger-row.html lead=a.year title=a.title note=a.note by=a.by badge=a.badge caption=a.title %}
     {% endfor %}
   </ol>
 </section>
@@ -20,6 +20,11 @@ lede: "Awards, selections and professional certifications, most of them earned i
   <ul class="certs">
     {% for c in rc.certifications %}
       <li class="cert">
+        {% if c.badge %}
+        <button type="button" class="cert__die" data-zoom data-caption="{{ c.full }}{% if c.by %}, {{ c.by }}{% endif %}" aria-label="View badge: {{ c.full }}">
+          <img src="{{ c.badge | relative_url }}" alt="" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
+        </button>
+        {% endif %}
         <span class="cert__name">{{ c.name }}</span>
         <span class="cert__full">{{ c.full }}</span>
         {% if c.by %}<span class="cert__by">{{ c.by }}</span>{% endif %}
@@ -28,9 +33,15 @@ lede: "Awards, selections and professional certifications, most of them earned i
   </ul>
 </section>
 
+{% assign members = rc.memberships | default: rc.distinctions %}
+{% if members %}
 <section class="block">
-  <h2 class="bus">Roles &amp; memberships</h2>
-  <ul class="chips">
-    {% for d in rc.distinctions %}<li>{{ d.title }}{% if d.by %}, {{ d.by }}{% endif %}</li>{% endfor %}
-  </ul>
+  <h2 class="bus">Professional memberships</h2>
+  <ol class="ledger ledger--members">
+    {% for m in members %}
+      {% if m.since %}{% capture since %}Since {{ m.since }}{% endcapture %}{% else %}{% assign since = m.note %}{% endif %}
+      {% include ledger-row.html lead="" title=m.title note=since by=m.by badge=m.badge caption=m.title %}
+    {% endfor %}
+  </ol>
 </section>
+{% endif %}

@@ -1,0 +1,10 @@
+{% comment %}
+  A credential badge. Click to view large.
+  Usage: {% include badge.html src=item.badge label="CEH" caption="Certified Ethical Hacker" %}
+  If the image is missing, shows the label's initials instead and isn't clickable.
+{% endcomment %}
+{% assign bd_words = include.label | split: " " %}
+<button type="button" class="badge{% if include.size %} badge--{{ include.size }}{% endif %}"{% if include.src %} data-zoom data-caption="{{ include.caption | default: include.label | escape }}"{% endif %} aria-label="View badge: {{ include.caption | default: include.label | escape }}">
+  <span class="badge__ini" aria-hidden="true">{{ bd_words.first | slice: 0 }}{% if bd_words.size > 1 %}{{ bd_words.last | slice: 0 }}{% endif %}</span>
+  {% if include.src %}<img src="{% if include.src contains '://' %}{{ include.src }}{% else %}{{ include.src | relative_url }}{% endif %}" alt="" loading="lazy" decoding="async" onerror="var b=this.parentNode;b.removeAttribute('data-zoom');b.tabIndex=-1;this.remove()">{% endif %}
+</button>

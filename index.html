@@ -162,7 +162,7 @@ title: "Panchanan Nath"
     <ol class="ledger">
       {% for a in site.data.recognitions.awards %}
         {% if a.featured %}
-          <li><span class="ledger__year">{{ a.year }}</span><span class="ledger__what">{{ a.title }}{% if a.note %}<em>{{ a.note }}</em>{% endif %}</span><span class="ledger__by">{{ a.by }}</span></li>
+          {% include ledger-row.html lead=a.year title=a.title note=a.note by=a.by badge=a.badge caption=a.title %}
         {% endif %}
       {% endfor %}
     </ol>

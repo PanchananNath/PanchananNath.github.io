@@ -488,3 +488,26 @@
     layout();
   });
 })();
+
+/* ---------- badge zoom viewer ---------- */
+(function () {
+  'use strict';
+  if (!document.querySelector('[data-zoom]') || typeof HTMLDialogElement === 'undefined') return;
+  var d = document.createElement('dialog');
+  d.className = 'zoom';
+  d.innerHTML = '<button type="button" class="zoom__close" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><figure class="zoom__frame"><img alt=""><figcaption class="zoom__cap"></figcaption></figure>';
+  document.body.appendChild(d);
+  var img = d.querySelector('img'), cap = d.querySelector('.zoom__cap');
+  d.querySelector('.zoom__close').addEventListener('click', function () { d.close(); });
+  d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-zoom]');
+    if (!b) return;
+    var src = b.querySelector('img');
+    if (!src) return;
+    img.src = src.currentSrc || src.src;
+    img.alt = b.getAttribute('data-caption') || '';
+    cap.textContent = b.getAttribute('data-caption') || '';
+    d.showModal();
+  });
+})();

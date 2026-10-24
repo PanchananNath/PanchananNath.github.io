@@ -1,0 +1,13 @@
+{% comment %}
+  One row of a ledger (Honours & awards, Professional memberships).
+  lead:  text for the left column (e.g. year). If empty and a badge exists, the badge sits there.
+  badge, title, note, by
+{% endcomment %}
+<li class="ledger__row">
+  <span class="ledger__year">{% if include.lead and include.lead != "" %}{{ include.lead }}{% elsif include.badge %}{% include badge.html src=include.badge label=include.title caption=include.caption %}{% endif %}</span>
+  <span class="ledger__what">
+    {% if include.lead and include.lead != "" and include.badge %}{% include badge.html src=include.badge label=include.title caption=include.caption size="sm" %}{% endif %}
+    <span class="ledger__text">{{ include.title }}{% if include.note and include.note != "" %}<em>{{ include.note }}</em>{% endif %}</span>
+  </span>
+  <span class="ledger__by">{{ include.by }}</span>
+</li>
