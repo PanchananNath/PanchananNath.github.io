@@ -27,15 +27,6 @@ lede: "A decade across classrooms, research labs, a security start-up and indust
 </ol>
 
 <section class="block">
-  <h2 class="bus">Education</h2>
-  <ol class="rows">
-    {% for ed in site.data.education %}
-      <li><p class="rows__title">{{ ed.degree }}</p><p class="rows__meta">{{ ed.school }}, {{ ed.note }}. {{ ed.year }}.</p></li>
-    {% endfor %}
-  </ol>
-</section>
-
-<section class="block">
   <h2 class="bus">Tools I work with</h2>
   <div class="skills">
     {% for g in site.data.skills %}

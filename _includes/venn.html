@@ -1,0 +1,30 @@
+{% comment %}
+  Overlapping expertise diagram. Data: _data/expertise.yml
+  Without JS (or on narrow screens) it shows as tagged chips with set dots.
+{% endcomment %}
+{% assign ex = site.data.expertise %}
+{% if ex %}
+<figure class="venn" data-venn>
+  <div class="venn__stage"></div>
+  <div class="venn__side">
+    <ul class="venn__sets">
+      {% for s in ex.sets %}
+        <li class="venn__set venn__set--{{ forloop.index0 }}" data-set="{{ s.id }}" data-i="{{ forloop.index0 }}" tabindex="0">
+          <span class="venn__set-name">{{ s.label }}</span>
+          {% if s.text %}<span class="venn__set-text">{{ s.text }}</span>{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    <p class="venn__hint">Hover a circle or area to see how they connect.</p>
+  </div>
+  <ul class="venn__areas">
+    {% for a in ex.areas %}
+      <li data-in="{{ a.circles | join: ' ' }}">
+        <span class="venn__dots" aria-hidden="true">{% for s in ex.sets %}{% if a.circles contains s.id %}<i class="venn__dot venn__dot--{{ forloop.index0 }}"></i>{% endif %}{% endfor %}</span>{{ a.name }}
+      </li>
+    {% endfor %}
+  </ul>
+</figure>
+{% else %}
+<ul class="chips">{% for f in site.data.profile.research_focus.expertise %}<li>{{ f }}</li>{% endfor %}</ul>
+{% endif %}

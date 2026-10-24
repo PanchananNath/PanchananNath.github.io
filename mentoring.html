@@ -10,21 +10,115 @@ lede: "Research interns, final-year projects, hackathon teams and one-to-one men
 
 <div class="mentor-intro">
   <blockquote class="motto">{{ m.motto }}</blockquote>
-  <p class="summary">{{ groups }} project teams and {{ people }} students supervised here; {% for i in m.impact %}{{ i.value }} {{ i.label }}{% endfor %} overall.</p>
+  <ul class="stats" data-stats>
+    <li><span class="stats__n" data-count="{{ m.programs.size }}">{{ m.programs.size }}</span><span class="stats__l">mentoring programmes</span></li>
+    <li><span class="stats__n" data-count="{{ groups }}">{{ groups }}</span><span class="stats__l">project teams supervised</span></li>
+    <li><span class="stats__n" data-count="{{ people }}">{{ people }}</span><span class="stats__l">students listed on this page</span></li>
+    {% for i in m.impact %}
+      <li><span class="stats__n" data-count="{{ i.value }}" data-suffix="{{ i.suffix }}">{{ i.value }}{{ i.suffix }}</span><span class="stats__l">{{ i.label }}</span></li>
+    {% endfor %}
+  </ul>
 </div>
 
 {% for pg in m.programs %}
-<section class="block program">
+{% assign mode = pg.display | default: "carousel" %}
+<section class="block program program--{{ mode }}">
   <h2 class="bus">{{ pg.title }}</h2>
-  <p class="program__meta">{{ pg.role }}{% if pg.host %}, {{ pg.host }}{% endif %}{% if pg.year %}, {{ pg.year }}{% endif %}</p>
-  <ul class="groups{% if pg.groups.size > 6 %} groups--dense{% endif %}">
+  <p class="program__meta">{{ pg.role }}{% if pg.host %}, {{ pg.host }}{% endif %}{% if pg.year %}, {{ pg.year }}{% endif %}<span class="program__count">{{ pg.groups.size }} {% if pg.groups.size == 1 %}team{% else %}teams{% endif %}</span></p>
+
+  {% case mode %}
+
+  {% when "flip" %}
+    <ul class="flips">
+      {% for g in pg.groups %}
+        <li>
+          <div class="flip" data-flip tabindex="0" role="button" aria-pressed="false" aria-label="{{ g.title }}: show team">
+            <div class="flip__inner">
+              <div class="flip__face flip__front">
+                <div class="flip__photo">
+                  <span class="stack stack--big">{% for mem in g.members limit: 6 %}{% if mem.name %}{% include avatar.html name=mem.name photo=mem.photo %}{% else %}{% include avatar.html name=mem %}{% endif %}{% endfor %}</span>
+                  {% if g.photo %}<img src="{{ g.photo | relative_url }}" alt="" loading="lazy" onerror="this.remove()">{% endif %}
+                </div>
+                <p class="flip__title">{{ g.title }}</p>
+                {% if g.note %}<p class="mcard__inst">{{ g.note }}</p>{% endif %}
+                <div class="flip__foot">
+                  <span class="flip__n">{{ g.members.size }} {% if g.members.size == 1 %}student{% else %}students{% endif %}</span>
+                  <span class="flip__cue">Meet the team</span>
+                </div>
+              </div>
+              <div class="flip__face flip__back">
+                <p class="flip__back-title">{{ g.members.size }} {% if g.members.size == 1 %}student{% else %}students{% endif %}</p>
+                <ul class="flip__names">
+                  {% for mem in g.members %}{% if mem.name %}<li>{{ mem.name }}</li>{% else %}<li>{{ mem }}</li>{% endif %}{% endfor %}
+                </ul>
+                <span class="flip__cue">Back to project</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+  {% when "marquee" %}
+    <div class="marquee" data-marquee>
+      {% for row in (0..1) %}
+        <div class="marquee__row{% if row == 1 %} marquee__row--rev{% endif %}">
+          <div class="marquee__inner" style="--dur: {{ pg.groups.size | times: 6 }}s">
+            {% for copy in (0..1) %}
+              {% for g in pg.groups %}
+                {% assign odd = forloop.index0 | modulo: 2 %}
+                {% if odd == row %}
+                  <div class="marquee__item{% if copy == 1 %} is-clone{% endif %}"{% if copy == 1 %} aria-hidden="true"{% endif %}>{% include mentor-card.html g=g compact=true %}</div>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+      <button type="button" class="btn btn--small marquee__toggle" data-marquee-toggle aria-pressed="false">Show all as a grid</button>
+    </div>
+
+  {% when "deck" %}
+    <div class="deck" data-deck>
+      <div class="deck__stack">
+        {% for g in pg.groups %}
+          <div class="deck__card">{% include mentor-card.html g=g %}</div>
+        {% endfor %}
+      </div>
+      <div class="deck__controls">
+        <button type="button" class="round-btn" data-deck-prev aria-label="Previous team"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+        <p class="deck__count" aria-live="polite"><span data-deck-i>1</span> of {{ pg.groups.size }}</p>
+        <button type="button" class="round-btn round-btn--solid" data-deck-next aria-label="Next team"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
+    </div>
+
+  {% when "spotlight" %}
     {% for g in pg.groups %}
-      <li class="group">
-        <p class="group__title">{{ g.title }}</p>
-        {% if g.institute or g.note %}<p class="group__inst">{{ g.institute }}{% if g.institute and g.note %}. {% endif %}{{ g.note }}</p>{% endif %}
-        <p class="group__members">{{ g.members | join: ", " }}</p>
-      </li>
+      <div class="spotlight">
+        <p class="spotlight__title">{{ g.title }}</p>
+        {% if g.institute or g.note %}<p class="mcard__inst">{{ g.institute }}{% if g.institute and g.note %}. {% endif %}{{ g.note }}</p>{% endif %}
+        <ul class="spotlight__people">
+          {% for mem in g.members %}
+            {% if mem.name %}{% assign mn = mem.name %}{% assign mnote = mem.note %}{% assign mp = mem.photo %}{% else %}{% assign mn = mem %}{% assign mnote = nil %}{% assign mp = nil %}{% endif %}
+            <li>{% include avatar.html name=mn photo=mp size="lg" %}<span class="mcard__name">{{ mn }}{% if mnote %}<small>{{ mnote }}</small>{% endif %}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
     {% endfor %}
-  </ul>
+
+  {% else %}
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" tabindex="0" aria-label="{{ pg.title }}, {{ pg.groups.size }} teams. Scroll sideways to see more.">
+        {% for g in pg.groups %}
+          <div class="carousel__slide">{% include mentor-card.html g=g %}</div>
+        {% endfor %}
+      </div>
+      <div class="carousel__controls">
+        <button type="button" class="round-btn" data-car-prev aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+        <div class="carousel__dots" data-car-dots></div>
+        <button type="button" class="round-btn round-btn--solid" data-car-next aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  {% endcase %}
 </section>
 {% endfor %}

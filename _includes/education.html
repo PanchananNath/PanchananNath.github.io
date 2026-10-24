@@ -1,0 +1,16 @@
+{% comment %} Stepped education timeline, oldest → newest. Data: _data/education.yml {% endcomment %}
+{% assign eds = site.data.education | reverse %}
+<ol class="edu" data-edu style="--steps: {{ eds.size }}">
+  {% for ed in eds %}
+    <li class="edu__step{% if ed.current %} is-current{% endif %}" style="--i: {{ forloop.index0 }}">
+      <span class="edu__pad" aria-hidden="true"></span>
+      <p class="edu__year">{{ ed.year }}{% if ed.current %}<span class="edu__now">In progress</span>{% endif %}</p>
+      <h3 class="edu__degree">{{ ed.degree }}</h3>
+      {% if ed.field %}<p class="edu__field">{{ ed.field }}</p>{% endif %}
+      <p class="edu__school">{{ ed.school }}</p>
+      {% if ed.note %}<p class="edu__note">{{ ed.note }}</p>{% endif %}
+      {% if ed.focus %}<p class="edu__focus">{{ ed.focus }}</p>{% endif %}
+      {% if ed.supervisors %}<p class="edu__sup">Supervised by {{ ed.supervisors | join: ", " }}</p>{% endif %}
+    </li>
+  {% endfor %}
+</ol>

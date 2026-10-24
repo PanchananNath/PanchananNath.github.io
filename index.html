@@ -48,20 +48,21 @@ title: "Panchanan Nath"
   <div class="wrap">
     <h2 class="bus">About</h2>
     <p class="about">{{ p.bio }}</p>
-    <div class="focus">
-      <div>
-        <p class="focus__label">Doctoral research</p>
-        <ul class="focus__main">
-          {% for f in p.research_focus.doctoral %}<li>{{ f }}</li>{% endfor %}
-        </ul>
-      </div>
-      <div>
-        <p class="focus__label">Also working across</p>
-        <ul class="chips">
-          {% for f in p.research_focus.expertise %}<li>{{ f }}</li>{% endfor %}
-        </ul>
-      </div>
+    <div class="focus focus--solo">
+      <p class="focus__label">Doctoral research</p>
+      <ul class="focus__main focus__main--row">
+        {% for f in p.research_focus.doctoral %}<li>{{ f }}</li>{% endfor %}
+      </ul>
     </div>
+    <h3 class="sub-head">Also working across</h3>
+    {% include venn.html %}
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2 class="bus">Education</h2>
+    {% include education.html %}
   </div>
 </section>
 
@@ -82,12 +83,6 @@ title: "Panchanan Nath"
               <li><span class="track__role">{{ e.role }}</span><span class="track__org">{{ e.org }}</span><span class="track__when">{{ e.period }}</span></li>
               {% assign shown = shown | plus: 1 %}
             {% endif %}
-          {% endfor %}
-        </ol>
-        <p class="track__sub">Education</p>
-        <ol class="track__list track__list--tight">
-          {% for ed in site.data.education %}
-            <li><span class="track__role">{{ ed.degree }}</span><span class="track__org">{{ ed.school }}</span><span class="track__when">{{ ed.year }}</span></li>
           {% endfor %}
         </ol>
       </article>

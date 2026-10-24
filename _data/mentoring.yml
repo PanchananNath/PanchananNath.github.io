@@ -1,47 +1,76 @@
 # ─────────────────────────────────────────────────────────────
-#  MENTORING — programmes, each with groups of students
-#  group: title (project or domain), institute, members, note
+#  MENTORING — programmes → groups → members
+#
+#  display: how a programme is animated on the page
+#    carousel  — swipeable slider with arrows, dots and gentle autoplay
+#    flip      — cards that flip over to reveal the team
+#    marquee   — two rows of cards gliding past (pause on hover)
+#    deck      — a stack of cards you deal through one at a time
+#    spotlight — one large feature card (good for a single group)
+#
+#  Members can be plain text:      - "Jane Doe (B.Tech 24–28)"
+#  …or carry a photo:              - { name: "Jane Doe", note: "B.Tech 24–28", photo: "/assets/img/mentoring/jane.jpg" }
+#  A group can also have a team photo:   photo: "/assets/img/mentoring/team.jpg"
+#  Missing photos fall back to initials automatically.
 # ─────────────────────────────────────────────────────────────
 
 motto: "No boring lectures — only real talk, fun, motivation and success. Kal ka future, aaj ki learning se banega!"
 
 impact:
-  - { value: "1000+", label: "students mentored in cybersecurity and related domains" }
+  - { value: 1000, suffix: "+", label: "students mentored in cybersecurity and related domains" }
 
 programs:
   - title: "Summer Research Interns"
     host: "Indian Institute of Information Technology Guwahati"
     year: 2025
     role: "Mentor"
+    display: carousel
     groups:
       - title: "Deep learning for agriculture and security"
         institute: "Dept. of CSE, Jorhat Engineering College"
-        members: ["Biswadeep Mazumder (B.Tech 24–28)", "Rajdeep Gogoi (B.Tech 24–28)", "Partha Pratim Borah (B.Tech 24–28)"]
+        members:
+          - { name: "Biswadeep Mazumder", note: "B.Tech 24–28", photo: "/assets/img/mentoring/biswadeep-mazumder.jpg" }
+          - { name: "Rajdeep Gogoi", note: "B.Tech 24–28", photo: "/assets/img/mentoring/rajdeep-gogoi.jpg" }
+          - { name: "Partha Pratim Borah", note: "B.Tech 24–28", photo: "/assets/img/mentoring/partha-pratim-borah.jpg" }
       - title: "Deep learning for agriculture and security"
         institute: "Dept. of CSE, Jorhat Engineering College"
-        members: ["Mrinmay Kalita (B.Tech 24–28)", "Raghab Jyoti Kalita (B.Tech 24–28)"]
+        members:
+          - { name: "Mrinmay Kalita", note: "B.Tech 24–28", photo: "/assets/img/mentoring/mrinmay-kalita.jpg" }
+          - { name: "Raghab Jyoti Kalita", note: "B.Tech 24–28", photo: "/assets/img/mentoring/raghab-jyoti-kalita.jpg" }
       - title: "Deep learning for user authentication"
         institute: "Dept. of CSE, Central Institute of Technology Kokrajhar"
-        members: ["Daiji Kalita (B.Tech 22–26)", "Rahul Talukdar (B.Tech 22–26)"]
+        members:
+          - { name: "Daiji Kalita", note: "B.Tech 22–26", photo: "/assets/img/mentoring/daiji-kalita.jpg" }
+          - { name: "Rahul Talukdar", note: "B.Tech 22–26" }
       - title: "Deep learning for healthcare"
         institute: "Dept. of CSE, Central Institute of Technology Kokrajhar"
-        members: ["Nikita Sarma (B.Tech 22–26)", "Afrina Ahmad (B.Tech 22–26)"]
+        members:
+          - { name: "Nikita Sarma", note: "B.Tech 22–26", photo: "/assets/img/mentoring/nikita-sarma.jpg" }
+          - { name: "Afrina Ahmad", note: "B.Tech 22–26", photo: "/assets/img/mentoring/afrina-ahmad.jpg" }
       - title: "Deep learning for healthcare"
         institute: "Dept. of CS, Gauhati University"
-        members: ["Dhruba Jyoti Roy (B.Tech 21–25)"]
+        members:
+          - { name: "Dhruba Jyoti Roy", note: "B.Tech 21–25", photo: "/assets/img/mentoring/dhruba-jyoti-roy.jpg" }
       - title: "Deep learning for healthcare"
         institute: "Dept. of CSE, Girijananda Chowdhury University"
-        members: ["Ritanjit Das (B.Tech 22–26)"]
+        members:
+          - { name: "Ritanjit Das", note: "B.Tech 22–26" }
       - title: "Deep learning for healthcare"
         institute: "Dept. of CSE, IIIT Guwahati"
-        members: ["Rishit Saxena (B.Tech 24–28)", "Abhijit Jadhav (B.Tech 24–28)", "Tanishq Mehta (B.Tech 24–28)", "Nikhil Mehrotra (B.Tech 24–28)"]
+        members:
+          - { name: "Rishit Saxena", note: "B.Tech 24–28" }
+          - { name: "Abhijit Jadhav", note: "B.Tech 24–28" }
+          - { name: "Tanishq Mehta", note: "B.Tech 24–28" }
+          - { name: "Nikhil Mehrotra", note: "B.Tech 24–28" }
 
   - title: "B.Tech final-year projects"
     host: "NIST University"
     year: 2025
     role: "Supervisor"
+    display: flip
     groups:
       - title: "Blockchain-based tamper-proof nursing home management system"
+        photo: "/assets/img/mentoring/team-nursing-home.jpg"
         members: ["K Raj Kumar (B.Tech CSE 2021–25)"]
       - title: "E-learning management system"
         note: "Jointly with Prof. Saubhagya Ranjan Nath"
@@ -51,24 +80,32 @@ programs:
     host: "NIST University"
     year: 2025
     role: "Supervisor (jointly with Prof. Saubhagya Ranjan Nath)"
+    display: flip
     groups:
       - title: "International e-video learning management system"
+        photo: "/assets/img/mentoring/team-intl-evideo-lms.jpg"
         members: ["Gayatri Bisoyi", "Anshita Patro", "Rakesh Swain", "Sambit Kumar Tripathy"]
       - title: "Online learning faculty management system"
+        photo: "/assets/img/mentoring/team-faculty-lms.jpg"
         members: ["Siba Shankar Sabat", "Ratnanjali Mohanty", "Saismita Sahu", "Sanskar Padhy"]
       - title: "E-video learning management system"
+        photo: "/assets/img/mentoring/team-evideo-lms.jpg"
         members: ["Shaikh Abdul Rehman", "Somya Shree Mishra", "Krusna Chandra Polai", "Satish More"]
       - title: "International course e-learning management system"
+        photo: "/assets/img/mentoring/team-intl-course-lms.jpg"
         members: ["Bapuji Pradhan", "Malaya Nayak", "Chandan Kumar Gouda", "Subhashis Gouda"]
       - title: "Online learning management system"
+        photo: "/assets/img/mentoring/team-online-lms.jpg"
         members: ["Right Siman Jena", "Sandeep Bag", "Niranjan Padhi", "S Nikhil Patro"]
       - title: "Multilingual learning management system"
+        photo: "/assets/img/mentoring/team-multilingual-lms.jpg"
         members: ["Narayan Bisoyee", "Bhandi Monalisha", "Ashutosh Sahu", "Kalaga Anwesh Kumar"]
 
   - title: "6th-semester lab-based projects"
     host: "NIST University"
     year: 2025
     role: "Supervisor"
+    display: marquee
     groups:
       - { title: "SmileChain: blockchain-based DApp for organisational wellbeing", members: ["Faizan Ahmed", "Navin Tiwari", "Ritika", "Ausaf Anis Khan"] }
       - { title: "AgroVision: ML-based crop disease detection", members: ["Talagana Rajesh", "Landa Gopal", "Sravan Charan", "Sunita Pradhan"] }
@@ -88,24 +125,30 @@ programs:
     host: "NIST University & CIT Kokrajhar"
     year: 2024
     role: "Faculty mentor"
+    display: deck
     groups:
       - title: "Enhancing navigation for railway station facilities and locations"
         institute: "NIST University, B.Tech 2nd year"
+        photo: "/assets/img/mentoring/team-sih-railway.jpg"
         members: ["Likun Chandra Dalai", "Suman Panda", "Abhisekh Padhy", "Biraja Nayak", "Sonali Patro", "Akash Girish Behera"]
       - title: "Mentor Connect: web application for mentorship management"
         institute: "NIST University, B.Tech 3rd year"
+        photo: "/assets/img/mentoring/team-sih-mentor-connect.jpg"
         members: ["Ankit Kumar", "Hritesh Sharma", "Om Prakash Patra", "Gautam Tiwari", "Rashi Roy", "Parmeshwar Tripathy"]
       - title: "Freelancing platform: web application for freelancing management"
         institute: "NIST University, B.Tech 3rd year"
+        photo: "/assets/img/mentoring/team-sih-freelancing.jpg"
         members: ["Sandhya Rani Padhy", "Sukanya Choudhury", "Sahil Kumar Pattnaik", "Mohammad Ehsan", "Rudransh Dash", "Late Abinash Acharya"]
       - title: "Integrated, customisable annual report for the institute"
         institute: "CIT Kokrajhar, B.Tech 3rd year"
+        photo: "/assets/img/mentoring/team-sih-annual-report.jpg"
         members: ["Monalisha Roy", "Debanand Singha", "Bhuban Bahadur Chetry", "Gwjwangthi Narzary", "Dodere Sona Basumatary", "Karabi Nath"]
 
   - title: "Industrial mentor, final-year B.Tech in Cyber Security"
     host: "Anurag University, Hyderabad"
     year: 2024
     role: "Industrial mentor (faculty: Dr. Majeti Srinadh Swamy)"
+    display: spotlight
     groups:
       - title: "Synergistic deep learning approach for automatic evaluation of security and usability scores in mobile Android applications"
         members: ["G. Sai Anurag (20EG107116)", "V. Geethika (20EG107153)", "Ch. Hemanth (20EG107157)"]
@@ -113,7 +156,9 @@ programs:
   - title: "1:1 mentoring in cyber security & ethical hacking"
     year: 2024
     role: "Mentor"
+    display: spotlight
     groups:
       - title: "Cyber security & ethical hacking"
         institute: "GNITS Hyderabad, B.Tech final year"
-        members: ["Sukruti K"]
+        members:
+          - { name: "Sukruti K", note: "B.Tech final year", photo: "/assets/img/mentoring/sukruti-k.jpg" }

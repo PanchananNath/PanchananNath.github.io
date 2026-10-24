@@ -10,16 +10,12 @@ lede: "Compilers, edge intelligence and network security: making learning system
 
 <section class="block">
   <h2 class="bus">Focus areas</h2>
-  <div class="focus">
-    <div>
-      <p class="focus__label">Doctoral research</p>
-      <ul class="focus__main">{% for f in p.research_focus.doctoral %}<li>{{ f }}</li>{% endfor %}</ul>
-    </div>
-    <div>
-      <p class="focus__label">Other areas I contribute to</p>
-      <ul class="chips">{% for f in p.research_focus.expertise %}<li>{{ f }}</li>{% endfor %}</ul>
-    </div>
+  <div class="focus focus--solo">
+    <p class="focus__label">Doctoral research</p>
+    <ul class="focus__main focus__main--row">{% for f in p.research_focus.doctoral %}<li>{{ f }}</li>{% endfor %}</ul>
   </div>
+  <h3 class="sub-head">Other areas I contribute to</h3>
+  {% include venn.html %}
 </section>
 
 <section class="block">
@@ -98,8 +94,8 @@ lede: "Compilers, edge intelligence and network security: making learning system
 
 <section class="block">
   <h2 class="bus">Supervisors</h2>
-  <ul class="people">
-    {% for s in r.supervisors %}{% include person.html person=s %}{% endfor %}
+  <ul class="people people--lg">
+    {% for s in r.supervisors %}{% include person.html person=s size="lg" %}{% endfor %}
   </ul>
 </section>
 

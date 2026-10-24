@@ -1,0 +1,10 @@
+{% comment %}
+  Round avatar: shows the photo if it loads, otherwise initials.
+  Usage: {% include avatar.html name="Jane Doe" photo="/assets/img/people/jane.jpg" size="lg" %}
+{% endcomment %}
+{% assign av_name = include.name | split: " (" | first %}
+{% assign av_words = av_name | remove: "Dr. " | remove: "Prof. " | remove: "(Dr.) " | remove: "Late " | split: " " %}
+<span class="avatar{% if include.size %} avatar--{{ include.size }}{% endif %}" title="{{ av_name }}">
+  <span class="avatar__ini" aria-hidden="true">{{ av_words.first | slice: 0 }}{% if av_words.size > 1 %}{{ av_words.last | slice: 0 }}{% endif %}</span>
+  {% if include.photo and include.photo != "" %}<img src="{% if include.photo contains '://' %}{{ include.photo }}{% else %}{{ include.photo | relative_url }}{% endif %}" alt="" loading="lazy" decoding="async" onerror="this.remove()">{% endif %}
+</span>

@@ -66,40 +66,47 @@ service:
     - { venue: "1st International Conference on Intelligent Computing and Knowledge Extraction (ICICKE 2025)", place: "Bengaluru, India", kind: conference }
     - { venue: "3rd International Conference on Data Science and Information System (ICDSIS 2025)", place: "Hassan, India", kind: conference }
 
+# People: `photo` is a path under assets/img/people/ (or any image URL).
+# Leave it out, or if the file is missing, an initials badge is shown instead.
 supervisors:
   - name: "Dr. Manojit Ghose"
+    photo: "/assets/img/people/manojit-ghose.jpg"
     role: "Assistant Professor, Dept. of CSE, IIIT Guwahati"
     relation: "PhD supervisor"
     url: "https://www.iiitg.ac.in/computer-science-and-engineering/manojit-ghose"
   - name: "Dr. Pranav Kumar Singh"
+    photo: "/assets/img/people/pranav-kumar-singh.jpg"
     role: "Associate Professor, Dept. of CSE, CIT Kokrajhar"
     relation: "M.Tech & B.Tech supervisor"
     url: "https://www.cit.ac.in/profile-cse-dr-pranav-kumar-singh"
   - name: "Prof. (Dr.) Anshuman Kalla"
+    photo: "/assets/img/people/anshuman-kalla.jpg"
     role: "Professor, CGPIT, Uka Tarsadia University, Gujarat"
     relation: "M.Tech external supervisor"
     url: "https://sites.google.com/site/kallanshuman/home"
   - name: "Prof. (Dr.) Hemanta Kumar Kalita"
+    photo: "/assets/img/people/hemanta-kumar-kalita.jpg"
     role: "Professor, Dept. of CSE, CIT Kokrajhar"
     relation: "Diploma supervisor"
     url: "https://www.cit.ac.in/profile-cse-dr-hemanta-kumar-kalita"
   - name: "Prof. Tania Sarkar"
+    photo: "/assets/img/people/tania-sarkar.jpg"
     role: "Assistant Professor, Dept. of CSE, CIT Kokrajhar"
     relation: "B.Tech minor project supervisor"
     url: "https://www.cit.ac.in/profile-cse-tania-sarkar"
 
 collaborators:
   faculty:
-    - { name: "Dr. Uttam Ghosh", role: "Professor of Cybersecurity, Computer Science and Data Science, SACS, Meharry Medical College, USA", url: "https://sacsmeharry.org/sacs/faculty/uttamghosh/" }
-    - { name: "Dr. Purnendu Shekhar Pandey", role: "Associate Professor, OM & OR, Jaipuria Institute of Management, Lucknow", url: "https://www.jaipuria.ac.in/faculty/purnendu-shekhar-pandey/" }
-    - { name: "Prof. Bikramjit Choudhury", role: "Assistant Professor, Dept. of CSE, CIT Kokrajhar", url: "https://www.cit.ac.in/profile-cse-bikramjit-choudhury" }
-    - { name: "Dr. Sujith Ariyapadath", role: "Assistant Professor, Dept. of CSE, KL University, Andhra Pradesh", url: "https://in.linkedin.com/in/dr-sujith-ariyapadath-67a44591" }
-    - { name: "Prof. (Dr.) Sudhir Ranjan Pattanaik", role: "Professor, Dept. of CSE, NIST University, Odisha", url: "https://scholar.google.com/citations?user=4oKegpwAAAAJ&hl=en" }
-    - { name: "Prof. Nibedita Priyadarsini Mohapatra", role: "Assistant Professor, Dept. of CSE, NIST University, Odisha", url: "https://scholar.google.com/citations?user=wQg5EB8AAAAJ&hl=en" }
+    - { name: "Dr. Uttam Ghosh", role: "Professor of Cybersecurity, Computer Science and Data Science, SACS, Meharry Medical College, USA", url: "https://sacsmeharry.org/sacs/faculty/uttamghosh/", photo: "/assets/img/people/uttam-ghosh.jpg" }
+    - { name: "Dr. Purnendu Shekhar Pandey", role: "Associate Professor, OM & OR, Jaipuria Institute of Management, Lucknow", url: "https://www.jaipuria.ac.in/faculty/purnendu-shekhar-pandey/", photo: "/assets/img/people/purnendu-shekhar-pandey.jpg" }
+    - { name: "Prof. Bikramjit Choudhury", role: "Assistant Professor, Dept. of CSE, CIT Kokrajhar", url: "https://www.cit.ac.in/profile-cse-bikramjit-choudhury", photo: "/assets/img/people/bikramjit-choudhury.jpg" }
+    - { name: "Dr. Sujith Ariyapadath", role: "Assistant Professor, Dept. of CSE, KL University, Andhra Pradesh", url: "https://in.linkedin.com/in/dr-sujith-ariyapadath-67a44591", photo: "/assets/img/people/sujith-ariyapadath.jpg" }
+    - { name: "Prof. (Dr.) Sudhir Ranjan Pattanaik", role: "Professor, Dept. of CSE, NIST University, Odisha", url: "https://scholar.google.com/citations?user=4oKegpwAAAAJ&hl=en", photo: "/assets/img/people/sudhir-ranjan-pattanaik.jpg" }
+    - { name: "Prof. Nibedita Priyadarsini Mohapatra", role: "Assistant Professor, Dept. of CSE, NIST University, Odisha", url: "https://scholar.google.com/citations?user=wQg5EB8AAAAJ&hl=en", photo: "/assets/img/people/nibedita-priyadarsini-mohapatra.jpg" }
   peers:
-    - { name: "Ujjal Roy", role: "Senior Instructor, Dept. of CSE, Dhemaji Engineering College, Assam", url: "https://dec.ac.in/cse.html" }
-    - { name: "Maharaj Brahma", role: "PhD Scholar, Dept. of CSE, IIT Hyderabad", url: "https://maharajbrahma.github.io" }
-    - { name: "Jaya Rani Mushahary", role: "JRF, STI Hub, CIT Kokrajhar", url: "https://stihub.cit.ac.in/team" }
-    - { name: "Catherine Esther Jones", role: "Cyber Security Research Associate, R&D Team, EC-Council", url: "https://in.linkedin.com/in/catherine-esther-jones" }
-    - { name: "Debanand Singha", role: "B.Tech student, Dept. of CSE, CIT Kokrajhar", url: "https://in.linkedin.com/in/debanand" }
-    - { name: "Monalisha Roy", role: "B.Tech student, Dept. of CSE, CIT Kokrajhar", url: "https://in.linkedin.com/in/monalisha-roy" }
+    - { name: "Ujjal Roy", role: "Senior Instructor, Dept. of CSE, Dhemaji Engineering College, Assam", url: "https://dec.ac.in/cse.html", photo: "/assets/img/people/ujjal-roy.jpg" }
+    - { name: "Maharaj Brahma", role: "PhD Scholar, Dept. of CSE, IIT Hyderabad", url: "https://maharajbrahma.github.io", photo: "/assets/img/people/maharaj-brahma.jpg" }
+    - { name: "Jaya Rani Mushahary", role: "JRF, STI Hub, CIT Kokrajhar", url: "https://stihub.cit.ac.in/team", photo: "/assets/img/people/jaya-rani-mushahary.jpg" }
+    - { name: "Catherine Esther Jones", role: "Cyber Security Research Associate, R&D Team, EC-Council", url: "https://in.linkedin.com/in/catherine-esther-jones", photo: "/assets/img/people/catherine-esther-jones.jpg" }
+    - { name: "Debanand Singha", role: "B.Tech student, Dept. of CSE, CIT Kokrajhar", url: "https://in.linkedin.com/in/debanand", photo: "/assets/img/people/debanand-singha.jpg" }
+    - { name: "Monalisha Roy", role: "B.Tech student, Dept. of CSE, CIT Kokrajhar", url: "https://in.linkedin.com/in/monalisha-roy", photo: "/assets/img/people/monalisha-roy.jpg" }

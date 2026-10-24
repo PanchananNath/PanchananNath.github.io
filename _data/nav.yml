@@ -1,4 +1,5 @@
 # Top navigation. Reorder, rename or comment out freely.
+- { title: "Home",        url: "/" }
 - { title: "Research",    url: "/research/" }
 - { title: "Experience",  url: "/experience/" }
 - { title: "Teaching",    url: "/teaching/" }

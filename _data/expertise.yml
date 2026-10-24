@@ -1,0 +1,33 @@
+# ─────────────────────────────────────────────────────────────
+#  EXPERTISE MAP — the overlapping (Venn) diagram on Home and Research.
+#  Exactly three sets. Each area lists the circles (set ids) it sits in:
+#    circles: [net]            → only that circle
+#    circles: [net, app]       → overlap of two circles
+#    circles: [net, app, inv]  → the centre
+#  Move an area between regions just by editing its `circles` list.
+# ─────────────────────────────────────────────────────────────
+
+sets:
+  - id: net
+    label: "Networks & infrastructure"
+    text: "Next-generation networks, virtualised functions and the platforms they run on."
+  - id: app
+    label: "Software & application security"
+    text: "Testing, hardening and breaking the code that runs on those platforms."
+  - id: inv
+    label: "Investigation & defence"
+    text: "What happens after an attack: evidence, attribution and response."
+
+areas:
+  - { name: "5G & B5G (6G) networks",       circles: [net] }
+  - { name: "VNF testing",                  circles: [net, app] }
+  - { name: "Blockchain",                   circles: [net, app] }
+  - { name: "IoT security",                 circles: [net, app] }
+  - { name: "Cloud security",               circles: [net, inv] }
+  - { name: "Secure programming standards", circles: [app] }
+  - { name: "AI & ML for software testing", circles: [app] }
+  - { name: "Web penetration testing",      circles: [app, inv] }
+  - { name: "Mobile application VA & PT",   circles: [app, inv] }
+  - { name: "Digital forensics",            circles: [inv] }
+  - { name: "Cyber crime investigation",    circles: [inv] }
+  - { name: "Cyber security",               circles: [net, app, inv] }

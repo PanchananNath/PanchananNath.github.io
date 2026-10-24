@@ -1,0 +1,20 @@
+{% comment %}
+  One mentoring group. Usage: {% include mentor-card.html g=group compact=true %}
+  Members may be strings or { name, note, photo } objects.
+{% endcomment %}
+{% assign g = include.g %}
+<article class="mcard{% if include.compact %} mcard--compact{% endif %}">
+  {% if g.photo and include.compact == nil %}
+    <div class="mcard__photo"><img src="{% if g.photo contains '://' %}{{ g.photo }}{% else %}{{ g.photo | relative_url }}{% endif %}" alt="Team photo: {{ g.title }}" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></div>
+  {% endif %}
+  <div class="mcard__body">
+    <p class="mcard__title">{{ g.title }}</p>
+    {% if g.institute or g.note %}<p class="mcard__inst">{{ g.institute }}{% if g.institute and g.note %}. {% endif %}{{ g.note }}</p>{% endif %}
+    <ul class="mcard__people">
+      {% for m in g.members %}
+        {% if m.name %}{% assign mn = m.name %}{% assign mnote = m.note %}{% assign mp = m.photo %}{% else %}{% assign mn = m %}{% assign mnote = nil %}{% assign mp = nil %}{% endif %}
+        <li>{% include avatar.html name=mn photo=mp %}<span class="mcard__name">{{ mn }}{% if mnote %}<small>{{ mnote }}</small>{% endif %}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</article>

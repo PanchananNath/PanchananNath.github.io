@@ -1,17 +1,37 @@
-# Newest first
-- degree: "PhD, Computer Science & Engineering"
+# ─────────────────────────────────────────────────────────────
+#  EDUCATION — shown as a stepped timeline on the home page.
+#  Order: newest first (the page draws it oldest → newest).
+#  current: true   marks the degree in progress
+#  supervisors:    list of names (optional)
+#  focus:          one line on the thesis / project area (optional)
+# ─────────────────────────────────────────────────────────────
+
+- degree: "PhD"
+  field: "Computer Science & Engineering"
   school: "Indian Institute of Information Technology Guwahati"
   note: "Institute of National Importance"
   year: "2025 – present"
-- degree: "M.Tech, Computer Science & Engineering"
+  current: true
+  focus: "Intermittent computing, compiler-based security, early-exit deep learning, multi-access edge computing"
+  supervisors: ["Dr. Manojit Ghose"]
+
+- degree: "M.Tech"
+  field: "Computer Science & Engineering"
   school: "Central Institute of Technology Kokrajhar"
   note: "Deemed-to-be University, CFTI under MoE, GoI"
   year: "2024"
-- degree: "B.Tech, Computer Science & Engineering"
+  supervisors: ["Dr. Pranav Kumar Singh", "Prof. (Dr.) Anshuman Kalla (external)"]
+
+- degree: "B.Tech"
+  field: "Computer Science & Engineering"
   school: "Central Institute of Technology Kokrajhar"
   note: "Deemed-to-be University, CFTI under MoE, GoI"
   year: "2022"
-- degree: "Diploma, Computer Science & Engineering"
+  supervisors: ["Dr. Pranav Kumar Singh", "Prof. Tania Sarkar (minor project)"]
+
+- degree: "Diploma"
+  field: "Computer Science & Engineering"
   school: "Central Institute of Technology Kokrajhar"
   note: "Deemed-to-be University, CFTI under MoE, GoI"
   year: "2019"
+  supervisors: ["Prof. (Dr.) Hemanta Kumar Kalita"]
