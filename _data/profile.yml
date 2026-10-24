@@ -12,7 +12,7 @@ photo: "https://avatars.githubusercontent.com/u/77277835?v=4"
 headline: "Systems, network and security researcher"
 roles:
   - "PhD Scholar, Dept. of CSE, IIIT Guwahati"
-  - "Founder & CEO, EncryptoCyberspace"
+  # - "Founder & CEO, EncryptoCyberspace"
 
 location: "Guwahati, Assam, India"
 
@@ -74,10 +74,10 @@ network:
 
 research_focus:
   doctoral:
-    - "Intermittent computing"
     - "Compiler-based security and code analysis"
     - "Early-exit deep learning"
     - "Multi-access edge computing"
+    - "Intermittent computing for IoT"
   expertise:
     - "Blockchain"
     - "VNF testing"
