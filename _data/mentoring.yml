@@ -73,6 +73,7 @@ programs:
         photo: "/assets/img/mentoring/team-nursing-home.jpg"
         members: ["K Raj Kumar (B.Tech CSE 2021–25)"]
       - title: "E-learning management system"
+        photo: "/assets/img/mentoring/team-btech-elearning.jpg"
         note: "Jointly with Prof. Saubhagya Ranjan Nath"
         members: ["Saqib Assad Lone (CSE)", "Rachita Chatterjee (CSE)", "Muskan Kumari (IT)", "Kumari Anisha Singh (IT)"]
 
