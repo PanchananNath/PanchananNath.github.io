@@ -18,12 +18,14 @@
   talks:
     - type: "Invited speaker"
       date: 2023
+      mode: "Online"
 
 - org: "NIELIT Guwahati"
   place: "Guwahati, Assam"
   talks:
     - title: "Full Stack Development"
       type: "Invited talk"
+      mode:  "In person"
       date: "2022-23"
       audience: "70+ participants"
 
@@ -32,72 +34,97 @@
   logo: "/assets/img/talks/poornima-university.jpg"
   talks:
     - type: "Invited talk"
+    - mode:  "Online | Hybrid"
 
 - org: "Central Institute of Technology Kokrajhar"
   place: "Kokrajhar, Assam"
   logo: "/assets/img/talks/cit-kokrajhar.jpg"
   talks:
+    - title: "Cyber Security and Internet Safety "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "Central Reserve Police Force (CRPF)"
   logo: "/assets/img/talks/crpf.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Internet Safety "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "Kendriya Vidyalaya Sangathan"
   logo: "/assets/img/talks/kvs.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "S.A. Memorial College"
   place: "Kokrajhar, Assam"
   logo: "/assets/img/talks/sa-memorial-college.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "Girls' College, Kokrajhar"
   place: "Kokrajhar, Assam"
   logo: "/assets/img/talks/girls-college-kokrajhar.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "Assam Skill Development Mission"
   place: "Assam"
   logo: "/assets/img/talks/asdm.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "The Reality Public School"
   logo: "/assets/img/talks/reality-public-school.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "Kokrajhar Govt. H.S. & M.P. School"
   place: "Kokrajhar, Assam"
   logo: "/assets/img/talks/kokrajhar-govt-hs-mp-school.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "Kokrajhar Zila Nath-Yogi Sanmilani"
   place: "Kokrajhar, Assam"
   logo: "/assets/img/talks/nath-yogi-sanmilani-kokrajhar.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Internet Safety "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "IACT, Kokrajhar Centre"
   place: "Kokrajhar, Assam"
   logo: "/assets/img/talks/iact-kokrajhar.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Internet Safety "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "Bongaigaon Polytechnic"
   place: "Bongaigaon, Assam"
   logo: "/assets/img/talks/bongaigaon-polytechnic.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
 
 - org: "IACT, Jalukie Branch"
   place: "Jalukie, Nagaland"
   logo: "/assets/img/talks/iact-jalukie.jpg"
   talks:
+    - title: "Hands-on session on Cyber Security and Ethical Hacking "
     - type: "Invited talk"
+    - mode:  "In person"
