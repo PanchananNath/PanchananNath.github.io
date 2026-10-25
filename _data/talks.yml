@@ -27,9 +27,66 @@
       date: "2022-23"
       audience: "70+ participants"
 
-- org: "Kokrajhar centre"
+- org: "Poornima University"
+  place: "Jaipur, Rajasthan"
+  logo: "/assets/img/talks/poornima-university.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "Central Institute of Technology Kokrajhar"
   place: "Kokrajhar, Assam"
-  logo: "/assets/img/talks/kokrajhar-centre.jpg"
+  logo: "/assets/img/talks/cit-kokrajhar.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "Central Reserve Police Force (CRPF)"
+  logo: "/assets/img/talks/crpf.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "Kendriya Vidyalaya Sangathan"
+  logo: "/assets/img/talks/kvs.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "S.A. Memorial College"
+  place: "Kokrajhar, Assam"
+  logo: "/assets/img/talks/sa-memorial-college.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "Girls' College, Kokrajhar"
+  place: "Kokrajhar, Assam"
+  logo: "/assets/img/talks/girls-college-kokrajhar.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "Assam Skill Development Mission"
+  place: "Assam"
+  logo: "/assets/img/talks/asdm.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "The Reality Public School"
+  logo: "/assets/img/talks/reality-public-school.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "Kokrajhar Govt. H.S. & M.P. School"
+  place: "Kokrajhar, Assam"
+  logo: "/assets/img/talks/kokrajhar-govt-hs-mp-school.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "Kokrajhar Zila Nath-Yogi Sanmilani"
+  place: "Kokrajhar, Assam"
+  logo: "/assets/img/talks/nath-yogi-sanmilani-kokrajhar.jpg"
+  talks:
+    - type: "Invited talk"
+
+- org: "IACT, Kokrajhar Centre"
+  place: "Kokrajhar, Assam"
+  logo: "/assets/img/talks/iact-kokrajhar.jpg"
   talks:
     - type: "Invited talk"
 
@@ -39,8 +96,8 @@
   talks:
     - type: "Invited talk"
 
-- org: "Jalukie"
+- org: "IACT, Jalukie Branch"
   place: "Jalukie, Nagaland"
-  logo: "/assets/img/talks/jalukie.jpg"
+  logo: "/assets/img/talks/iact-jalukie.jpg"
   talks:
     - type: "Invited talk"
