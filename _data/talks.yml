@@ -1,28 +1,46 @@
-# ─────────────────────────────────────────────────────────────
-#  INVITED TALKS  (newest first)
-#  title is optional — add it when you have it. image: optional
-#  path such as /assets/img/talks/wec2023.jpg
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------------------
+#  INVITED TALKS - one entry per organisation, newest first.
+#  An organisation can have several talks; each becomes a row.
+#
+#  org / place / url     the host, shown with its logo on the left
+#  logo:                 image in assets/img/talks/ (missing -> initials)
+#  talks:
+#    title:    name of the talk (leave out if you don't have it)
+#    type:     Invited talk | Keynote | Expert lecture | Hands-on session | Panel ...
+#    mode:     In person | Online | Hybrid
+#    date:     "Mar 2024", "2022-23", 2023 ...
+#    audience: "70+ participants", "B.Tech students" ...
+#    link:     slides, certificate, news item (optional)
+# -------------------------------------------------------------
 
-- event: "9th WEC 2023"
-  where: "Osaka, Japan"
-  year: 2023
-  kind: "International"
-  title: "Invited speaker"
+- org: "9th WEC 2023"
+  place: "Osaka, Japan"
+  talks:
+    - type: "Invited speaker"
+      date: 2023
 
-- event: "Invited talk on Full Stack Development"
-  host: "NIELIT Guwahati"
-  where: "Guwahati, Assam"
-  year: "2022–23"
-  audience: "70+ participants"
+- org: "NIELIT Guwahati"
+  place: "Guwahati, Assam"
+  talks:
+    - title: "Full Stack Development"
+      type: "Invited talk"
+      date: "2022-23"
+      audience: "70+ participants"
 
-- event: "Invited talk"
-  host: "Assam Skill Development Mission, NRDS Centre"
-  where: "Kokrajhar, Assam"
+- org: "Kokrajhar centre"
+  place: "Kokrajhar, Assam"
+  logo: "/assets/img/talks/kokrajhar-centre.jpg"
+  talks:
+    - type: "Invited talk"
 
-- event: "Invited talk"
-  host: "Bongaigaon Polytechnic"
-  where: "Bongaigaon, Assam"
+- org: "Bongaigaon Polytechnic"
+  place: "Bongaigaon, Assam"
+  logo: "/assets/img/talks/bongaigaon-polytechnic.jpg"
+  talks:
+    - type: "Invited talk"
 
-- event: "Invited talk"
-  where: "Jalukie, Nagaland"
+- org: "Jalukie"
+  place: "Jalukie, Nagaland"
+  logo: "/assets/img/talks/jalukie.jpg"
+  talks:
+    - type: "Invited talk"

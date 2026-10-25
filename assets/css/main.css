@@ -749,3 +749,48 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .venn__t--core { fill: var(--ink); font-weight: 700; }
 .venn__core-ring { fill: var(--surface); stroke: var(--rule); stroke-width: 1.5; }
 .venn__set { border-left-width: 3px; }
+
+/* ==========================================================================
+   v5: invited talks table (organisation logo + talk details)
+   ========================================================================== */
+.talks-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: .97rem; }
+.talks-table thead th { font-family: var(--font-display); font-size: .82rem; font-weight: 650; color: var(--ink-3); text-align: left; padding: 0 14px 10px; border-bottom: 1.5px solid var(--ink); white-space: nowrap; }
+.talks-table thead th:first-child { padding-left: 0; }
+.talks-table td, .talks-table .tt-org { padding: 16px 14px; border-bottom: 1px solid var(--rule-soft); vertical-align: middle; text-align: left; }
+.talks-table tbody:hover td, .talks-table tbody:hover .tt-org { background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.tt-org { padding-left: 0 !important; width: 34%; font-weight: inherit; }
+.tt-org { display: table-cell; }
+.tt-org > .orglogo { vertical-align: middle; margin-right: 14px; }
+.tt-org__text { display: inline-flex; flex-direction: column; vertical-align: middle; max-width: calc(100% - 82px); }
+.tt-org__name { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; line-height: 1.25; }
+.tt-org__name a { text-decoration: none; }
+.tt-org__name a:hover { text-decoration: underline; }
+.tt-org__place { font-family: var(--font-display); font-size: .85rem; color: var(--ink-3); margin-top: 2px; }
+.tt-talk__title { display: block; font-weight: 600; line-height: 1.4; }
+.tt-talk__type { display: block; font-family: var(--font-display); font-size: .85rem; color: var(--ink-3); margin-top: 2px; }
+.tt-talk__type--only { font-size: .95rem; color: var(--ink-2); margin-top: 0; }
+.talks-table td[data-label="Date"], .talks-table td[data-label="Audience"] { font-family: var(--font-display); font-size: .9rem; color: var(--ink-2); white-space: nowrap; }
+.tt-dash { color: var(--rule); }
+
+.mode { display: inline-block; font-family: var(--font-display); font-size: .8rem; font-weight: 650; padding: 2px 10px; border-radius: 999px; white-space: nowrap; background: var(--rule-soft); color: var(--ink-2); }
+.mode--in-person, .mode--offline { background: var(--ind-soft); color: var(--ind); }
+.mode--online { background: var(--acad-soft); color: var(--acad); }
+.mode--hybrid { background: color-mix(in srgb, var(--signal) 20%, transparent); color: var(--ink); }
+
+.orglogo { position: relative; display: inline-grid; place-items: center; flex: none; width: 64px; height: 64px; border-radius: 12px; background: #fff; border: 1px solid var(--rule-soft); overflow: hidden; color: var(--acad); font-family: var(--font-display); font-weight: 700; font-size: 1rem; }
+.orglogo img { position: absolute; inset: 6px; width: calc(100% - 12px); height: calc(100% - 12px); object-fit: contain; }
+.orglogo:not(:has(img)) { background: var(--acad-soft); border-color: transparent; }
+
+@media (max-width: 760px) {
+  .talks-table, .talks-table tbody, .talks-table tr, .talks-table td, .talks-table .tt-org { display: block; width: auto; }
+  .talks-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .talks-table tbody { border: 1px solid var(--rule-soft); border-radius: var(--r-md); background: var(--surface); padding: 16px; margin-bottom: 14px; }
+  .talks-table tr + tr { border-top: 1px dashed var(--rule); margin-top: 12px; padding-top: 12px; }
+  .talks-table td, .talks-table .tt-org { border: 0; padding: 4px 0 !important; background: none !important; }
+  .talks-table .tt-org { display: flex; align-items: center; gap: 14px; padding-bottom: 12px !important; }
+  .tt-org > .orglogo { margin-right: 0; }
+  .tt-org__text { max-width: none; }
+  .talks-table td[data-label] { display: grid; grid-template-columns: 86px 1fr; gap: 10px; white-space: normal; }
+  .talks-table td[data-label]::before { content: attr(data-label); font-family: var(--font-display); font-size: .8rem; color: var(--ink-3); padding-top: 2px; }
+  .talks-table td.is-empty { display: none; }
+}

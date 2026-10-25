@@ -1,0 +1,6 @@
+{% comment %} Organisation logo on a white tile; initials if the image is missing. {% endcomment %}
+{% assign ol_words = include.name | split: " " %}
+<span class="orglogo" aria-hidden="true">
+  <span class="orglogo__ini">{{ ol_words.first | slice: 0 }}{% if ol_words.size > 1 %}{{ ol_words[1] | slice: 0 }}{% endif %}</span>
+  {% if include.src %}<img src="{% if include.src contains '://' %}{{ include.src }}{% else %}{{ include.src | relative_url }}{% endif %}" alt="" loading="lazy" decoding="async" onerror="this.remove()">{% endif %}
+</span>

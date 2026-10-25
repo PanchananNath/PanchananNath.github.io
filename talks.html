@@ -2,20 +2,51 @@
 layout: page
 title: "Invited talks"
 permalink: /talks/
-lede: "Places that have invited me to speak, from an international workshop in Osaka to polytechnics and skill centres across the Northeast."
+lede: "Organisations that have invited me to speak, from an international convention in Osaka to polytechnics and skill centres across the Northeast."
 ---
-<ol class="talks">
-  {% for t in site.data.talks %}
-    <li class="talk">
-      {% if t.image %}<img class="talk__img" src="{{ t.image | relative_url }}" alt="{{ t.event }}{% if t.where %}, {{ t.where }}{% endif %}" loading="lazy">{% endif %}
-      <div>
-        <p class="talk__where">{% if t.host %}{{ t.host }}{% else %}{{ t.where }}{% endif %}</p>
-        <p class="talk__event">{{ t.event }}{% if t.title and t.title != t.event %}: {{ t.title }}{% endif %}</p>
-        <p class="talk__meta">{% if t.host %}{{ t.where }}{% endif %}{% if t.host and t.year %}, {% endif %}{{ t.year }}{% if t.audience %}{% if t.year or t.host %}. {% endif %}{{ t.audience }}{% endif %}</p>
-      </div>
-    </li>
+{% assign orgs = site.data.talks %}
+{% assign n_talks = 0 %}
+{% for o in orgs %}{% assign n_talks = n_talks | plus: o.talks.size %}{% endfor %}
+
+<p class="summary">{{ n_talks }} {% if n_talks == 1 %}talk{% else %}talks{% endif %} at {{ orgs.size }} {% if orgs.size == 1 %}organisation{% else %}organisations{% endif %}.</p>
+
+<table class="talks-table">
+  <thead>
+    <tr>
+      <th scope="col">Organisation</th>
+      <th scope="col">Talk</th>
+      <th scope="col">Mode</th>
+      <th scope="col">Date</th>
+      <th scope="col">Audience</th>
+    </tr>
+  </thead>
+  {% for o in orgs %}
+  <tbody class="talks-table__org">
+    {% for t in o.talks %}
+    <tr>
+      {% if forloop.first %}
+      <th scope="rowgroup" class="tt-org"{% if o.talks.size > 1 %} rowspan="{{ o.talks.size }}"{% endif %}>
+        {% include org-logo.html name=o.org src=o.logo %}
+        <span class="tt-org__text">
+          <span class="tt-org__name">{% if o.url %}<a href="{{ o.url }}" rel="noopener" target="_blank">{{ o.org }}</a>{% else %}{{ o.org }}{% endif %}</span>
+          {% if o.place %}<span class="tt-org__place">{{ o.place }}</span>{% endif %}
+        </span>
+      </th>
+      {% endif %}
+      <td class="tt-talk" data-label="Talk"><span class="tt-talk__body">
+        {% if t.title %}<span class="tt-talk__title">{% if t.link %}<a href="{{ t.link }}" rel="noopener" target="_blank">{{ t.title }}</a>{% else %}{{ t.title }}{% endif %}</span>{% endif %}
+        {% if t.type %}<span class="tt-talk__type{% unless t.title %} tt-talk__type--only{% endunless %}">{{ t.type }}</span>{% endif %}
+      </span></td>
+      <td data-label="Mode"{% unless t.mode %} class="is-empty"{% endunless %}>
+        {% if t.mode %}{% assign mode_key = t.mode | downcase | replace: " ", "-" %}<span class="mode mode--{{ mode_key }}">{{ t.mode }}</span>{% else %}<span class="tt-dash">&ndash;</span>{% endif %}
+      </td>
+      <td data-label="Date"{% unless t.date %} class="is-empty"{% endunless %}>{% if t.date %}{{ t.date }}{% else %}<span class="tt-dash">&ndash;</span>{% endif %}</td>
+      <td data-label="Audience"{% unless t.audience %} class="is-empty"{% endunless %}>{% if t.audience %}{{ t.audience }}{% else %}<span class="tt-dash">&ndash;</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
   {% endfor %}
-</ol>
+</table>
 
 <aside class="note">
   <p>Available for conferences, workshops, seminars, tutorials and hands-on technical sessions on security, blockchain, 5G/B5G and edge AI.</p>
