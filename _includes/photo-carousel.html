@@ -1,0 +1,23 @@
+{% comment %}
+  Photo carousel. Shows every image in assets/img/gallery/<section>/ in file-name order.
+  To add a photo: drop it in that folder (e.g. teaching-09.jpg) and push.
+  Usage: {% include photo-carousel.html section="teaching" label="Teaching photos" %}
+{% endcomment %}
+{% assign pc_dir = "/assets/img/gallery/" | append: include.section | append: "/" %}
+{% assign pc_files = site.static_files | sort: "path" %}
+{% assign pc_n = 0 %}
+{% capture pc_slides %}{% for f in pc_files %}{% assign pc_ext = f.extname | downcase %}{% if f.path contains pc_dir %}{% if pc_ext == ".jpg" or pc_ext == ".jpeg" or pc_ext == ".png" or pc_ext == ".webp" %}{% assign pc_n = pc_n | plus: 1 %}
+    <li class="pcar__slide"><button type="button" class="pcar__btn" data-zoom data-caption="" aria-label="Enlarge photo {{ pc_n }}"><img src="{{ f.path | relative_url }}" alt="" decoding="async"{% if pc_n > 1 %} loading="lazy"{% endif %}></button></li>{% endif %}{% endif %}{% endfor %}{% endcapture %}
+{% if pc_n > 0 %}
+<div class="pcar" data-pcar role="region" aria-roledescription="carousel" aria-label="{{ include.label | default: 'Photos' }}">
+  <div class="pcar__viewport">
+    <ul class="pcar__track">{{ pc_slides }}
+    </ul>
+  </div>
+  {% if pc_n > 1 %}
+  <button type="button" class="pcar__arrow pcar__arrow--prev" data-pcar-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+  <button type="button" class="pcar__arrow pcar__arrow--next" data-pcar-next aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+  <div class="pcar__dots" data-pcar-dots></div>
+  {% endif %}
+</div>
+{% endif %}

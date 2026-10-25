@@ -512,76 +512,79 @@
   });
 })();
 
-/* ---------- photo reel + gallery filters ---------- */
+/* ---------- photo carousel ---------- */
 (function () {
   'use strict';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('[data-reel]').forEach(function (reel) {
-    var slides = Array.prototype.slice.call(reel.querySelectorAll('.reel__slide'));
-    if (!slides.length) return;
-    var stage = reel.querySelector('.reel__stage'), img = reel.querySelector('.reel__img');
-    var cap = reel.querySelector('.reel__cap'), iEl = reel.querySelector('[data-reel-i]');
-    var bar = reel.querySelector('.reel__progress'), thumbs = reel.querySelector('.reel__thumbs');
-    var MS = 5000, cur = -1, timer = null, hold = false, seen = false;
-    reel.querySelector('[data-reel-n]').textContent = slides.length;
-    reel.style.setProperty('--reel-ms', MS + 'ms');
-    function show(i, user) {
-      i = (i + slides.length) % slides.length;
-      if (i === cur) return;
-      cur = i;
-      var s = slides[i], src = s.getAttribute('data-src'), c = s.getAttribute('data-caption') || '';
-      var swap = function () { img.src = src; img.alt = c; };
-      if (reduce || !img.getAttribute('src')) swap();
-      else { img.classList.add('is-fading'); setTimeout(swap, 180); }
-      cap.textContent = c; stage.setAttribute('data-caption', c);
-      iEl.textContent = i + 1;
-      slides.forEach(function (x, k) { x.classList.toggle('is-active', k === i); });
-      var t = s.offsetLeft - thumbs.clientWidth / 2 + s.clientWidth / 2;
-      thumbs.scrollTo({ left: Math.max(0, t), behavior: reduce ? 'auto' : 'smooth' });
-      if (user) hold = true;
+  document.querySelectorAll('[data-pcar]').forEach(function (root) {
+    var track = root.querySelector('.pcar__track');
+    var real = Array.prototype.slice.call(track.children);
+    var n = real.length;
+    if (n < 2) return;
+    // clones at both ends for a seamless loop
+    var first = real[0].cloneNode(true), last = real[n - 1].cloneNode(true);
+    [first, last].forEach(function (c) { c.setAttribute('aria-hidden', 'true'); c.querySelector('button').tabIndex = -1; var im = c.querySelector('img'); im.loading = 'eager'; });
+    track.appendChild(first); track.insertBefore(last, real[0]);
+    var pos = 1, timer = null, hold = false, seen = false, busy = false, MS = 4500;
+    var dotsBox = root.querySelector('[data-pcar-dots]');
+    var dots = real.map(function (s, i) {
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Show photo ' + (i + 1));
+      b.addEventListener('click', function () { go(i + 1, true); });
+      dotsBox.appendChild(b); return b;
+    });
+    function place(animate) {
+      track.classList.toggle('is-animating', !!animate && !reduce);
+      track.style.transform = 'translateX(' + (-pos * 100) + '%)';
+    }
+    function sync() {
+      var k = (pos - 1 + n) % n;
+      dots.forEach(function (d, i) { d.setAttribute('aria-current', i === k ? 'true' : 'false'); });
+      real.forEach(function (s, i) { s.setAttribute('aria-hidden', i === k ? 'false' : 'true'); s.querySelector('button').tabIndex = i === k ? 0 : -1; });
+      var next = real[(k + 1) % n].querySelector('img'); if (next.loading === 'lazy') next.loading = 'eager';
+    }
+    function go(p, user) {
+      if (busy) return;
+      pos = p; busy = !reduce; place(true); sync();
+      if (reduce) settle();
+      if (user) { hold = true; setTimeout(function () { hold = false; restart(); }, 8000); }
       restart();
     }
-    img.addEventListener('load', function () { img.classList.remove('is-fading'); });
-    function restart() {
-      clearTimeout(timer); bar.classList.remove('is-running'); void bar.offsetWidth;
-      if (reduce || hold || !seen || slides.length < 2) return;
-      bar.classList.add('is-running');
-      timer = setTimeout(function () { if (!document.hidden) show(cur + 1); else restart(); }, MS);
+    function settle() {
+      busy = false;
+      if (pos === 0) { pos = n; place(false); }
+      if (pos === n + 1) { pos = 1; place(false); }
     }
-    slides.forEach(function (s, k) { s.querySelector('.reel__thumb').addEventListener('click', function () { show(k, true); }); });
-    reel.querySelector('[data-reel-prev]').addEventListener('click', function () { show(cur - 1, true); });
-    reel.querySelector('[data-reel-next]').addEventListener('click', function () { show(cur + 1, true); });
-    reel.addEventListener('mouseenter', function () { hold = true; restart(); });
-    reel.addEventListener('mouseleave', function () { hold = false; restart(); });
-    reel.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { show(cur + 1, true); e.preventDefault(); }
-      if (e.key === 'ArrowLeft') { show(cur - 1, true); e.preventDefault(); }
+    track.addEventListener('transitionend', function (e) { if (e.target === track) settle(); });
+    function restart() {
+      clearTimeout(timer);
+      if (reduce || hold || !seen) return;
+      timer = setTimeout(function () { if (!document.hidden) go(pos + 1); else restart(); }, MS);
+    }
+    root.querySelector('[data-pcar-prev]').addEventListener('click', function () { go(pos - 1, true); });
+    root.querySelector('[data-pcar-next]').addEventListener('click', function () { go(pos + 1, true); });
+    root.addEventListener('mouseenter', function () { hold = true; clearTimeout(timer); });
+    root.addEventListener('mouseleave', function () { hold = false; restart(); });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { go(pos + 1, true); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { go(pos - 1, true); e.preventDefault(); }
     });
-    var x0 = null;
-    stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-    stage.addEventListener('touchend', function (e) {
+    // swipe / drag
+    var vp = root.querySelector('.pcar__viewport'), x0 = null, dx = 0, moved = false;
+    vp.addEventListener('pointerdown', function (e) { if (busy) return; x0 = e.clientX; dx = 0; moved = false; });
+    vp.addEventListener('pointermove', function (e) {
       if (x0 === null) return;
-      var dx = e.changedTouches[0].clientX - x0; x0 = null;
-      if (Math.abs(dx) > 40) { show(cur + (dx < 0 ? 1 : -1), true); }
+      dx = e.clientX - x0;
+      if (Math.abs(dx) > 6) { moved = true; track.classList.remove('is-animating'); track.style.transform = 'translateX(calc(' + (-pos * 100) + '% + ' + dx + 'px))'; }
     });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { seen = es[0].isIntersecting; restart(); }, { threshold: 0.4 }).observe(reel);
-    } else { seen = true; }
-    show(0);
+    function end() {
+      if (x0 === null) return;
+      x0 = null;
+      if (Math.abs(dx) > 50) go(pos + (dx < 0 ? 1 : -1), true); else place(true);
+    }
+    vp.addEventListener('pointerup', end); vp.addEventListener('pointerleave', end); vp.addEventListener('pointercancel', end);
+    vp.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { seen = es[0].isIntersecting; restart(); }, { threshold: 0.35 }).observe(root);
+    else seen = true;
+    place(false); sync();
   });
-
-  var gf = document.querySelector('[data-gal-filters]');
-  if (gf) {
-    var items = document.querySelectorAll('[data-gal] .gal__item');
-    gf.querySelectorAll('[data-filter]').forEach(function (b) {
-      var want = b.getAttribute('data-filter');
-      var n = want === 'all' ? items.length : Array.prototype.filter.call(items, function (it) { return it.getAttribute('data-section') === want; }).length;
-      var span = document.createElement('span'); span.textContent = ' ' + n; b.appendChild(span);
-      b.addEventListener('click', function () {
-        gf.querySelectorAll('[data-filter]').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
-        b.setAttribute('aria-pressed', 'true');
-        items.forEach(function (it) { it.hidden = want !== 'all' && it.getAttribute('data-section') !== want; });
-      });
-    });
-  }
 })();

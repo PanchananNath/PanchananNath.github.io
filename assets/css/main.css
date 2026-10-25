@@ -796,51 +796,30 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ==========================================================================
-   v6: photo slider (reel) and gallery
+   v7: photo carousel (Teaching, Mentoring)
    ========================================================================== */
-.reel__stage-wrap { position: relative; border-radius: var(--r-md); overflow: hidden; background: var(--chip); }
-.reel__stage { display: block; width: 100%; aspect-ratio: 16 / 9; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
-.reel__img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity .35s ease; }
-.reel__img.is-fading { opacity: 0; }
-.reel__nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; background: color-mix(in srgb, var(--surface) 88%, transparent); border-color: transparent; box-shadow: 0 6px 18px -8px rgba(0,0,0,.5); }
-.reel__nav--prev { left: 14px; }
-.reel__nav--next { right: 14px; }
-.reel__nav.round-btn--solid { background: var(--ink); }
-.reel__progress { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--ind); }
-.reel__progress.is-running { animation: reel-progress var(--reel-ms, 5000ms) linear forwards; }
-@keyframes reel-progress { to { width: 100%; } }
-.reel__bar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 12px 2px 10px; }
-.reel__cap { font-family: var(--font-display); font-weight: 600; margin: 0; line-height: 1.35; min-height: 1.35em; }
-.reel__count { font-family: var(--font-display); font-size: .88rem; color: var(--ink-3); margin: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.reel__thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 8px; scroll-snap-type: x proximity; scrollbar-width: thin; }
-.reel__slide { flex: none; scroll-snap-align: start; }
-.reel__thumb { display: block; width: 112px; aspect-ratio: 16 / 10; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: var(--rule-soft); cursor: pointer; opacity: .65; transition: opacity .2s, border-color .2s; }
-.reel__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.reel__thumb:hover { opacity: 1; }
-.reel__slide.is-active .reel__thumb { opacity: 1; border-color: var(--ind); }
-@media (max-width: 560px) {
-  .reel__nav { width: 34px; height: 34px; }
-  .reel__nav--prev { left: 8px; } .reel__nav--next { right: 8px; }
-  .reel__thumb { width: 84px; }
-  .reel__bar { flex-direction: column; gap: 2px; }
+.pcar { position: relative; margin: 0 0 clamp(32px, 5vw, 52px); border-radius: 14px; overflow: hidden; background: var(--rule-soft); box-shadow: 0 22px 44px -30px rgba(0,0,0,.55); }
+.pcar__viewport { overflow: hidden; touch-action: pan-y; }
+.pcar__track { display: flex; margin: 0; padding: 0; list-style: none; will-change: transform; }
+.pcar__track.is-animating { transition: transform .6s cubic-bezier(.3,.7,.2,1); }
+.pcar__slide { flex: 0 0 100%; }
+.pcar__btn { display: block; width: 100%; aspect-ratio: 16 / 7; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.pcar__btn img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; user-select: none; -webkit-user-drag: none; }
+.pcar__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.88); color: #1C2430; cursor: pointer; box-shadow: 0 6px 18px -8px rgba(0,0,0,.6); opacity: 0; transition: opacity .25s, background .2s; }
+.pcar__arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.pcar__arrow:hover { background: #fff; }
+.pcar__arrow--prev { left: 16px; }
+.pcar__arrow--next { right: 16px; }
+.pcar:hover .pcar__arrow, .pcar:focus-within .pcar__arrow { opacity: 1; }
+.pcar__dots { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; gap: 7px; padding: 30px 0 14px; background: linear-gradient(transparent, rgba(0,0,0,.38)); pointer-events: none; }
+.pcar__dots button { pointer-events: auto; width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: rgba(255,255,255,.55); cursor: pointer; transition: width .3s, background .3s; }
+.pcar__dots button[aria-current="true"] { width: 24px; background: #fff; }
+@media (hover: none) { .pcar__arrow { opacity: 1; } }
+@media (max-width: 640px) {
+  .pcar { border-radius: 10px; margin-left: calc(var(--gutter) * -0.5); margin-right: calc(var(--gutter) * -0.5); }
+  .pcar__btn { aspect-ratio: 4 / 3; }
+  .pcar__arrow { width: 36px; height: 36px; }
+  .pcar__arrow--prev { left: 10px; } .pcar__arrow--next { right: 10px; }
 }
-
-.gal__filters { margin-bottom: 22px; }
-.gal { columns: 3 280px; column-gap: 16px; }
-.gal__item { break-inside: avoid; margin: 0 0 16px; }
-.gal__item[hidden] { display: none; }
-.gal__btn { display: block; width: 100%; padding: 0; border: 0; border-radius: var(--r-md); overflow: hidden; background: var(--rule-soft); cursor: zoom-in; }
-.gal__btn img { width: 100%; height: auto; display: block; transition: transform .4s; }
-.gal__btn:hover img { transform: scale(1.03); }
-.gal__cap { font-family: var(--font-display); font-size: .88rem; color: var(--ink-2); line-height: 1.4; margin: 8px 2px 0; }
-
-/* nine menu items: collapse to the menu button a little earlier */
-@media (max-width: 1100px) and (min-width: 901px) {
-  .nav-toggle { display: inline-grid; }
-  .site-nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--rule); padding: 8px var(--gutter) 16px; display: none; flex-direction: column; align-items: stretch; }
-  .site-nav.is-open { display: flex; }
-  .site-nav ul { flex-direction: column; }
-  .site-nav a { padding: 10px 4px; font-size: 1.05rem; }
-  .site-nav a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--acad); padding-left: 12px; }
-  .theme-toggle { align-self: flex-start; margin-top: 8px; }
-}
+@media (prefers-reduced-motion: reduce) { .pcar__track.is-animating { transition: none; } }
+.mentor-intro + .pcar { margin-top: clamp(28px, 4vw, 44px); }

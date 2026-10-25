@@ -10,9 +10,9 @@ lede: "Labs, lectures and bootcamps, from school classrooms and skill-developmen
   {% assign total = total | plus: c.students %}{% assign courses = courses | plus: 1 %}
 {% endfor %}{% endfor %}{% endfor %}
 
-<p class="summary">{{ courses }} courses and trainings across {{ site.data.teaching.size }} institutions, reaching {{ total }}+ learners.</p>
+{% include photo-carousel.html section="teaching" label="Teaching photos" %}
 
-{% include photo-reel.html section="teaching" title="In the classroom" %}
+<p class="summary">{{ courses }} courses and trainings across {{ site.data.teaching.size }} institutions, reaching {{ total }}+ learners.</p>
 
 {% for inst in site.data.teaching %}
 <section class="block teach">
