@@ -11,17 +11,15 @@ title: "Panchanan Nath"
 <section class="hero">
   <div class="wrap hero__grid">
     <div class="hero__text">
-      <img class="hero__photo" src="{% if p.photo contains '://' %}{{ p.photo }}{% else %}{{ p.photo | relative_url }}{% endif %}" alt="Portrait of {{ p.name }}" width="96" height="96">
-      <h1 class="hero__name"><span class="hero__prefix">{{ p.prefix }}</span> {{ p.name }}</h1>
+      <div class="hero__id">
+        <img class="hero__photo" src="{% if p.photo contains '://' %}{{ p.photo }}{% else %}{{ p.photo | relative_url }}{% endif %}" alt="Portrait of {{ p.name }}" width="160" height="160">
+        <h1 class="hero__name"><span class="hero__prefix">{{ p.prefix }}</span> {{ p.name }}</h1>
+      </div>
       <p class="hero__headline">{{ p.headline }}</p>
       <ul class="hero__roles">
         {% for r in p.roles %}<li>{{ r }}</li>{% endfor %}
       </ul>
-      <div class="hero__actions">
-        <a class="btn btn--solid email-link" href="#" data-user="{{ p.email_user }}" data-domain="{{ p.email_domain }}">{% include icon.html name='mail' %}Email me</a>
-        <a class="btn" href="{{ '/research/' | relative_url }}">Research &amp; publications</a>
-        {% if p.cv %}<a class="btn" href="{{ p.cv | relative_url }}">{% include icon.html name='file' %}CV</a>{% endif %}
-      </div>
+      {% if p.cv %}<div class="hero__actions"><a class="btn" href="{{ p.cv | relative_url }}">{% include icon.html name='file' %}CV</a></div>{% endif %}
       <ul class="icon-links" aria-label="Profiles">
         {% for l in p.links %}
           <li><a href="{{ l.url }}" rel="noopener" target="_blank" aria-label="{{ l.label }}" title="{{ l.label }}">{% include icon.html name=l.icon %}</a></li>

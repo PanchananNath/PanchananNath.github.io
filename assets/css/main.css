@@ -722,3 +722,30 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .cert__name { font-size: 1.2rem; }
   .cert__full { font-size: .8rem; }
 }
+
+/* ==========================================================================
+   v4: square portrait hero, quieter Venn palette
+   ========================================================================== */
+.hero__id { display: flex; align-items: flex-end; gap: 26px; margin-bottom: 22px; }
+.hero__photo { flex: none; width: 160px; height: 160px; margin: 0; border-radius: 14px; object-fit: cover; border: 0; box-shadow: 0 0 0 4px var(--surface), 0 0 0 5.5px var(--ind), 0 18px 34px -22px rgba(0,0,0,.55); }
+.hero__name { font-size: clamp(2.3rem, 4.4vw, 3.5rem); line-height: .96; margin-bottom: 4px; }
+.hero__prefix { font-size: .36em; margin-bottom: .45em; }
+.hero__headline { margin-bottom: 12px; }
+.hero__roles { margin-bottom: 22px; }
+@media (max-width: 480px) {
+  .hero__id { gap: 18px; }
+  .hero__photo { width: 112px; height: 112px; border-radius: 12px; }
+}
+
+:root { --v0: #3B4CCA; --v1: #17795A; --v2: #5C6B7A; }
+:root[data-theme="dark"] { --v0: #93A0FF; --v1: #52C99D; --v2: #A3AEBA; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --v0: #93A0FF; --v1: #52C99D; --v2: #A3AEBA; } }
+.venn__c { fill-opacity: .06; stroke-width: 1.5; }
+.venn[data-focus] .venn__c, .venn.has-area .venn__c { fill-opacity: .03; }
+.venn[data-focus="0"] .venn__c--0, .venn[data-focus="1"] .venn__c--1, .venn[data-focus="2"] .venn__c--2,
+.venn.has-area .venn__c.is-on { fill-opacity: .14; stroke-width: 2.4; }
+.venn__label { font-size: 14px; font-weight: 650; letter-spacing: .01em; }
+.venn__t { font-weight: 500; fill: var(--ink-2); }
+.venn__t--core { fill: var(--ink); font-weight: 700; }
+.venn__core-ring { fill: var(--surface); stroke: var(--rule); stroke-width: 1.5; }
+.venn__set { border-left-width: 3px; }
