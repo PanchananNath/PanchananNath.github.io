@@ -30,4 +30,4 @@ areas:
   - { name: "Mobile application VA & PT",   circles: [app, inv] }
   - { name: "Digital forensics",            circles: [inv] }
   - { name: "Cyber crime investigation",    circles: [inv] }
-  - { name: "Systems Network & Security",               circles: [net, app, inv] }
+  - { name: "Cyber Security",               circles: [net, app, inv] }
