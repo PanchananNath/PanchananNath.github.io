@@ -99,7 +99,6 @@ programs:
         photo: "/assets/img/mentoring/team-online-lms.jpg"
         members: ["Right Siman Jena", "Sandeep Bag", "Niranjan Padhi", "S Nikhil Patro"]
       - title: "Multilingual learning management system"
-        photo: "/assets/img/mentoring/team-multilingual-lms.jpg"
         members: ["Narayan Bisoyee", "Bhandi Monalisha", "Ashutosh Sahu", "Kalaga Anwesh Kumar"]
 
   - title: "6th-semester lab-based projects"

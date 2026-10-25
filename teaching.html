@@ -12,6 +12,8 @@ lede: "Labs, lectures and bootcamps, from school classrooms and skill-developmen
 
 <p class="summary">{{ courses }} courses and trainings across {{ site.data.teaching.size }} institutions, reaching {{ total }}+ learners.</p>
 
+{% include photo-reel.html section="teaching" title="In the classroom" %}
+
 {% for inst in site.data.teaching %}
 <section class="block teach">
   <h2 class="bus">{{ inst.institution }}</h2>

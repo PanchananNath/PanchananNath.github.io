@@ -1,0 +1,26 @@
+# -------------------------------------------------------------
+#  PHOTO GALLERY
+#  No editing needed to add photos: drop images into these folders and push.
+#    assets/img/gallery/teaching/    -> Teaching page slider + Gallery
+#    assets/img/gallery/mentoring/   -> Mentoring page slider + Gallery
+#    assets/img/gallery/talks/       -> Gallery
+#    assets/img/gallery/events/      -> Gallery
+#  Formats: .jpg .jpeg .png .webp. Keep each photo under ~500 KB.
+#  Order: photos show in file-name order, so number them,
+#         e.g. teaching-09.jpg, teaching-10.jpg
+#
+#  Captions are optional: "folder/file name": "caption"
+# -------------------------------------------------------------
+
+sections:
+  - { id: teaching,  label: "Teaching" }
+  - { id: mentoring, label: "Mentoring" }
+  - { id: talks,     label: "Talks" }
+  - { id: events,    label: "Events" }
+
+# Also add the project-team slides from _data/mentoring.yml to the
+# Mentoring carousel and Gallery (they already appear on the team cards)
+include_mentoring_team_photos: false
+
+captions:
+  # "teaching/teaching-01.jpg": "Compilers Lab, IIIT Guwahati, 2026"

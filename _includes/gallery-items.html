@@ -1,0 +1,22 @@
+{% comment %}
+  Emits one <li> per photo for a section (folder photos first, in file-name order;
+  then, for mentoring, the team slides from mentoring.yml).
+  Usage: {% include gallery-items.html section="teaching" kind="reel" %}   kind: reel | grid
+{% endcomment %}
+{% assign gi_sec = include.section %}
+{% assign gi_dir = "/assets/img/gallery/" | append: gi_sec | append: "/" %}
+{% assign gi_files = site.static_files | sort: "path" %}
+{% for f in gi_files %}
+  {% assign gi_ext = f.extname | downcase %}
+  {% if f.path contains gi_dir %}{% if gi_ext == ".jpg" or gi_ext == ".jpeg" or gi_ext == ".png" or gi_ext == ".webp" %}
+    {% assign gi_key = gi_sec | append: "/" | append: f.name %}
+    {% assign gi_cap = site.data.gallery.captions[gi_key] %}
+    {% include gallery-item.html src=f.path caption=gi_cap section=gi_sec kind=include.kind %}
+  {% endif %}{% endif %}
+{% endfor %}
+{% if gi_sec == "mentoring" and site.data.gallery.include_mentoring_team_photos %}
+  {% for pg in site.data.mentoring.programs %}{% for g in pg.groups %}{% if g.photo %}
+    {% capture gi_cap %}{{ g.title }} ({{ pg.title }}, {{ pg.year }}){% endcapture %}
+    {% include gallery-item.html src=g.photo caption=gi_cap section=gi_sec kind=include.kind %}
+  {% endif %}{% endfor %}{% endfor %}
+{% endif %}
