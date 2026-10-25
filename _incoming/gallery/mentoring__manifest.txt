@@ -1,0 +1,39 @@
+n	file	kind	heading	text-after
+1	pnsite__gallery__mentoring__01__mentoring.jpg	carousel	Mentoring	Mentor
+2	pnsite__gallery__mentoring__02__mentoring.jpg	carousel	Mentoring	Mentor
+3	pnsite__gallery__mentoring__03__mentoring.jpg	carousel	Mentoring	Mentor
+4	pnsite__gallery__mentoring__04__mentoring.jpg	carousel	Mentoring	Mentor
+5	pnsite__gallery__mentoring__05__mentoring.jpg	carousel	Mentoring	Mentor
+6	pnsite__gallery__mentoring__06__mentoring.jpg	carousel	Mentoring	Mentor
+7	pnsite__gallery__mentoring__07__mentoring.jpg	carousel	Mentoring	Mentor
+8	pnsite__gallery__mentoring__08__mentoring.jpg	carousel	Mentoring	Mentor
+9	pnsite__gallery__mentoring__09__mentoring.jpg	carousel	Mentoring	Mentor
+10	pnsite__gallery__mentoring__10__mentoring.jpg	carousel	Mentoring	Mentor
+11	pnsite__gallery__mentoring__11__mentoring.jpg	carousel	Mentoring	Mentor
+12	pnsite__gallery__mentoring__12__mentoring.jpg	carousel	Mentoring	Mentor
+13	pnsite__gallery__mentoring__13__mentoring.jpg	carousel	Mentoring	Mentor
+14	pnsite__gallery__mentoring__14__mentoring.jpg	carousel	Mentoring	Mentor
+15	pnsite__gallery__mentoring__15__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Biswadeep Mazumder
+16	pnsite__gallery__mentoring__16__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Rajdeep Gogoi
+17	pnsite__gallery__mentoring__17__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Partha Pratim Borah
+18	pnsite__gallery__mentoring__18__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Mrinmay Kalita
+19	pnsite__gallery__mentoring__19__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Raghab Jyoti Kalita
+20	pnsite__gallery__mentoring__20__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Daiji Kalita
+21	pnsite__gallery__mentoring__21__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Rahul Talukdar
+22	pnsite__gallery__mentoring__22__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Nikita Sarma
+23	pnsite__gallery__mentoring__23__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Afrina Ahmad
+24	pnsite__gallery__mentoring__24__mentor-for-summer-research-interns-2025-.jpg	image	Mentor for Summer Research Interns 2025 @ Indian Institute of Information Technology Guwahati	Dhruba Jyoti Roy
+25	pnsite__gallery__mentoring__25__supervisor-for-b-tech-final-year-project.jpg	image	Supervisor for B.Tech final year project 2025 @ NIST University	Title : Blockchain Based Temper Proof Nursing Home Management System
+26	pnsite__gallery__mentoring__26__supervisor-for-b-tech-final-year-project.jpg	image	Supervisor for B.Tech final year project 2025 @ NIST University	Title :
+27	pnsite__gallery__mentoring__27__supervisor-for-mca-final-year-project-20.jpg	image	Supervisor for MCA final year project 2025 @ NIST University	Title :
+28	pnsite__gallery__mentoring__28__supervisor-for-mca-final-year-project-20.jpg	image	Supervisor for MCA final year project 2025 @ NIST University	Title :
+29	pnsite__gallery__mentoring__29__supervisor-for-mca-final-year-project-20.jpg	image	Supervisor for MCA final year project 2025 @ NIST University	Title :
+30	pnsite__gallery__mentoring__30__supervisor-for-mca-final-year-project-20.jpg	image	Supervisor for MCA final year project 2025 @ NIST University	Title :
+31	pnsite__gallery__mentoring__31__supervisor-for-mca-final-year-project-20.jpg	image	Supervisor for MCA final year project 2025 @ NIST University	Title :
+32	pnsite__gallery__mentoring__32__supervisor-for-mca-final-year-project-20.jpg	image	Supervisor for MCA final year project 2025 @ NIST University	Title :
+33	pnsite__gallery__mentoring__33__faculty-mentor-for-smart-india-hackathon.jpg	image	Faculty Mentor for Smart India Hackathon 2024 @ NIST Univesity & CIT Kokrajhar	Title :
+34	pnsite__gallery__mentoring__34__faculty-mentor-for-smart-india-hackathon.jpg	image	Faculty Mentor for Smart India Hackathon 2024 @ NIST Univesity & CIT Kokrajhar	Title :
+35	pnsite__gallery__mentoring__35__faculty-mentor-for-smart-india-hackathon.jpg	image	Faculty Mentor for Smart India Hackathon 2024 @ NIST Univesity & CIT Kokrajhar	Title :
+36	pnsite__gallery__mentoring__36__faculty-mentor-for-smart-india-hackathon.jpg	image	Faculty Mentor for Smart India Hackathon 2024 @ NIST Univesity & CIT Kokrajhar	Title :
+37	pnsite__gallery__mentoring__37__mentor-for-cyber-security-2024.jpg	image	Mentor for Cyber Security 2024	1:1 Mentoring on Cyber Security & Ethical Hacking
+38	pnsite__gallery__mentoring__38__industrial-mentor-for-final-year-b-tech-.jpg	image	Industrial Mentor for Final Year B.Tech in Cyber Security Students 2024 @ Anurag University Hyderabad	Reach me

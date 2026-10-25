@@ -1,0 +1,10 @@
+n	file	kind	heading	text-after
+1	pnsite__gallery__teaching__01__teaching.jpg	carousel	Teaching	Teaching Assistant @
+2	pnsite__gallery__teaching__02__teaching.jpg	carousel	Teaching	Teaching Assistant @
+3	pnsite__gallery__teaching__03__teaching.jpg	carousel	Teaching	Teaching Assistant @
+4	pnsite__gallery__teaching__04__teaching.jpg	carousel	Teaching	Teaching Assistant @
+5	pnsite__gallery__teaching__05__teaching.jpg	carousel	Teaching	Teaching Assistant @
+6	pnsite__gallery__teaching__06__teaching.jpg	carousel	Teaching	Teaching Assistant @
+7	pnsite__gallery__teaching__07__teaching.jpg	carousel	Teaching	Teaching Assistant @
+8	pnsite__gallery__teaching__08__teaching.jpg	carousel	Teaching	Teaching Assistant @
+9	pnsite__gallery__teaching__09__guest-faculty-assam-skill-development-mi.jpg	image	Guest Faculty @ Assam Skill Development Mission, NRDS Center Kokrajhar, Assam	Reach me
