@@ -26,10 +26,10 @@ awards:
 certifications:
   - { name: "CySA+",    full: "CompTIA Cybersecurity Analyst",              by: "CompTIA",    badge: "/assets/img/badges/cysa.jpg" }
   - { name: "PenTest+", full: "CompTIA PenTest+",                           by: "CompTIA",    badge: "/assets/img/badges/pentest.jpg" }
-  - { name: "CEH",      full: "Certified Ethical Hacker",                   by: "EC-Council", badge: "/assets/img/badges/ceh.jpg" }
-  - { name: "CCSP",     full: "Certified Cloud Security Professional",      by: "ISC2",       badge: "/assets/img/badges/ccsp.jpg" }
+  - { name: "Ethical Hacker", full: "Certified Ethical Hacker",             by: "CybroSec India", badge: "/assets/img/badges/ceh.jpg" }
+  - { name: "Cyber Security Professional", full: "Certified Cyber Security Professional", by: "Global Tech Council",       badge: "/assets/img/badges/ccsp.jpg" }
   - { name: "CC",       full: "Certified in Cybersecurity",                 by: "ISC2",       badge: "/assets/img/badges/cc.png" }
-  - { name: "CCNA",     full: "Cisco Certified Network Associate",          by: "Cisco",      badge: "/assets/img/badges/cc.jpg" }
+  - { name: "CCNA",     full: "Cisco Certified Network Associate",          by: "Cisco",      badge: "/assets/img/badges/ccna.jpg" }
   - { name: "NSE 1",    full: "Network Security Expert, level 1",           by: "Fortinet",   badge: "/assets/img/badges/nse1.jpg" }
   - { name: "NSE 2",    full: "Network Security Expert, level 2",           by: "Fortinet",   badge: "/assets/img/badges/nse2.jpg" }
   - { name: "CCIO",     full: "Certified Cyber Crime Intervention Officer", by: "ISAC",       badge: "/assets/img/badges/ccio.jpg" }
@@ -42,7 +42,7 @@ certifications:
 #   since: year you joined (optional, shown under the title)
 #   by:    the organisation (shown in the right-hand column)
 memberships:
-  - { title: "Cyber Crime Intervention Officer", by: "Information Sharing and Analysis Center (ISAC), India", since: 2021, badge: "/assets/img/badges/ccio-officer.jpg" }
+  - { title: "Cyber Crime Intervention Officer", by: "Information Sharing and Analysis Center (ISAC), India", since: 2021, badge: "/assets/img/badges/ccio.jpg" }
   - { title: "Cyber Security Researcher", by: "EC-Council University, USA", badge: "/assets/img/badges/hall-of-fame.jpg" }
   - { title: "Scientific Research Proposal Reviewer", by: "Wiley", badge: "/assets/img/badges/research-proposal-reviewer.jpg" }
   - { title: "Technical Reviewer", by: "IEEE Communications Society", badge: "/assets/img/badges/technical-reviewer.jpg" }
