@@ -48,7 +48,7 @@ programs:
           - { name: "Nikita Sarma", note: "B.Tech 22–26", photo: "/assets/img/mentoring/nikita-sarma.jpg" }
           - { name: "Afrina Ahmad", note: "B.Tech 22–26", photo: "/assets/img/mentoring/afrina-ahmad.jpg" }
       - title: "Deep learning for healthcare"
-        institute: "Dept. of CS, Gauhati University"
+        institute: "Dept. of IT, Gauhati University"
         members:
           - { name: "Dhruba Jyoti Roy", note: "B.Tech 21–25", photo: "/assets/img/mentoring/dhruba-jyoti-roy.jpg" }
       - title: "Deep learning for healthcare"
