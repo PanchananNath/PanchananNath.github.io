@@ -23,13 +23,12 @@
   track: industry
   current: true
   text: "Volunteer service helping to resolve cyber crimes."
-  url: "https://www.isacindia.org/panchanan-nath/"
+  # url: "https://www.isacindia.org/panchanan-nath/"
 
 - role: "Founder & CEO"
   org: "EncryptoCyberspace"
-  period: "Nov 2019 – present"
+  period: "Nov 2019 – Nov 2024"
   track: industry
-  current: true
   text: "Information-security start-up providing training and consultancy services to the community."
   url: "https://sites.google.com/view/encryptocyberspace"
 
