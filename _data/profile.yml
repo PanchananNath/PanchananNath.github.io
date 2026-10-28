@@ -63,12 +63,13 @@ links:
 # Add/remove nodes freely — the map lays itself out.
 network:
   - { label: "IIIT Guwahati",       detail: "PhD scholar, project staff", track: academic }
-  - { label: "EncryptoCyberspace",  detail: "Founder & CEO",              track: industry }
+  - { label: "EC-Council",          detail: "Cyber security research associate", track: industry }
   - { label: "NIST University",     detail: "Assistant professor",        track: academic }
-  - { label: "EC-Council",          detail: "Security research associate", track: industry }
-  - { label: "CIT Kokrajhar",       detail: "Diploma, B.Tech, M.Tech, TA", track: academic }
+  - { label: "EncryptoCyberspace",  detail: "Founder & CEO",              track: industry }
+  - { label: "CIT Kokrajhar",       detail: "Diploma, B.Tech, M.Tech", track: academic }
   - { label: "ISAC India",          detail: "Cyber crime intervention officer", track: industry }
   - { label: "EC-Council University", detail: "Graduate research fellow", track: academic }
+  - { label: "Assam Gramin Vikash Bank", detail: "Cyber security consultant", track: industry }
   - { label: "NIELIT Guwahati",     detail: "Teaching assistant",         track: academic }
   - { label: "Assam Skill Dev. Mission", detail: "Guest faculty",         track: industry }
 
