@@ -20,6 +20,29 @@ impact:
   - { value: 1000, suffix: "+", label: "students mentored in cybersecurity and related domains" }
 
 programs:
+  - title: "B.Tech major and minor projects"
+    host: "Indian Institute of Information Technology Guwahati"
+    year: "2025 - present"
+    role: "Mentor"
+    display: spotlight
+    groups:
+      - title: "Deep learning for gait-based user authentication"
+        institute: "Dept. of CSE, IIIT Guwahati"
+        members:
+          - { name: "Reet Jirety", note: "Final-year B.Tech, CSE", photo: "/assets/img/mentoring/reet-jirety.jpg" }
+      - title: "Quantifying uncertainty in early-exit neural networks for EEG-based seizure detection"
+        institute: "Dept. of CSE, IIIT Guwahati"
+        members:
+          - { name: "Awani Vaidya", note: "Final-year B.Tech, CSE", photo: "/assets/img/mentoring/awani-vaidya.jpg" }
+      - title: "Compiler-guided program analysis and vulnerability detection of smart contracts using deep learning"
+        institute: "Dept. of CSE, IIIT Guwahati"
+        members:
+          - { name: "Debrup Das", note: "Final-year B.Tech, CSE", photo: "/assets/img/mentoring/debrup-das.jpg" }
+      - title: "Efficient task offloading in MEC-based IoT systems"
+        institute: "Dept. of CSE, IIIT Guwahati"
+        members:
+          - { name: "Shreya Das", note: "M.Tech, CSE", photo: "/assets/img/mentoring/shreya-das.jpg" }
+
   - title: "Summer Research Interns"
     host: "Indian Institute of Information Technology Guwahati"
     year: 2025

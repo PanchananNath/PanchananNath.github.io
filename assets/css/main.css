@@ -823,3 +823,4 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 @media (prefers-reduced-motion: reduce) { .pcar__track.is-animating { transition: none; } }
 .mentor-intro + .pcar { margin-top: clamp(28px, 4vw, 44px); }
+.spotlight + .spotlight { margin-top: 14px; }
