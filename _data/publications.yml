@@ -89,16 +89,16 @@
   url: "https://www.sciencedirect.com/science/article/abs/pii/S0045790623000320"
 
 # ── In review / in progress ──────────────────────────────────
-- id: R1
-  type: journal
-  status: under-review
-  authors: "Updating..."
-  title: "Confidence-aware Early-Exit Neural Networks for Arrhythmia Classification on Resource-Constrained Edge Devices"
+# - id: R1
+#   type: journal
+#   status: under-review
+#   authors: "Updating..."
+#   title: "Confidence-aware Early-Exit Neural Networks for Arrhythmia Classification on Resource-Constrained Edge Devices"
 
-- id: R2
-  type: journal
-  status: under-review
-  authors: "Updating..."
-  title: "Security and Memory Access Pattern-Driven Application Execution under Near Memory Processing Paradigm"
+# - id: R2
+#   type: journal
+#   status: under-review
+#   authors: "Updating..."
+#   title: "Security and Memory Access Pattern-Driven Application Execution under Near Memory Processing Paradigm"
 
 
