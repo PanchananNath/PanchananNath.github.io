@@ -824,3 +824,45 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (prefers-reduced-motion: reduce) { .pcar__track.is-animating { transition: none; } }
 .mentor-intro + .pcar { margin-top: clamp(28px, 4vw, 44px); }
 .spotlight + .spotlight { margin-top: 14px; }
+
+/* ==========================================================================
+   v8: same diagrams on phones (compact career map, Venn, education trace)
+   ========================================================================== */
+.netmap svg.is-compact .lbl { font-size: 1em; font-weight: 600; }
+.netmap svg.is-compact .chip-text { font-size: 17px; }
+.netmap svg.is-compact .trace { stroke-width: 1.8; }
+.netmap svg.is-compact .pad { stroke-width: 2; }
+.netmap.has-focus svg.is-compact .trace.is-on { stroke-width: 2.6; }
+.netmap svg.is-compact .node .lbl { transition: fill .2s; }
+.netmap svg.is-compact .node.is-on .lbl { fill: var(--acad); }
+.netmap svg.is-compact .node.is-on .pad--industry ~ .lbl { fill: var(--ind); }
+.netmap .node:focus { outline: none; }
+.netmap .node:focus-visible .pad { stroke-width: 3.5; }
+@media (max-width: 559px) {
+  .netmap__caption { min-height: 1.4em; }
+}
+
+.venn__stage svg.is-compact .venn__label { font-size: 11.5px; }
+.venn__stage svg.is-compact .venn__t { font-size: 11.5px; }
+.venn__stage svg.is-compact .venn__t--core { font-size: 12.5px; }
+.venn__stage svg.is-compact .venn__c { stroke-width: 1.3; }
+.venn__t, .venn__label, .venn__c { -webkit-tap-highlight-color: transparent; }
+
+/* education: keep the horizontal trace on phones, swipe sideways */
+@media (max-width: 820px) {
+  .edu { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(74%, 300px); gap: 0 22px;
+         padding: 30px var(--gutter) 14px; margin: 0 calc(var(--gutter) * -1);
+         overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: var(--gutter); scrollbar-width: none;
+         -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .edu::-webkit-scrollbar { display: none; }
+  .edu::before, .edu::after { display: none; }
+  .edu__step { padding-top: 30px; scroll-snap-align: start; }
+  .edu__pad { left: 0; top: 0; }
+  .edu__step::before, .edu__step::after { content: ""; position: absolute; top: 8px; left: 9px; width: calc(100% + 22px); height: 2px; background: var(--rule); }
+  .edu__step:last-child::before, .edu__step:last-child::after { width: calc(100% - 9px); }
+  .edu__step::after { background: var(--acad); transform-origin: left; }
+  .edu.is-armed .edu__step::after { transform: scaleX(0); }
+  .edu.is-in .edu__step::after { transform: scaleX(1); transition: transform .45s linear calc(var(--i) * .3s); }
+  .edu__degree { font-size: 2rem; }
+}
+.netmap .hit { fill: transparent; pointer-events: all; }

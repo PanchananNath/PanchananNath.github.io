@@ -46,7 +46,7 @@
     return n;
   }
 
-  function drawNetmap(fig) {
+  function drawNetmap(fig, compact) {
     var items = Array.prototype.map.call(fig.querySelectorAll('.netmap__list li'), function (li) {
       return {
         label: li.querySelector('.netmap__org').textContent.trim(),
@@ -54,51 +54,98 @@
         track: li.getAttribute('data-track') === 'industry' ? 'industry' : 'academic'
       };
     });
-    if (!items.length) return;
+    if (!items.length) return null;
     var sides = {
       academic: items.filter(function (i) { return i.track === 'academic'; }),
       industry: items.filter(function (i) { return i.track === 'industry'; })
     };
     var rows = Math.max(sides.academic.length, sides.industry.length, 3);
-    var W = 720, rowGap = 70, top = 34;
-    var H = top * 2 + (rows - 1) * rowGap;
-    var cx = W / 2, cy = H / 2;
-    var chipW = 110, chipH = Math.max(140, Math.min(H - 80, rows * 28 + 40));
-    var padR = 6, c = 10;
+    var svg = el('svg', { role: 'img', 'aria-label': 'Career network: academia on the left, industry on the right' });
+    if (compact) svg.setAttribute('class', 'is-compact');
+    fig.insertBefore(svg, fig.querySelector('.netmap__list'));
 
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Career network: academia on the left, industry on the right' });
-    var gTraces = el('g', {}, svg), gChip = el('g', {}, svg), gNodes = el('g', {}, svg);
+    // geometry: desktop is fixed; compact is drawn at the real pixel width so text stays readable
+    var G;
+    if (!compact) {
+      G = { W: 720, top: 34, rowGap: 70, chipW: 110, pinLen: 8, padR: 6, c: 10, laneStart: 22, laneGapMax: 26, labelGap: 14, fs: 16, lines: {} };
+      G.H = G.top * 2 + (rows - 1) * G.rowGap;
+      G.chipH = Math.max(140, Math.min(G.H - 80, rows * 28 + 40));
+      G.padFromEdge = 196;
+    } else {
+      var W = Math.max(300, Math.round(fig.clientWidth));
+      G = { W: W, top: 20, chipW: 46, pinLen: 6, padR: 5, c: 6, laneStart: 9, laneGapMax: 7, labelGap: 10, lines: {} };
+      // widest lane fan on either side
+      var maxLanes = 1;
+      ['academic', 'industry'].forEach(function (s) { var n = sides[s].length; maxLanes = Math.max(maxLanes, Math.floor(n / 2)); });
+      var span = G.laneStart + maxLanes * G.laneGapMax + 8;
+      var edge = W / 2 - G.chipW / 2 - G.pinLen;
+      G.padFromEdge = edge - span;
+      var maxLabelW = G.padFromEdge - G.labelGap - 2;
+      // measure and wrap labels; shrink the font until every word fits
+      var probe = el('text', { class: 'lbl', x: 0, y: -100 }, svg);
+      function width(str, fs) { probe.style.fontSize = fs + 'px'; probe.textContent = str; return probe.getComputedTextLength(); }
+      function wrapTo(label, fs) {
+        var words = label.split(' '), out = [], cur = '';
+        for (var i = 0; i < words.length; i++) {
+          var test = cur ? cur + ' ' + words[i] : words[i];
+          if (!cur || width(test, fs) <= maxLabelW) cur = test; else { out.push(cur); cur = words[i]; }
+        }
+        if (cur) out.push(cur);
+        return out;
+      }
+      var fs = 13;
+      for (; fs > 9.5; fs -= 0.5) {
+        var ok = items.every(function (it) { return it.label.split(' ').every(function (w) { return width(w, fs) <= maxLabelW; }); });
+        if (ok) break;
+      }
+      G.fs = fs;
+      var maxL = 1;
+      items.forEach(function (it) { var l = wrapTo(it.label, fs); G.lines[it.label] = l; maxL = Math.max(maxL, l.length); });
+      probe.remove();
+      G.lh = Math.round(fs * 1.18);
+      G.rowGap = maxL * G.lh + 14;
+      G.H = G.top * 2 + (rows - 1) * G.rowGap;
+      G.chipH = Math.min(G.H - 24, Math.max(96, rows * 18 + 30));
+    }
+    var W2 = G.W, H = G.H, cx = W2 / 2, cy = H / 2;
+    svg.setAttribute('viewBox', '0 0 ' + W2 + ' ' + H);
+    if (compact) svg.style.fontSize = G.fs + 'px';
+    var gTraces = el('g', {}, svg), gChip = el('g', {}, svg), gNodes = el('g', { role: 'list' }, svg);
     var traces = [];
+    var cap = fig.querySelector('.netmap__caption');
+    if (cap && !cap.__default) cap.__default = cap.textContent;
+    var capIdle = cap ? (compact ? cap.__default.replace('Hover', 'Tap') : cap.__default) : '';
+    if (cap) cap.textContent = capIdle;
 
     ['academic', 'industry'].forEach(function (side) {
       var list = sides[side];
       var n = list.length; if (!n) return;
       var sx = side === 'academic' ? -1 : 1;
-      var edgeX = cx + sx * (chipW / 2 + 8);
-      var padX = side === 'academic' ? 196 : W - 196;
-      var pinGap = Math.min(24, (chipH - 40) / Math.max(n - 1, 1));
-      var offset = (rows - n) * rowGap / 2;
+      var edgeX = cx + sx * (G.chipW / 2 + G.pinLen);
+      var padX = side === 'academic' ? G.padFromEdge : W2 - G.padFromEdge;
+      var pinGap = Math.min(compact ? 16 : 24, (G.chipH - (compact ? 28 : 40)) / Math.max(n - 1, 1));
+      var offset = (rows - n) * G.rowGap / 2;
       var span = Math.abs(padX - edgeX);
 
       var routes = list.map(function (node, i) {
-        return { node: node, py: cy + (i - (n - 1) / 2) * pinGap, ty: top + offset + i * rowGap, i: i };
+        return { node: node, py: cy + (i - (n - 1) / 2) * pinGap, ty: G.top + offset + i * G.rowGap, i: i };
       });
       var up = routes.filter(function (r) { return r.ty < r.py - 1; });
       var down = routes.filter(function (r) { return r.ty > r.py + 1; }).reverse();
       var lanes = Math.max(up.length, down.length, 1);
-      var laneGap = Math.min(26, (span - 44) / lanes);
+      var laneGap = Math.min(G.laneGapMax, (span - G.laneStart - 8) / lanes);
       up.forEach(function (r, k) { r.lane = k; });
       down.forEach(function (r, k) { r.lane = k; });
 
       routes.forEach(function (r) {
         var d;
         var dy = r.ty - r.py, sy = dy > 0 ? 1 : -1;
-        var endX = padX - sx * padR;
+        var endX = padX - sx * G.padR;
         if (Math.abs(dy) <= 1) {
           d = 'M' + edgeX + ' ' + r.py + 'H' + endX;
         } else {
-          var laneX = edgeX + sx * (22 + r.lane * laneGap);
-          var cc = Math.min(c, Math.abs(dy) / 2);
+          var laneX = edgeX + sx * (G.laneStart + r.lane * laneGap);
+          var cc = Math.min(G.c, Math.abs(dy) / 2);
           d = 'M' + edgeX + ' ' + r.py +
               'L' + (laneX - sx * cc) + ' ' + r.py +
               'L' + laneX + ' ' + (r.py + sy * cc) +
@@ -107,74 +154,110 @@
               'L' + endX + ' ' + r.ty;
         }
         var path = el('path', { d: d, class: 'trace trace--' + side }, gTraces);
-        // chip pin
-        el('rect', { x: side === 'academic' ? edgeX : cx + chipW / 2, y: r.py - 2, width: 8, height: 4, class: 'chip-pin' }, gChip);
+        var pw = G.pinLen, ph = compact ? 3 : 4;
+        el('rect', { x: side === 'academic' ? edgeX : cx + G.chipW / 2, y: r.py - ph / 2, width: pw, height: ph, class: 'chip-pin' }, gChip);
 
         var g = el('g', { class: 'node', tabindex: '0', role: 'listitem' }, gNodes);
-        var pad = el('circle', { cx: padX, cy: r.ty, r: padR, class: 'pad pad--' + side }, g);
-        var lx = padX + sx * 14;
+        var pad = el('circle', { cx: padX, cy: r.ty, r: G.padR, class: 'pad pad--' + side }, g);
+        var lx = padX + sx * G.labelGap;
         var anchor = side === 'academic' ? 'end' : 'start';
-        var t = el('text', { x: lx, y: r.ty + 5, 'text-anchor': anchor, class: 'lbl' }, g);
-        t.textContent = r.node.label;
-        var s = el('text', { x: lx, y: r.ty + 23, 'text-anchor': anchor, class: 'lbl-sub' }, g);
-        s.textContent = r.node.detail;
+        if (!compact) {
+          var t = el('text', { x: lx, y: r.ty + 5, 'text-anchor': anchor, class: 'lbl' }, g);
+          t.textContent = r.node.label;
+          var s = el('text', { x: lx, y: r.ty + 23, 'text-anchor': anchor, class: 'lbl-sub' }, g);
+          s.textContent = r.node.detail;
+        } else {
+          var L = G.lines[r.node.label] || [r.node.label];
+          var y0 = r.ty - (L.length - 1) * G.lh / 2 + G.fs * 0.36;
+          var tt = el('text', { x: lx, y: y0, 'text-anchor': anchor, class: 'lbl' }, g);
+          L.forEach(function (line, li) { var sp = el('tspan', { x: lx, dy: li ? G.lh : 0 }, tt); sp.textContent = line; });
+        }
+        if (compact) {
+          var bb = g.getBBox();
+          var hit = el('rect', { x: bb.x - 4, y: bb.y - 4, width: bb.width + 8, height: bb.height + 8, class: 'hit' }, null);
+          g.insertBefore(hit, g.firstChild);
+        }
         var title = el('title', {}, g); title.textContent = r.node.label + (r.node.detail ? ': ' + r.node.detail : '');
         traces.push({ path: path, node: g, pad: pad });
 
-        function on() { fig.classList.add('has-focus'); path.classList.add('is-on'); g.classList.add('is-on'); }
-        function off() { fig.classList.remove('has-focus'); path.classList.remove('is-on'); g.classList.remove('is-on'); }
-        g.addEventListener('mouseenter', on); g.addEventListener('mouseleave', off);
-        g.addEventListener('focus', on); g.addEventListener('blur', off);
+        function on() {
+          fig.classList.add('has-focus'); path.classList.add('is-on'); g.classList.add('is-on');
+          if (compact && cap) cap.textContent = r.node.label + (r.node.detail ? ': ' + r.node.detail : '');
+        }
+        function off() {
+          fig.classList.remove('has-focus'); path.classList.remove('is-on'); g.classList.remove('is-on');
+          if (compact && cap) cap.textContent = capIdle;
+        }
+        if (!compact) {
+          g.addEventListener('mouseenter', on); g.addEventListener('mouseleave', off);
+          g.addEventListener('focus', on); g.addEventListener('blur', off);
+        } else {
+          g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+        }
+        g.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (fig.__off && fig.__off !== off) fig.__off();
+          on(); fig.__off = off;
+        });
       });
     });
 
     // the chip (you)
-    el('rect', { x: cx - chipW / 2, y: cy - chipH / 2, width: chipW, height: chipH, rx: 9, class: 'chip' }, gChip);
-    el('circle', { cx: cx - chipW / 2 + 13, cy: cy - chipH / 2 + 13, r: 3.5, class: 'chip-pin' }, gChip);
-    var ini = el('text', { x: cx, y: cy + 10, 'text-anchor': 'middle', class: 'chip-text' }, gChip);
+    el('rect', { x: cx - G.chipW / 2, y: cy - G.chipH / 2, width: G.chipW, height: G.chipH, rx: compact ? 7 : 9, class: 'chip' }, gChip);
+    el('circle', { cx: cx - G.chipW / 2 + (compact ? 9 : 13), cy: cy - G.chipH / 2 + (compact ? 9 : 13), r: compact ? 2.5 : 3.5, class: 'chip-pin' }, gChip);
+    var ini = el('text', { x: cx, y: cy + (compact ? 6 : 10), 'text-anchor': 'middle', class: 'chip-text' }, gChip);
     ini.textContent = fig.getAttribute('data-initials') || '';
-    gNodes.setAttribute('role', 'list');
-
-    fig.insertBefore(svg, fig.querySelector('.netmap__list'));
     fig.classList.add('is-drawn');
-
-    // one orchestrated moment: traces power up outward from the chip
-    if (!reduceMotion && 'getTotalLength' in traces[0].path) {
-      traces.forEach(function (t, i) {
-        var len = t.path.getTotalLength();
-        t.path.style.strokeDasharray = len;
-        t.path.style.strokeDashoffset = len;
-        t.node.style.opacity = '0';
-        var delay = 250 + i * 110, dur = 750;
-        var pulse = el('circle', { r: 4, class: 'pulse', opacity: '0' }, gTraces);
-        setTimeout(function () {
-          var start = null;
-          function step(ts) {
-            if (start === null) start = ts;
-            var k = Math.min(1, (ts - start) / dur);
-            var e = 1 - Math.pow(1 - k, 3);
-            t.path.style.strokeDashoffset = len * (1 - e);
-            var pt = t.path.getPointAtLength(len * e);
-            pulse.setAttribute('cx', pt.x); pulse.setAttribute('cy', pt.y);
-            pulse.setAttribute('opacity', k < 1 ? '1' : '0');
-            if (k < 1) { requestAnimationFrame(step); }
-            else {
-              t.path.style.strokeDasharray = ''; t.path.style.strokeDashoffset = '';
-              t.node.style.transition = 'opacity .35s'; t.node.style.opacity = '1';
-              pulse.remove();
-            }
-          }
-          requestAnimationFrame(step);
-        }, delay);
-      });
-    }
+    return { svg: svg, traces: traces, gTraces: gTraces };
   }
 
+  function powerUp(m) {
+    if (reduceMotion || !m || !m.traces.length || !('getTotalLength' in m.traces[0].path)) return;
+    m.traces.forEach(function (t, i) {
+      var len = t.path.getTotalLength();
+      t.path.style.strokeDasharray = len;
+      t.path.style.strokeDashoffset = len;
+      t.node.style.opacity = '0';
+      var delay = 250 + i * 110, dur = 750;
+      var pulse = el('circle', { r: 4, class: 'pulse', opacity: '0' }, m.gTraces);
+      setTimeout(function () {
+        var start = null;
+        function step(ts) {
+          if (start === null) start = ts;
+          var k = Math.min(1, (ts - start) / dur);
+          var e = 1 - Math.pow(1 - k, 3);
+          t.path.style.strokeDashoffset = len * (1 - e);
+          var pt = t.path.getPointAtLength(len * e);
+          pulse.setAttribute('cx', pt.x); pulse.setAttribute('cy', pt.y);
+          pulse.setAttribute('opacity', k < 1 ? '1' : '0');
+          if (k < 1) { requestAnimationFrame(step); }
+          else {
+            t.path.style.strokeDasharray = ''; t.path.style.strokeDashoffset = '';
+            t.node.style.transition = 'opacity .35s'; t.node.style.opacity = '1';
+            pulse.remove();
+          }
+        }
+        requestAnimationFrame(step);
+      }, delay);
+    });
+  }
+
+  var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
   document.querySelectorAll('[data-netmap]').forEach(function (fig) {
-    try { drawNetmap(fig); } catch (e) { /* list fallback stays visible */ }
-    function fit() { fig.classList.toggle('is-list', fig.clientWidth < 420); }
-    fit();
-    window.addEventListener('resize', fit);
+    var drawnW = 0, mode = null, first = true;
+    function render() {
+      var w = fig.clientWidth, compact = w < 480;
+      if (mode === compact && (!compact || Math.abs(w - drawnW) < 12)) return;
+      var old = fig.querySelector(':scope > svg'); if (old) old.remove();
+      fig.classList.remove('has-focus');
+      var m;
+      try { m = drawNetmap(fig, compact); } catch (e) { fig.classList.remove('is-drawn'); return; }
+      mode = compact; drawnW = w;
+      if (first) { first = false; powerUp(m); }
+    }
+    fontsReady.then(render);
+    document.addEventListener('click', function () { if (fig.__off) { fig.__off(); fig.__off = null; } });
+    var tm; window.addEventListener('resize', function () { clearTimeout(tm); tm = setTimeout(render, 150); });
   });
 
   /* ---------- publication filters ---------- */
@@ -244,14 +327,18 @@
   }
 
   /* ---------- Venn ---------- */
-  function wrap(text, max) {
-    if (text.length <= max) return [text];
-    var mid = text.length / 2, best = -1;
-    for (var i = 0; i < text.length; i++) if (text[i] === ' ' && (best < 0 || Math.abs(i - mid) < Math.abs(best - mid))) best = i;
-    return best < 0 ? [text] : [text.slice(0, best), text.slice(best + 1)];
+  function wrapWords(text, max) {
+    var words = text.split(' '), out = [], cur = '';
+    words.forEach(function (w) {
+      if (!cur) cur = w;
+      else if ((cur + ' ' + w).length <= max) cur += ' ' + w;
+      else { out.push(cur); cur = w; }
+    });
+    if (cur) out.push(cur);
+    return out;
   }
 
-  function drawVenn(fig) {
+  function drawVenn(fig, compact, animate) {
     var setEls = fig.querySelectorAll('.venn__set');
     var ids = Array.prototype.map.call(setEls, function (s) { return s.getAttribute('data-set'); });
     if (ids.length !== 3) return;
@@ -261,24 +348,45 @@
       return { name: li.textContent.trim(), idx: ids.map(function (id, i) { return inn.indexOf(id) !== -1 ? i : -1; }).filter(function (i) { return i >= 0; }) };
     });
 
-    var W = 680, H = 600, R = 182;
-    var C = [[250, 222], [430, 222], [340, 378]];
+    var W, H, R, C, lp, wrapCore, wrapArea, lh, lhCore, gap, labelFit = false;
+    if (!compact) {
+      W = 680; H = 600; R = 182;
+      C = [[250, 222], [430, 222], [340, 378]];
+      lp = [[C[0][0] - 92, 22, 'middle'], [C[1][0] + 92, 22, 'middle'], [C[2][0], H - 6, 'middle']];
+      wrapCore = 9; wrapArea = 17; lh = 18.5; lhCore = 21; gap = 7;
+    } else {
+      W = Math.max(300, Math.round(fig.querySelector('.venn__stage').clientWidth || fig.clientWidth));
+      R = Math.round(W * 0.315); var d = Math.round(W * 0.335), top = 30;
+      C = [[W / 2 - d / 2, top + R], [W / 2 + d / 2, top + R], [W / 2, top + R + Math.round(d * 0.87)]];
+      H = Math.round(C[2][1] + R + 28);
+      lp = [[2, 16, 'start'], [W - 2, 16, 'end'], [W / 2, H - 6, 'middle']];
+      wrapCore = 9; wrapArea = 12; lh = 14; lhCore = 15.5; gap = 5; labelFit = true;
+    }
+    var stage = fig.querySelector('.venn__stage');
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, 'aria-hidden': 'true' });
+    if (compact) svg.setAttribute('class', 'is-compact');
+    stage.appendChild(svg);
     var gC = el('g', {}, svg), gT = el('g', {}, svg);
     var circles = C.map(function (c, i) {
       return el('circle', { cx: c[0], cy: c[1], r: R, class: 'venn__c venn__c--' + i, 'data-i': i }, gC);
     });
-    // set names outside the circles
-    var lp = [[C[0][0] - 92, 22, 'middle'], [C[1][0] + 92, 22, 'middle'], [C[2][0], H - 6, 'middle']];
     labels.forEach(function (t, i) {
       var tx = el('text', { x: lp[i][0], y: lp[i][1], 'text-anchor': lp[i][2], class: 'venn__label venn__label--' + i, 'data-i': i }, gT);
       tx.textContent = t;
     });
+    // keep the two top labels apart on narrow screens
+    if (labelFit) {
+      var top0 = gT.querySelectorAll('.venn__label')[0], top1 = gT.querySelectorAll('.venn__label')[1];
+      var fsz = 11.5;
+      while (fsz > 9 && top0.getComputedTextLength() + top1.getComputedTextLength() > W - 16) {
+        fsz -= 0.5; top0.style.fontSize = top1.style.fontSize = fsz + 'px';
+      }
+    }
 
     // region centroids by sampling
     function inside(x, y, i) { var dx = x - C[i][0], dy = y - C[i][1]; return dx * dx + dy * dy < R * R; }
-    var acc = {};
-    for (var y = 0; y < H; y += 4) for (var x = 0; x < W; x += 4) {
+    var acc = {}, step = compact ? 3 : 4;
+    for (var y = 0; y < H; y += step) for (var x = 0; x < W; x += step) {
       var k = '';
       for (var i = 0; i < 3; i++) if (inside(x, y, i)) k += i;
       if (!k) continue;
@@ -293,58 +401,71 @@
       var g = groups[k], c = acc[k];
       if (!c) return;
       var cx = c.x / c.n, cy = c.y / c.n;
-      if (k === '012') {
-        el('circle', { cx: cx, cy: cy, r: 50, class: 'venn__core-ring' }, gT);
-      }
+      var core = k === '012';
+      var ring = core ? el('circle', { cx: cx, cy: cy, r: 10, class: 'venn__core-ring' }, gT) : null;
       var lines = [];
       g.forEach(function (a, ai) {
-        var parts = k === '012' ? wrap(a.name, 9) : wrap(a.name, 17);
-        parts.forEach(function (p, pi) { lines.push({ text: p, area: a, gap: ai > 0 && pi === 0 }); });
+        wrapWords(a.name, core ? wrapCore : wrapArea).forEach(function (p, pi) { lines.push({ text: p, area: a, gap: ai > 0 && pi === 0 }); });
       });
-      var lh = k === '012' ? 21 : 18.5, gap = 7;
-      var total = lines.length * lh + lines.filter(function (l) { return l.gap; }).length * gap;
-      var yy = cy - total / 2 + lh * 0.75;
+      var L = core ? lhCore : lh;
+      var total = lines.length * L + lines.filter(function (l) { return l.gap; }).length * gap;
+      var yy = cy - total / 2 + L * 0.75;
+      var made = [];
       lines.forEach(function (l) {
         if (l.gap) yy += gap;
-        var t = el('text', { x: cx, y: yy, 'text-anchor': 'middle', class: 'venn__t' + (k === '012' ? ' venn__t--core' : '') }, gT);
+        var t = el('text', { x: cx, y: yy, 'text-anchor': 'middle', class: 'venn__t' + (core ? ' venn__t--core' : '') }, gT);
         t.textContent = l.text;
         t.__area = l.area;
-        texts.push(t);
-        yy += lh;
+        texts.push(t); made.push(t);
+        yy += L;
       });
+      if (ring) {
+        var wMax = 0; made.forEach(function (t) { wMax = Math.max(wMax, t.getComputedTextLength()); });
+        ring.setAttribute('r', Math.max(wMax / 2, total / 2) + (compact ? 8 : 12));
+      }
     });
-
-    fig.querySelector('.venn__stage').appendChild(svg);
     fig.classList.add('is-drawn');
 
-    // interactions
+    // interactions (hover on desktop, tap on touch screens)
     function focusSet(i) {
+      fig.classList.remove('has-area');
       if (i === null) { fig.removeAttribute('data-focus'); }
       else fig.setAttribute('data-focus', i);
       texts.forEach(function (t) { t.classList.toggle('is-on', i !== null && t.__area.idx.indexOf(+i) !== -1); });
       setEls.forEach(function (s, si) { s.classList.toggle('is-on', i !== null && si === +i); });
     }
     function focusArea(a) {
+      fig.removeAttribute('data-focus');
       fig.classList.toggle('has-area', !!a);
       circles.forEach(function (c, ci) { c.classList.toggle('is-on', !!a && a.idx.indexOf(ci) !== -1); });
       texts.forEach(function (t) { t.classList.toggle('is-on', !!a && t.__area === a); });
       setEls.forEach(function (s, si) { s.classList.toggle('is-on', !!a && a.idx.indexOf(si) !== -1); });
     }
     circles.concat(Array.prototype.slice.call(gT.querySelectorAll('.venn__label'))).forEach(function (c) {
-      c.addEventListener('mouseenter', function () { focusSet(c.getAttribute('data-i')); });
-      c.addEventListener('mouseleave', function () { focusSet(null); });
-    });
-    setEls.forEach(function (s, i) {
-      ['mouseenter', 'focus'].forEach(function (ev) { s.addEventListener(ev, function () { focusSet(i); }); });
-      ['mouseleave', 'blur'].forEach(function (ev) { s.addEventListener(ev, function () { focusSet(null); }); });
+      c.addEventListener('mouseenter', function () { if (!compact) focusSet(c.getAttribute('data-i')); });
+      c.addEventListener('mouseleave', function () { if (!compact) focusSet(null); });
+      c.addEventListener('click', function (e) { e.stopPropagation(); focusSet(c.getAttribute('data-i')); });
     });
     texts.forEach(function (t) {
-      t.addEventListener('mouseenter', function () { focusArea(t.__area); });
-      t.addEventListener('mouseleave', function () { focusArea(null); });
+      t.addEventListener('mouseenter', function () { if (!compact) focusArea(t.__area); });
+      t.addEventListener('mouseleave', function () { if (!compact) focusArea(null); });
+      t.addEventListener('click', function (e) { e.stopPropagation(); focusArea(t.__area); });
     });
+    if (!fig.__wired) {
+      fig.__wired = true;
+      setEls.forEach(function (s, i) {
+        ['mouseenter', 'focus'].forEach(function (ev) { s.addEventListener(ev, function () { if (!fig.__compact && fig.__focusSet) fig.__focusSet(i); }); });
+        ['mouseleave', 'blur'].forEach(function (ev) { s.addEventListener(ev, function () { if (!fig.__compact && fig.__focusSet) fig.__focusSet(null); }); });
+        s.addEventListener('click', function () { if (fig.__compact && fig.__focusSet) fig.__focusSet(i); });
+      });
+      document.addEventListener('click', function (e) { if (!fig.contains(e.target) && fig.__clear) fig.__clear(); });
+    }
+    fig.__compact = compact;
+    fig.__focusSet = focusSet;
+    fig.__clear = function () { focusSet(null); focusArea(null); };
 
     // reveal: circles drift in from the centre once
-    if (!reduceMotion) {
+    if (animate && !reduceMotion) {
       var mid = [(C[0][0] + C[1][0] + C[2][0]) / 3, (C[0][1] + C[1][1] + C[2][1]) / 3];
       circles.forEach(function (c, i) {
         c.style.transformOrigin = mid[0] + 'px ' + mid[1] + 'px';
@@ -362,9 +483,19 @@
     }
   }
   document.querySelectorAll('[data-venn]').forEach(function (fig) {
-    try { drawVenn(fig); } catch (e) {}
-    function fit() { fig.classList.toggle('is-list', fig.clientWidth < 540); }
-    fit(); window.addEventListener('resize', fit);
+    var mode = null, drawnW = 0, first = true;
+    var hint = fig.querySelector('.venn__hint');
+    function render() {
+      var w = fig.clientWidth, compact = w < 560;
+      if (mode === compact && (!compact || Math.abs(w - drawnW) < 12)) return;
+      var old = fig.querySelector('.venn__stage svg'); if (old) old.remove();
+      fig.removeAttribute('data-focus'); fig.classList.remove('has-area');
+      try { drawVenn(fig, compact, first); } catch (e) { fig.classList.remove('is-drawn'); return; }
+      mode = compact; drawnW = w; first = false;
+      if (hint) hint.textContent = compact ? 'Tap a circle or area to see how they connect.' : 'Hover a circle or area to see how they connect.';
+    }
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(render);
+    var tm; window.addEventListener('resize', function () { clearTimeout(tm); tm = setTimeout(render, 150); });
   });
 
   /* ---------- education reveal ---------- */
